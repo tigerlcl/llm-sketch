@@ -1,0 +1,9 @@
+{
+
+    "_type": "prompt",
+
+    "input_variables": ["data"],
+
+    "template_path": "/hpc2hdd/home/yzhang269/FormulaImputaton/llm-sketch/prompt_templates/sketch_formula.txt"
+
+}
