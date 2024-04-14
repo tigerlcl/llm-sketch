@@ -4,6 +4,6 @@
 
     "input_variables": ["data"],
 
-    "template_path": "D:\\Mphil\\DataLake\\Agent\\FormulaImputation\\llm-sketch\\prompt_templates\\sketch_formula.txt"
+    "template_path": "/hpc2hdd/home/yzhang269/FormulaImputaton/llm-sketch/prompt_templates/sketch_formula.txt"
 
 }
