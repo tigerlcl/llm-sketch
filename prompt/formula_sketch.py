@@ -5,9 +5,8 @@ from langchain.prompts import PromptTemplate
 class FormulaSketch(LLMChat):
 
     def build_prompt(self):
-
         prompt = PromptTemplate.from_template(
-            template="""
+                template="""
                 You are a data scientist. I offer you a table in CSV form with missing values in it, and the first row is the variables’ names it contains. 
                 Suggest a solution to fill in each missing value, denoted by nan.  You have to sketch your solution into the following template for each missing value you found.
                 Process all the steps and Give Python code solutions for each missing value! This is extremely important! 
@@ -25,14 +24,6 @@ class FormulaSketch(LLMChat):
 
                 Here is the data:
                 {table}
-                """,
-        )
+                """)
 
         return prompt
-
-    def chat_llm(self, llm_src, data):
-        prompt = self.build_prompt()
-        model = self.load_llm(llm_src)
-        chain = prompt | model
-
-        return chain.invoke({"table": data})
