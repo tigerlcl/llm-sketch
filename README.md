@@ -23,6 +23,7 @@
   - data_test/*.csv
   - output/*.json
 - app.log
+- requirements.txt
 
 ## CLI Command
 ```shell
