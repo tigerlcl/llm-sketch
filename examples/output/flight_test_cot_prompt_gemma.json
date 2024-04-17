@@ -1,0 +1,18 @@
+{
+    "meta": {
+        "model": "gemma",
+        "created_at": "2024-04-17T18:42:38.473049422Z",
+        "message": {
+            "role": "assistant",
+            "content": ""
+        },
+        "done": true,
+        "total_duration": 175647273789,
+        "load_duration": 488667,
+        "prompt_eval_count": 582,
+        "prompt_eval_duration": 80632173000,
+        "eval_count": 630,
+        "eval_duration": 95011454000
+    },
+    "content": "**Let's think step by step:**\n\n**1. Identify the missing value character:**\nThe missing value character in the data is denoted by '?.\n\n**2. Check for missing values:**\nInspect the entire table for rows with missing values.\n\n**3. Fill in the missing values:**\nThere are several techniques to fill in missing values, such as mean imputation, median imputation, or interpolation. In this case, we can fill in the missing values with the mean of the non-missing values in the same column.\n\n**4. Verify the filled-in values:**\nOnce the missing values are filled in, check the table to ensure that the values are correct.\n\n**Here is the updated data:**\n\nAirline,Date_of_Journey,Source,Destination,Route,Dep_Time,Arrival_Time,Duration,Total_Stops\nJet Airways,6/06/2019,Delhi,Cochin,DEL \u2192 BOM \u2192 COK,18:15,19:00 07 Jun,24h 45m,1 stop\nIndiGo,24/06/2019,Mumbai,Hyderabad,BOM \u2192 HYD,12:00,13:30,1h 30m,non-stop\nIndiGo,21/03/2019,Delhi,Cochin,DEL \u2192 HYD \u2192 MAA \u2192 COK,07:35,21:20,13h 45m,2 stops\nIndiGo,15/03/2019,Banglore,New Delhi,BLR \u2192 HYD \u2192 DEL,16:15,20:35,4h 20m,1 stop\nJet Airways,01/03/2019,Banglore,New Delhi,BLR \u2192 BOM \u2192 DEL,22:50,21:20 02 Mar,22h 30m,1 stop\nIndiGo,3/05/2019,Banglore,Delhi,BLR \u2192 DEL,07:10,10:05,2h 55m,non-stop\nAir India,21/03/2019,Mumbai,Hyderabad,BOM \u2192 HYD,21:05,22:25,1h 20m,non-stop\nAir India,12/03/2019,Banglore,New Delhi,BLR \u2192 BOM \u2192 DEL,08:50,23:15,14h 25m,1 stop\nMultiple carriers,12/06/2019,Delhi,Cochin,DEL \u2192 BOM \u2192 COK,18:15,01:30 13 Jun,7h 15m,1 stop"
+}
