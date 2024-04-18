@@ -1,0 +1,17 @@
+{
+    "meta": {
+        "model": "gemma",
+        "created_at": "2024-04-17T18:14:19.203335264Z",
+        "message": {
+            "role": "assistant",
+            "content": ""
+        },
+        "done": true,
+        "total_duration": 79186955578,
+        "load_duration": 628750,
+        "prompt_eval_duration": 217274000,
+        "eval_count": 508,
+        "eval_duration": 78960867000
+    },
+    "content": "**Issue 1: Missing values in the \"Duration\" column**\n\n**Related Columns:**\n- Duration\n- Total_Stops\n\n**Tuple Sampling:**\n```python\nsampled_tuples = [\n    (\"Jet Airways\", \"6/06/2019\", \"Delhi\", \"Cochin\", \"DEL \u2192 BOM \u2192 COK\", \"18:15\", \"19:00\", None, \"07 Jun\", \"24h 45m\", 1),\n    (\"IndiGo\", \"24/06/2019\", \"Mumbai\", \"Hyderabad\", \"BOM \u2192 HYD\", \"12:00\", \"13:30\", \"1h 30m\", \"non-stop\", None, None)\n]\n```\n\n**Rule Mining:**\n```python\n# Missing value in Duration is associated with non-stop flights\nrule = \"If Total_Stops is 'non-stop', then Duration is missing\"\n```\n\n**Issue 2: Missing values in the \"Arrival_Time\" column**\n\n**Related Columns:**\n- Arrival_Time\n- Duration\n- Total_Stops\n\n**Tuple Sampling:**\n```python\nsampled_tuples = [\n    (\"Jet Airways\", \"6/06/2019\", \"Delhi\", \"Cochin\", \"DEL \u2192 BOM \u2192 COK\", \"18:15\", None, \"07 Jun\", \"24h 45m\", 1),\n    (\"IndiGo\", \"24/06/2019\", \"Mumbai\", \"Hyderabad\", \"BOM \u2192 HYD\", \"12:00\", None, \"non-stop\", \"2h 30m\", None)\n]\n```\n\n**Rule Mining:**\n```python\n# Missing value in Arrival_Time is associated with non-stop flights\nrule = \"If Total_Stops is 'non-stop', then Arrival_Time is missing\"\n```\n\n**Additional Notes:**\n\n- The above solutions assume that the missing value character is 'None'. If it is different in your data, you may need to modify the code accordingly.\n- The rule mining process can be done manually or using machine learning techniques.\n- The rules found in the above examples are just examples, and you may need to modify them based on your specific data and requirements."
+}

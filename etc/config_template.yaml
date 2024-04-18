@@ -1,7 +1,37 @@
-# Full Example: https://github.com/geekan/MetaGPT/blob/main/config/config2.example.yaml
-# Reflected Code: https://github.com/geekan/MetaGPT/blob/main/metagpt/config2.py
- llm:
-   api_type: "openai"  # or azure / ollama / open_llm etc. Check LLMType for more options
-   model: "gpt-4-turbo-preview"  # or gpt-3.5-turbo-1106 / gpt-4-1106-preview
-   base_url: "https://api.openai.com/v1"  # or forward url / other llm url
-   api_key: ".."
+environment: development
+log:
+  version: 1
+  formatters:
+    simple:
+      format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  handlers:
+    console:
+      class: logging.StreamHandler
+      level: DEBUG
+      formatter: simple
+      stream: ext://sys.stdout
+    file:
+      class: logging.FileHandler
+      level: INFO
+      formatter: simple
+      filename: app.log
+      mode: w
+  loggers:
+    run:
+      level: DEBUG
+      handlers: [console, file]
+      propagate: no
+  root:
+    level: DEBUG
+    handlers: [console, file]
+llm_zoo:
+  openai:
+    api_key: sk-
+    model: gpt-4-turbo  # or gpt-3.5-turbo-1106 / gpt-4-1106-preview
+    max_tokens: 2048
+  ollama:
+    model: llama2 # llama2， gemma
+llm_output_dir: ./examples/output
+dataset_path:
+  finance: ./examples/data_test/bajaj_test.csv
+  flight: ./examples/data_test/flight_test.csv
