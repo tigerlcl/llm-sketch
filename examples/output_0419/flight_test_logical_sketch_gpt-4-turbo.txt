@@ -1,0 +1,35 @@
+To address the missing value issue in the provided CSV data, we can follow these steps:
+
+### Step 1: Identify the Problematic Column
+From the provided data, it is clear that the missing value is in the "Route" column for the row where the airline is "IndiGo" and the destination is "Delhi".
+
+### Step 2: Related Columns
+To fix the missing "Route" value, we can use related columns that might help in deducing the missing value. The related columns are:
+- Source
+- Destination
+- Total_Stops
+
+These columns are directly related to the "Route".
+
+### Step 3: Tuple Sampling
+We will sample a few records that have no issues and share similar characteristics (Source, Destination, Total_Stops) with the problematic record. Here, the problematic record has:
+- Source: Banglore
+- Destination: Delhi
+- Total_Stops: non-stop
+
+Let's find similar records:
+1. IndiGo, 24/06/2019, Mumbai, Hyderabad, BOM → HYD, 12:00, 13:30, 1h 30m, non-stop
+2. Air India, 21/03/2019, Mumbai, Hyderabad, BOM → HYD, 21:05, 22:25, 1h 20m, non-stop
+
+### Step 4: Rule Mining
+From the sampled records, we can observe that for non-stop flights, the route is typically a direct connection between the Source and Destination using their respective airport codes. For example, Mumbai to Hyderabad non-stop is "BOM → HYD".
+
+#### Rule:
+For non-stop flights from Banglore to Delhi, the route should be a direct connection between Banglore's and Delhi's main airports:
+```python
+if row['Source'] == 'Banglore' and row['Destination'] == 'Delhi' and row['Total_Stops'] == 'non-stop':
+    row['Route'] = 'BLR → DEL'
+```
+
+### Conclusion
+Using the above rule, we can fill in the missing value in the "Route" column for the problematic record. The corrected route for the IndiGo flight from Banglore to Delhi with no stops should be "BLR → DEL".

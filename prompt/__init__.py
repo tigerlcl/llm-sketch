@@ -8,7 +8,7 @@ def get_prompt_class(prompt_name):
         return FormulaSketch
     elif prompt_name == 'logical_sketch':
         return LogicalSketch
-    elif prompt_name == 'cot_prompt':
+    elif prompt_name == 'cot':
         return COTPrompt
     else:
         raise ValueError(f'Invalid generator name: {prompt_name}')

@@ -33,14 +33,14 @@ def main():
 
     # build chat model with prompt
     try:
+        # get prompt class and init chat model
         chat_cls = get_prompt_class(args.prompt_type)
-        chat_model = chat_cls(config['llm_zoo'])
-        model = chat_model.load_llm(args.llm)
-        model_name = chat_model.get_model_in_use()
-        logger.info(f'{args.llm} model inferencing: {model_name}')
+        chat_model = chat_cls(config['llm_zoo'], args.llm)
 
-        response = chat_model.chat_llm(model, tabular_data)
-        logger.info(response.response_metadata)
+        model_name = chat_model.get_model_in_run()
+        logger.info(f'{args.llm} model inferencing: {model_name}')
+        response = chat_model.chat_llm(tabular_data)
+
     except Exception as e:
         logger.error("An error occurred while generating chat response:", exc_info=True)
         raise e
@@ -48,13 +48,8 @@ def main():
     # store the LLM response
     output_dir = config['llm_output_dir']
     base_name = os.path.splitext(os.path.basename(args.input))[0]
-    output_fp = os.path.join(output_dir, f'{base_name}_{args.prompt_type}_{model_name}.json')
-
-    json_data = {
-      'meta': response.response_metadata,
-      'content': response.content
-    }
-    file_util.write_json_data(json_data, output_fp)
+    output_fp = os.path.join(output_dir, f'{base_name}_{args.prompt_type}_{model_name}')
+    file_util.write_file_data(response, output_fp, 'txt')
     logger.info('LLM Response Stored')
 
 

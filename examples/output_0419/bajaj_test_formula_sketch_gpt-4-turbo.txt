@@ -1,0 +1,71 @@
+To address the missing values in the provided CSV data, we will follow the outlined steps for each missing value found in the dataset. Let's start by loading the data and identifying the missing values.
+
+### Step 1: Finding Missing Value
+
+First, we need to load the data and find the rows with missing values.
+
+```python
+import pandas as pd
+import numpy as np
+
+# Load data
+data = pd.read_csv('data.csv', index_col=0)
+
+# Display rows with missing values
+missing_data_rows = data[data.isnull().any(axis=1)]
+print(missing_data_rows)
+```
+
+### Missing Value: CCI5 on 2015-02-03 14:15:00+05:30
+
+#### Step 2: Finding Related Columns
+For the `CCI5` column, related columns might include `high`, `low`, `close`, and `open` since CCI (Commodity Channel Index) typically uses these values in its calculation.
+
+```python
+print("Related Columns: 'high', 'low', 'close', 'open'")
+```
+
+#### Step 3: Drafting Solution
+The CCI is calculated using the formula involving the mean deviation and typical price (TP). We can impute the missing CCI value using the mean CCI of surrounding data points if the typical price does not deviate significantly.
+
+```python
+print("Solution: Impute missing CCI5 using the mean CCI5 of surrounding data points.")
+```
+
+#### Step 4: Calculating Intermediate Values
+No intermediate values are needed beyond what is directly calculable from existing columns.
+
+#### Step 5: Calculating and Verifying the Parameters
+We will use three rows without missing CCI5 values to calculate the mean and verify this approach.
+
+```python
+# Select three sample rows without missing CCI5
+sample_rows = data.dropna(subset=['CCI5']).sample(3)
+print(sample_rows[['high', 'low', 'close', 'open', 'CCI5']])
+```
+
+#### Step 6: Finding Related Rows
+We need the CCI5 values from the rows immediately before and after the missing value to calculate the mean.
+
+```python
+# Get the index of the missing CCI5 row
+missing_index = data.index.get_loc('2015-02-03 14:15:00+05:30')
+
+# Fetch surrounding rows' CCI5 values
+related_cci5_values = data.iloc[[missing_index - 1, missing_index + 1]]['CCI5']
+print(related_cci5_values)
+```
+
+#### Step 7: Rebuild the Solution in Code
+Now, we will rebuild the solution to impute the missing CCI5 value using the mean of the surrounding values.
+
+```python
+# Calculate the mean CCI5 from surrounding values
+mean_cci5 = related_cci5_values.mean()
+
+# Impute the missing value
+data.at['2015-02-03 14:15:00+05:30', 'CCI5'] = mean_cci5
+print(f"Imputed CCI5 at 2015-02-03 14:15:00+05:30: {mean_cci5}")
+```
+
+This process should be repeated for each missing value in the dataset, following the same steps to ensure consistency and accuracy in data imputation.
