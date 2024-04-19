@@ -1,32 +1,24 @@
 import os
-
 import yaml
 import argparse
-import logging
-import logging.config
 
-from utils import file_util
+from utils import file_util, log_util
 from prompt import get_prompt_class
 
 
-def main():
+def main(logger):
     # load args
     parser = argparse.ArgumentParser(description="Load Project Configuration")
     parser.add_argument('--config', '-c', type=str, default='./etc/config_template.yaml', help="path to config file")
     parser.add_argument('--prompt_type', '-p', type=str, help="specify a prompt type")
     parser.add_argument('--llm', '-m', type=str, help="specify a llm source", default='openai')
-    parser.add_argument('--input', '-i', type=str, help="specify a input file path",)
+    parser.add_argument('--input', '-i', type=str, help="specify a input file path", )
     args = parser.parse_args()
 
-    # load project-wise config
-    # Load YAML file
+    # load project-wise config in YAML file
     with open(args.config, 'r') as f:
         config = yaml.safe_load(f)
-        logging.config.dictConfig(config['log'])
-
-    # create a logger
-    logger = logging.getLogger('run')
-    logger.info('Config Initialized')
+    logger.info(f'Config Initialized {config["environment"]}')
 
     # TODO: optimize data I/O
     tabular_data = file_util.read_csv(args.input)
@@ -54,4 +46,6 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    # init logger
+    log = log_util.setup_logger()
+    main(log)
