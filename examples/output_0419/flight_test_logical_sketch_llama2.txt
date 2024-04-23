@@ -1,0 +1,35 @@
+Great! Let's get started on fixing the missing value issue in the given dataset.
+
+From the instruction, we need to locate the problematic columns and related columns that can help fix the issue, sample several no-issue records based on those columns, and mine a rule to fit the sampled results.
+
+Locating the Problematic Columns:
+The problematic columns in this dataset are "Dep_Time", "Arrival_Time", "Duration", and "Total_Stops". These columns have missing values that need to be imputed.
+
+Related Columns:
+To help fix the missing value issue, we can use related columns such as "Date_of_Journey" and "Source". These columns may provide useful information to impute the missing values in the problematic columns.
+
+Tuple Sampling:
+Randomly selecting several no-issue records based on the problematic columns and related columns can help us identify the pattern of the missing values. Here are the sampled records:
+
+| Airline | Date_of_Journey | Source | Dep_Time | Arrival_Time | Duration | Total_Stops |
+| --- | --- | --- | --- | --- | --- | --- |
+| Jet Airways | 6/06/2019 | Delhi | 18:15 | 19:00 | 07 Jun | 24h 45m | 1 stop |
+| IndiGo | 24/06/2019 | Mumbai | 12:00 | 13:30 | 1h 30m | non-stop |  |  |
+| IndiGo | 21/03/2019 | Delhi | 07:35 | 21:20 | 13h 45m | 2 stops |  |  |
+| IndiGo | 15/03/2019 | Banglore | 16:15 | 20:35 | 4h 20m | 1 stop |  |  |
+| Jet Airways | 01/03/2019 | Banglore | 22:50 | 21:20 | 02 Mar | 22h 30m | 1 stop |
+| IndiGo | 3/05/2019 | Banglore | 07:10 | 10:05 | 2h 55m | non-stop |  |  |
+
+Rule Mining:
+After sampling several no-issue records, we can mine a rule to fit the sampled results. Based on the sampled records, we can observe that the missing values in "Dep_Time", "Arrival_Time", and "Duration" are mostly filled with the corresponding values from the previous record. Therefore, we can use the following rule to impute the missing values:
+
+Missing Value = Previous Record's Value + Time Difference
+
+Where "Time Difference" is calculated as follows:
+
+Time Difference = Arrival_Time - Dep_Time
+
+Using this rule, we can impute the missing values in the problematic columns for the remaining records in the dataset.
+
+Conclusion:
+By following the instruction and using the sampled records and the rule mining technique, we can fix the missing value issue in the given dataset. The imputed values will be more accurate than simply replacing the missing values with null values or any random values.
