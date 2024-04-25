@@ -38,7 +38,7 @@ class LLMChat:
         elif self.llm_src == 'ollama':
             return ChatOllama(
                 model=self.ollama_model,
-                temperature=self.temperature,
+                # temperature=self.temperature,
             ), self.ollama_model
 
         else:
