@@ -1,40 +1,28 @@
-I'd be happy to help fix the missing value issue in this table. After examining the data, I found that there is one row with a missing value denoted by '?' in the 'Route' column.
+To fix the missing value denoted by '?' in tabular data, we need to identify the related columns that can help us fill this gap. Here are the related columns:
 
-Here's my solution:
-
-**Related Columns:**
-The problematic columns are:
-* Route
-* Dep_Time
-* Arrival_Time
-
-These columns are related because they all describe the flight schedule and duration. Understanding these columns can help us fix the missing value issue.
-
-**Tuple Sampling:**
-I randomly selected 5 no-issue records based on the above columns:
-
+```array
+['Airline', 'Date_of_Journey', 'Source', 'Destination', 'Route']
 ```
+
+These columns are directly or indirectly related to the missing value in the 'Route' column.
+
+Next, we need to randomly select no-issue records based on these related columns and show the result as an array of tuples:
+
+```array
 [
-    ('IndiGo', '21/03/2019', 'Delhi', 'Cochin', 'DEL → HYD → MAA → COK', '07:35', '21:20', '13h 45m', '2 stops'),
-    ('IndiGo', '15/03/2019', 'Banglore', 'New Delhi', 'BLR → HYD → DEL', '16:15', '20:35', '4h 20m', '1 stop'),
-    ('Air India', '21/03/2019', 'Mumbai', 'Hyderabad', 'BOM → HYD', '21:05', '22:25', '1h 20m', 'non-stop'),
-    ('IndiGo', '12/03/2019', 'Banglore', 'New Delhi', 'BLR → BOM → DEL', '08:50', '23:15', '14h 25m', '1 stop'),
-    ('Multiple carriers', '12/06/2019', 'Delhi', 'Cochin', 'DEL → BOM → COK', '18:15', '01:30', '7h 15m', '1 stop')
+    ('Jet Airways', '6/06/2019', 'Delhi', 'Cochin', 'DEL → BOM → COK', '18:15', '19:00 07 Jun', '24h 45m', '1 stop'),
+    ('IndiGo', '24/06/2019', 'Mumbai', 'Hyderabad', 'BOM → HYD', '12:00', '13:30', '1h 30m', 'non-stop')
 ]
 ```
 
-**Rule Mining:**
-After examining the sampled data, I found that there is a pattern in the Route column. Specifically, it appears that the route starts with the airline code followed by the departure and arrival cities.
+These records can be used as a base to infer the missing route.
 
-Here's the rule I mined:
+Finally, we need to find out the rule which is expected to fit in sampled results. This rule can be derived by analyzing the patterns and relationships between the related columns:
 
-```
-if (route.startswith(airline_code)) or (route.startswith(departure_city + ' →')):
-    missing_value = ''
-else:
-    missing_value = '?'
+```codeblock
+if (Airline == 'IndiGo' && Date_of_Journey >= '3/05/2019') || 
+   (Source == 'Banglore' && Destination == 'Delhi') then 
+    Route = 'BLR → HYD → DEL'
 ```
 
-This rule can be used to fill in the missing value in the Route column. The rule checks if the route starts with the airline code or if it starts with the departure city followed by '→'. If either condition is true, then the missing value is filled in as an empty string. Otherwise, the missing value remains '?'.
-
-I hope this helps! Let me know if you have any further questions.
+This rule suggests that if the airline is IndiGo and the date of journey is after March 5, 2019, or if the source is Banglore and the destination is Delhi, then the route is likely to be BLR → HYD → DEL.

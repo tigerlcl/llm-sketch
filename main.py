@@ -1,8 +1,9 @@
 import os
 import yaml
 import argparse
+from pathlib import Path
 
-from utils import file_util, log_util
+from utils import file_util, log_util, agent_util
 from prompt import get_prompt_class
 
 
@@ -18,6 +19,7 @@ def main(logger):
     # load project-wise config in YAML file
     with open(args.config, 'r') as f:
         config = yaml.safe_load(f)
+
     logger.info(f'Config Initialized {config["environment"]}')
 
     # TODO: optimize data I/O
@@ -43,6 +45,13 @@ def main(logger):
     output_fp = os.path.join(output_dir, f'{base_name}_{args.prompt_type}_{model_name}')
     file_util.write_file_data(response, output_fp, 'txt')
     logger.info('LLM Response Stored')
+
+    # Code Agent to execute code snippet
+    work_dir = Path("coding")
+    work_dir.mkdir(exist_ok=True)
+
+    chat_result = agent_util.pycode_agent(response, work_dir, tabular_data)
+    logger.info(f'Code Agent Response: {chat_result.summary}')
 
 
 if __name__ == '__main__':
