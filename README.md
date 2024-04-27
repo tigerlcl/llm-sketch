@@ -19,9 +19,6 @@
 - utils (helper functions)
   - file_io.py: txt, csv, json
   - logger.py
-- examples
-  - data_test/*.csv
-  - output/*.json
 - requirements.txt
 
 ## CLI Command
