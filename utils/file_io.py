@@ -8,11 +8,8 @@ def read_csv(file_path):
     return csv_content
 
 
-def write_txt_file(file_data, fp):
-    # check if dir exists
-    os.makedirs(os.path.dirname(fp), exist_ok=True)
-
-    with open(fp, 'w') as f:
+def write_txt_file(file_data, fp, mode='w'):
+    with open(fp, mode) as f:
         f.write(file_data)
 
 

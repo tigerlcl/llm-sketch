@@ -135,7 +135,6 @@ venv.bak/
 # Repo project settings
 .ropeproject
 *private.yaml
-coding/
 examples/
 # mkdocs documentation
 /site

@@ -2,6 +2,7 @@ environment: test
 experiment_name: test # name properly
 input_dir: ''
 output_dir: ''
+raw_data_dir: ''
 sketch_config:
   prompt_type: logical # or cot, formula
   llm: openai # or ollama
