@@ -1,38 +1,34 @@
-### Related Columns
-The problematic column is "Route" and the related columns that can help fix the issue are "Source" and "Destination". Here they are together in an array:
+### Analysis of the Data
 
-```python
-["Route", "Source", "Destination"]
+From the provided data, it appears that the column with missing values is the "Route" column. The missing value is denoted by '?'. To address this, we need to identify related columns that can help infer the missing "Route". The related columns are "Source" and "Destination" since the route is directly dependent on where the flight is coming from and going to.
+
+### Related Columns
+```json
+["Source", "Destination", "Route"]
 ```
 
 ### Tuple Sampling
-To provide a sample of no-issue records based on the columns "Route", "Source", and "Destination", here is a random selection:
+To create a rule for filling the missing "Route", we can sample records that have no issues in the "Route" column. Here are some samples:
 
-```python
+```json
 [
-    ("DEL → BOM → COK", "Delhi", "Cochin"),
-    ("BOM → HYD", "Mumbai", "Hyderabad"),
-    ("BLR → HYD → DEL", "Banglore", "New Delhi"),
-    ("BOM → HYD", "Mumbai", "Hyderabad"),
-    ("BLR → BOM → DEL", "Banglore", "New Delhi")
+    ("Banglore", "Delhi", "BLR → HYD → DEL"),
+    ("Banglore", "New Delhi", "BLR → BOM → DEL"),
+    ("Mumbai", "Hyderabad", "BOM → HYD")
 ]
 ```
 
 ### Rule Mining
-Based on the sampled results, the rule to determine the "Route" from "Source" and "Destination" can be inferred as follows:
+Based on the sampled data, we can observe a pattern that can be used to infer the missing route. Here's a potential rule:
 
 ```python
 def infer_route(source, destination):
-    if source == "Delhi" and destination == "Cochin":
-        return "DEL → BOM → COK"
+    if source == "Banglore" and destination in ["Delhi", "New Delhi"]:
+        return "BLR → BOM → DEL"
     elif source == "Mumbai" and destination == "Hyderabad":
         return "BOM → HYD"
-    elif source == "Banglore" and destination == "New Delhi":
-        return "BLR → BOM → DEL"
-    elif source == "Banglore" and destination == "Delhi":
-        return "BLR → DEL"
     else:
-        return None
+        return None  # Default case if no rule matches
 ```
 
-This function can be used to fill in the missing 'Route' values based on the 'Source' and 'Destination' columns.
+This rule can be refined further with more data or domain knowledge.

@@ -1,11 +1,20 @@
-environment: development
-llm_zoo:
-  common:
-    temperature: 0.0
-    ctx_token: 2048 # max 4096 for gpt-4-turbo
+environment: test
+experiment_name: test # name properly
+input_dir: ''
+output_dir: ''
+sketch_config:
+  prompt_type: logical # or cot, formula
+  llm: openai # or ollama
+agent_config:
+  coding_dir: '' # save the scripts and output
+  llm: openai # or ollama, backend LLM for agent
+llm_config:
   openai:
-    api_key: sk-
-    model: gpt-4-turbo  # or gpt-3.5-turbo-1106 / gpt-4-1106-preview
+    base_url: https://api.openai.com/v1/chat/completions
+    api_key: sk-xxx
+    model: gpt-4-turbo  # or gpt-4 / gpt-4-1106-preview
+    temperature: 0.2
   ollama:
+    base_url: http://localhost:11434/v1
+    api_key: ollama # required, but unused
     model: llama3 # llama2， gemma
-llm_output_dir: ./examples/abc

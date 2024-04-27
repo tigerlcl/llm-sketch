@@ -1,28 +1,19 @@
-To fix the missing value denoted by '?' in tabular data, we need to identify the related columns that can help us fill this gap. Here are the related columns:
+To fix the missing value denoted by '?' in the tabular data, we need to identify related columns that can help us solve this issue. Here's a possible solution:
 
-```array
-['Airline', 'Date_of_Journey', 'Source', 'Destination', 'Route']
+[Related Columns]: The column that seems most relevant for fixing the missing value is the `Route` column. This column provides information about the flight route, which could be used to infer the destination airport code.
+
+[Tuple Sampling]: Let's randomly select some no-issue records based on the above columns. Here are 5 tuples:
+
+```
+[(Jet Airways, '06/06/2019', 'Delhi', 'Cochin', 'DEL → BOM → COK', '18:15', '19:00 07 Jun', '24h 45m', '1 stop'),
+ (IndiGo, '24/06/2019', 'Mumbai', 'Hyderabad', 'BOM → HYD', '12:00', '13:30', '1h 30m', 'non-stop'),
+ (IndiGo, '21/03/2019', 'Delhi', 'Cochin', 'DEL → HYD → MAA → COK', '07:35', '21:20', '13h 45m', '2 stops'),
+ (Air India, '21/03/2019', 'Mumbai', 'Hyderabad', 'BOM → HYD', '21:05', '22:25', '1h 20m', 'non-stop'),
+ (Multiple carriers, '12/06/2019', 'Delhi', 'Cochin', 'DEL → BOM → COK', '18:15', '01:30 13 Jun', '7h 15m', '1 stop')]
 ```
 
-These columns are directly or indirectly related to the missing value in the 'Route' column.
+[Rule Mining]: Based on the sampled data, we can mine rules that might help us fix the missing value. One possible rule is:
 
-Next, we need to randomly select no-issue records based on these related columns and show the result as an array of tuples:
+If `Route` contains a sequence of three airport codes (e.g., 'DEL → BOM → COK'), then the destination airport code is likely to be the third one in the sequence.
 
-```array
-[
-    ('Jet Airways', '6/06/2019', 'Delhi', 'Cochin', 'DEL → BOM → COK', '18:15', '19:00 07 Jun', '24h 45m', '1 stop'),
-    ('IndiGo', '24/06/2019', 'Mumbai', 'Hyderabad', 'BOM → HYD', '12:00', '13:30', '1h 30m', 'non-stop')
-]
-```
-
-These records can be used as a base to infer the missing route.
-
-Finally, we need to find out the rule which is expected to fit in sampled results. This rule can be derived by analyzing the patterns and relationships between the related columns:
-
-```codeblock
-if (Airline == 'IndiGo' && Date_of_Journey >= '3/05/2019') || 
-   (Source == 'Banglore' && Destination == 'Delhi') then 
-    Route = 'BLR → HYD → DEL'
-```
-
-This rule suggests that if the airline is IndiGo and the date of journey is after March 5, 2019, or if the source is Banglore and the destination is Delhi, then the route is likely to be BLR → HYD → DEL.
+This rule can be formalized as a decision tree or a regression model, which can be used to predict the missing value.

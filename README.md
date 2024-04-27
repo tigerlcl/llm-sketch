@@ -10,14 +10,15 @@
 - etc
   - config_template.yaml
   - config_private.yaml (for local only)
-- prompt
-  - base.py
-  - cot_prompt.py
-  - formula_sketch_prompt.py
-  - logical_sketch_prompt.py 
+- llm
+  - prompt_template.py: cot, sketch 
+  - chat.py: chat with openai, ollama
+  - agent.py: code writer & code executor, LLM as backend
 - eval
   - metric.py (to do)
 - utils (helper functions)
+  - file_io.py: txt, csv, json
+  - logger.py
 - examples
   - data_test/*.csv
   - output/*.json
@@ -25,10 +26,6 @@
 
 ## CLI Command
 ```shell
-# Test flight data with COT prompt on ollama model
-python main.py -c etc/config_private.yaml -p cot -m ollama -i examples/data_test/flight_test.csv
-
-# Test flight data with formula prompt on OpenAI model (default if `-m` not specify )
-python main.py -c etc/config_private.yaml -p formula_sketch -i examples/data_test/bajaj_test.csv
-
+# configure YAML file correspondingly, execute pipeline
+python main.py -c etc/config_private.yaml
 ```

@@ -1,60 +1,94 @@
 import os
 import yaml
 import argparse
-from pathlib import Path
 
-from utils import file_util, log_util, agent_util
-from prompt import get_prompt_class
+from utils import file_io, logger
+from llm.chat import SketchLLM
+from llm.agent import CodeAgent
 
 
-def main(logger):
+def main(cfg, logger):
+    # init sketch llm
+    sketchLLM = SketchLLM(cfg['sketch_config'], cfg['llm_config'])
+
+    # init code agent
+    codeAgent = CodeAgent(cfg['agent_config'], cfg['llm_config'])
+
+    # Read input data
+    for csv_file in os.listdir(cfg['input_dir']):
+        input_fp = os.path.join(cfg['input_dir'], csv_file)
+        tabular_data = file_io.read_csv(input_fp)
+
+        # keep the same as the input file name
+        base_name = os.path.splitext(os.path.basename(input_fp))[0]
+        sketch_fname = f'{base_name}_{sketchLLM.model_in_run}_sketch.txt'
+        sketch_fp = os.path.join(config['output_dir'], sketch_fname)
+
+        # generate sketch by prompt engineering
+        try:
+            logger.info(f'model inferencing: {sketchLLM.model_in_run}')
+            sketch_result = sketchLLM.chat(tabular_data)
+            if isinstance(sketch_result, tuple):  # expect ChatOpenAI response
+                sketch_result, sketch_cost = sketch_result
+                sketch_cost_fname = f'{base_name}_{sketchLLM.model_in_run}_cost.txt'
+                file_io.write_txt_file(sketch_cost, os.path.join(config['output_dir'], sketch_cost_fname))
+                logger.info(f'Sketch cost: {sketch_cost}')
+
+            # store the LLM response
+            file_io.write_txt_file(sketch_result, sketch_fp)
+            logger.info('Sketch result saved')
+
+        except Exception as e:
+            logger.error("An error occurred while generation sketch:", exc_info=True)
+            raise e
+
+        try:
+            fixed_csv_fname = f'{base_name}_agent.csv'
+            chat_result = codeAgent.agent_chat(fixed_csv_fname, tabular_data, sketch_result)
+
+            # store the agent chat result
+            agent_fname = f'{base_name}_agent.json'
+            agent_fp = os.path.join(config['output_dir'], agent_fname)
+            chat_js = {
+                'agent_chat': chat_result.chat_history,
+                'agent_cost': chat_result.cost["usage_excluding_cached_inference"],  # see doc
+            }
+            file_io.write_json_file(chat_js, agent_fp)
+            logger.info(f'Agent result saved: {chat_result.cost["usage_excluding_cached_inference"]}')
+
+        except Exception as e:
+            logger.error("An error occurred while running agent:", exc_info=True)
+            raise e
+
+        # validate the agent result
+
+
+if __name__ == '__main__':
+    # init logger
+    log = logger.setup_logger()
+
     # load args
     parser = argparse.ArgumentParser(description="Load Project Configuration")
     parser.add_argument('--config', '-c', type=str, default='./etc/config_template.yaml', help="path to config file")
-    parser.add_argument('--prompt_type', '-p', type=str, help="specify a prompt type")
-    parser.add_argument('--llm', '-m', type=str, help="specify a llm source", default='openai')
-    parser.add_argument('--input', '-i', type=str, help="specify a input file path", )
     args = parser.parse_args()
 
     # load project-wise config in YAML file
     with open(args.config, 'r') as f:
         config = yaml.safe_load(f)
 
-    logger.info(f'Config Initialized {config["environment"]}')
+    log.info(f'Config Initialized {config["experiment_name"]}')
 
-    # TODO: optimize data I/O
-    tabular_data = file_util.read_csv(args.input)
+    # check input dir
+    if os.path.isdir(config['input_dir']):
+        log.info(f'Input data: {config["input_dir"]}')
+    else:
+        log.error(f'Input data: {config["input_dir"]} does not exist')
+        raise FileNotFoundError
 
-    # build chat model with prompt
-    try:
-        # get prompt class and init chat model
-        chat_cls = get_prompt_class(args.prompt_type)
-        chat_model = chat_cls(config['llm_zoo'], args.llm)
+    # check output dir
+    file_io.check_directory(config['output_dir'])
 
-        model_name = chat_model.get_model_in_run()
-        logger.info(f'{args.llm} model inferencing: {model_name}')
-        response = chat_model.chat_llm(tabular_data)
+    # check agent working dir
+    file_io.check_directory(config['agent_config']['work_dir'])
 
-    except Exception as e:
-        logger.error("An error occurred while generating chat response:", exc_info=True)
-        raise e
-
-    # store the LLM response
-    output_dir = config['llm_output_dir']
-    base_name = os.path.splitext(os.path.basename(args.input))[0]
-    output_fp = os.path.join(output_dir, f'{base_name}_{args.prompt_type}_{model_name}')
-    file_util.write_file_data(response, output_fp, 'txt')
-    logger.info('LLM Response Stored')
-
-    # Code Agent to execute code snippet
-    work_dir = Path("coding")
-    work_dir.mkdir(exist_ok=True)
-
-    chat_result = agent_util.pycode_agent(response, work_dir, tabular_data)
-    logger.info(f'Code Agent Response: {chat_result.summary}')
-
-
-if __name__ == '__main__':
-    # init logger
-    log = log_util.setup_logger()
-    main(log)
+    main(config, log)

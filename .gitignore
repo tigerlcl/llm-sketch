@@ -132,10 +132,11 @@ venv.bak/
 .spyderproject
 .spyproject
 
-# Rope project settings
+# Repo project settings
 .ropeproject
 *private.yaml
-
+coding/
+examples/
 # mkdocs documentation
 /site
 
