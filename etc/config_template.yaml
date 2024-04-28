@@ -1,8 +1,6 @@
 environment: test
-experiment_name: test # name properly
-raw_data_dir: '' # ground truth
+slice_dir: '' # for all outputs
 input_dir: '' #  dirty table
-output_dir: '' # for all outputs
 sketch_config:
   prompt_type: logical # or cot, formula
   work_dir: './sketch'

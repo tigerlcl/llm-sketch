@@ -9,13 +9,13 @@ def read_csv(file_path):
 
 
 def write_txt_file(file_data, fp, mode='w'):
-    with open(fp, mode) as f:
+    with open(fp, mode, encoding='utf-8') as f:
         f.write(file_data)
 
 
 def write_json_file(file_data, fp):
-    with open(fp, 'w') as f:
-        json.dump(file_data, f, indent=4)
+    with open(fp, 'w', encoding='utf-8') as f:
+        json.dump(file_data, f, ensure_ascii=False, indent=4)
 
 
 def check_directory(directory):

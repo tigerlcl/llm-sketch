@@ -135,7 +135,7 @@ venv.bak/
 # Repo project settings
 .ropeproject
 *private.yaml
-examples/
+experiments/
 datasets/
 
 
