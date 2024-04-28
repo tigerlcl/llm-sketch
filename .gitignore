@@ -136,7 +136,7 @@ venv.bak/
 .ropeproject
 *private.yaml
 examples/
-preprocessing/
+datasets/
 
 
 # mkdocs documentation
