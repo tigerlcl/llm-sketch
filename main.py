@@ -26,7 +26,8 @@ def main(cfg, log):
         try:
             sketch_fp = os.path.join(sketch_dir, f'{base_name}_{sketchLLM.model_in_run}.txt')
             sketch_result = sketchLLM.chat(tabular_data)
-            if isinstance(sketch_result, tuple):  # expect ChatOpenAI response
+            if isinstance(sketch_result, tuple):
+                # expect LangChain.ChatOpenAI response
                 sketch_result, sketch_cost = sketch_result
                 log.info(f'Sketch cost: {sketch_cost}')
 
@@ -67,7 +68,7 @@ if __name__ == '__main__':
     with open(args.config, 'r') as f:
         config = yaml.safe_load(f)
 
-    # check output dir
+    # check output_0418 dir
     file_io.check_directory(config['output_dir'])
 
     # init logger
@@ -80,11 +81,11 @@ if __name__ == '__main__':
         raise FileNotFoundError(f'input data: {config["input_dir"]} does not exist')
 
     # check sketch working dir
-    sketch_dir = os.path.join(config['output_dir'], config['sketch_config']['work_dir'])
+    sketch_dir = str(os.path.join(config['output_dir'], config['sketch_config']['work_dir']))
     file_io.check_directory(sketch_dir)
 
     # check agent working dir
-    agent_dir = os.path.join(config['output_dir'], config['agent_config']['work_dir'])
+    agent_dir = str(os.path.join(config['output_dir'], config['agent_config']['work_dir']))
     file_io.check_directory(agent_dir)
 
     main(config, logger)

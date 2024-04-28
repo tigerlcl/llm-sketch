@@ -12,7 +12,7 @@ class CodeAgent:
         The user cannot provide any feedback or perform any action beyond executing the code you suggest. 
         
         Check the execution result returned by the user.
-        If the result indicates there is an error, fix the error and output the code again. 
+        If the result indicates there is an error, fix the error and output_0418 the code again. 
         Suggest the full code instead of partial code or code changes.
         """
 
