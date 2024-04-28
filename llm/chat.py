@@ -35,7 +35,14 @@ class SketchLLM:
             # track token usage
             with get_openai_callback() as cb:
                 result = chain.invoke({"table": data})
-            return result, repr(cb)
+                cost_summary = {
+                    'total_cost': round(cb.total_cost, 5),
+                    'prompt_tokens': cb.prompt_tokens,
+                    'completion_tokens': cb.completion_tokens,
+                    'total_tokens': cb.total_tokens,
+                }
+
+            return result, cost_summary
 
         elif self.llm_src == 'ollama':
             llm = ChatOllama(model=self.model_in_run)
@@ -44,7 +51,3 @@ class SketchLLM:
 
         else:
             raise ValueError(f"Invalid LLM source: {self.llm_src}")
-
-
-
-

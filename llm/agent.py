@@ -3,7 +3,7 @@ from autogen.coding import LocalCommandLineCodeExecutor
 
 
 class CodeAgent:
-    def __init__(self, agent_cfg, llm_cfg):
+    def __init__(self, agent_dir, agent_cfg, llm_cfg):
         code_writer_system_message = """
         You have been given coding capability to solve tabular data imputation using Python code only.
     
@@ -21,14 +21,14 @@ class CodeAgent:
             system_message=code_writer_system_message,
             llm_config=llm_cfg[agent_cfg['llm']],
             code_execution_config=False,  # Turn off code execution for this agent.
-            max_consecutive_auto_reply=2,  # Limit the number of consecutive auto-replies.
+            max_consecutive_auto_reply=1,  # Limit the number of consecutive auto-replies.
             human_input_mode="NEVER",
         )
 
         # Create a local command line code executor.
         self.executor = LocalCommandLineCodeExecutor(
             timeout=agent_cfg['timeout'],  # Timeout for each code execution in seconds.
-            work_dir=agent_cfg['work_dir']
+            work_dir=agent_dir  # fixed csv saved here
         )
 
         # Create an agent with code executor configuration.
@@ -39,7 +39,7 @@ class CodeAgent:
             human_input_mode="NEVER",  # Autonomous
         )
 
-    def agent_chat(self, file_name, data, sketch_message):
+    def agent_chat(self, csv_fp, data, sketch_message):
         # Generate a reply for the given code.
         chat_result = self.code_executor_agent.initiate_chat(
             self.code_writer_agent,
@@ -47,7 +47,7 @@ class CodeAgent:
             f"""Here is the requirement:
             Initialize a Pandas DataFrame object according to the input data. 
             Implement the fixing plan and update the missing value.
-            You must save the dataframe as CSV file by 'pd.to_csv(path_or_buf={file_name}, index=False)' function
+            You must save the dataframe as CSV file by 'pd.to_csv(path_or_buf={csv_fp}, index=False)' function
             
             
             Here is the input data:\n{data}
@@ -56,8 +56,11 @@ class CodeAgent:
             """,
         )
 
+        # post-process chat_result
+        history_json = chat_result.chat_history
+        cost = chat_result.cost['usage_including_cached_inference']
+
         # reset the code executor agent
         self.code_executor_agent.reset()
 
-        return chat_result
-
+        return history_json, cost

@@ -1,17 +1,19 @@
 environment: test
 experiment_name: test # name properly
-input_dir: ''
-output_dir: ''
-raw_data_dir: ''
+raw_data_dir: '' # ground truth
+input_dir: '' #  dirty table
+output_dir: '' # for all outputs
 sketch_config:
   prompt_type: logical # or cot, formula
+  work_dir: './sketch'
   llm: openai # or ollama
 agent_config:
   timeout: 10
-  work_dir: './coding' # save the scripts, may add to .gitignore
+  work_dir: './agent' # save the scripts, may add to .gitignore
   llm: openai # or ollama, backend LLM for agent
 llm_config:
   openai:
+    # base_url, no need to set
     api_key: sk-xxx
     model: gpt-4-turbo  # or gpt-4 / gpt-4-1106-preview
     temperature: 0.2
