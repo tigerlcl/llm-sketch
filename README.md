@@ -31,7 +31,7 @@ python preprocessing/chunk_table.py \
 --dataset datasets/Flight_Route.csv \
 --columns "Source,Destination,Route" \
 --exp-dir experiments/s10r7m1 \
---num-slices 10 \
+--col-slices 10 \
 --num-rows 7 \
 --num-missing 1
 

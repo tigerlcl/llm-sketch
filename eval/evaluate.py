@@ -48,17 +48,16 @@ def compare_csv_files(raw_csv, fixed_csv, logger):
         # Iterate through the comparison result
         for row in res.index:
             for col in res.columns.get_level_values(0).unique():  # get_level_values(0) gives unique column names
-                if not pd.isna(res.at[row, (col, 'self')]) and not pd.isna(res.at[row, (col, 'other')]):
-                    self_value = res.at[row, (col, 'self')]
-                    other_value = res.at[row, (col, 'other')]
-                    print(f"Row: {row}, Column: {col}, Self Value: {self_value}, Other Value: {other_value}")
+                if not pd.isna(res.at[row, (col, 'self')]):
+                    raw_value = res.at[row, (col, 'self')]
+                    fixed_value = res.at[row, (col, 'other')]  # may get None if fix failed
 
                     diff_cells.append({
                         'slice': os.path.basename(raw_csv),
                         'row': row,
                         'column': col,
-                        'raw_value': self_value,
-                        'fixed_value': other_value
+                        'raw_value': raw_value,
+                        'fixed_value': fixed_value
                     })
 
         return False, diff_cells  # Files are not identical
