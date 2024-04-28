@@ -135,8 +135,8 @@ venv.bak/
 # Repo project settings
 .ropeproject
 *private.yaml
-examples
-preprocessing
+examples/
+preprocessing/
 
 
 # mkdocs documentation

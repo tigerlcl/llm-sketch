@@ -1,11 +1,13 @@
 
 import pandas as pd
-def main(raw_csv, output_dir):
+def chunk_csv(raw_csv, output_dir):
+
+
     return
 
 
 if __name__ == '__main__':
-    csv_fp = ''
+    csv_fp = './Flight_Route.csv'
+    output_dir = '../examples/input-data'
 
-
-    main(csv_fp, output_dir)
+    chunk_csv(csv_fp, output_dir)
