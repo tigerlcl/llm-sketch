@@ -4,7 +4,6 @@ from autogen.coding import LocalCommandLineCodeExecutor
 
 class CodeAgent:
     def __init__(self, agent_dir, agent_cfg, llm_cfg):
-
         self.code_writer_system_message = """
         You have been given coding capability to solve tabular data imputation using Python code only.
     
@@ -20,10 +19,17 @@ class CodeAgent:
         # Create a local command line code executor.
         self.executor = LocalCommandLineCodeExecutor(
             timeout=agent_cfg['timeout'],  # Timeout for each code execution in seconds.
-            work_dir=agent_dir  # fixed csv saved here
+            work_dir=agent_dir  # fixed csv would be saved here
         )
 
-        self.code_writer_llm_cfg = llm_cfg[agent_cfg['llm']]
+        self.code_writer_llm_cfg = {
+            "config_list": [
+                llm_cfg[agent_cfg['llm']]
+            ],
+            # No need disk cache
+            "cache": None,
+            "cache_seed": None,
+        }
 
     def agent_chat(self, csv_fp, data, sketch_message):
         code_writer_agent = ConversableAgent(

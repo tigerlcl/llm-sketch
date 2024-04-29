@@ -29,13 +29,13 @@
 # preprocess raw tabular data
 python preprocessing/chunk_table.py \
 --dataset datasets/Flight_Route.csv \
---columns "Source,Destination,Route" \
---exp-dir experiments/s10r7m1 \
---col-slices 10 \
---num-rows 7 \
+--columns "Source,Destination,Route,Total_Stops" \
+--exp-dir experiments/s5r6m1 \
+--num-slices 5 \
+--num-rows 6 \
 --num-missing 1
 
 # run pipeline on  experiment directory
- python main.py --config etc/config_private.yaml --exp-dir experiments/output_1
+ python main.py --config etc/config_private.yaml --exp-dir experiments/s5r6m1
 
 ```

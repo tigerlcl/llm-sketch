@@ -50,7 +50,8 @@ def compare_csv_files(raw_csv, fixed_csv, logger):
             for col in res.columns.get_level_values(0).unique():  # get_level_values(0) gives unique column names
                 if not pd.isna(res.at[row, (col, 'self')]):
                     raw_value = res.at[row, (col, 'self')]
-                    fixed_value = res.at[row, (col, 'other')]  # may get None if fix failed
+                    # fixed_value may get None if fix failed
+                    fixed_value = res.at[row, (col, 'other')] if not pd.isna(res.at[row, (col, 'other')]) else ''
 
                     diff_cells.append({
                         'slice': os.path.basename(raw_csv),

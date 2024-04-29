@@ -5,12 +5,13 @@ import argparse
 from llm.chat import SketchLLM
 from llm.agent import CodeAgent
 from utils import file_io, logger
-from eval.evaluate import compare_csv_files
+from eval import evaluate
 
 
 def main(cfg, log):
     # init sketch llm
     sketchLLM = SketchLLM(cfg['sketch_config'], cfg['llm_config'])
+    log.info(f"Backend LLM: {sketchLLM.model_in_run}")
 
     # init code agent
     codeAgent = CodeAgent(agent_dir, cfg['agent_config'], cfg['llm_config'])
@@ -30,7 +31,7 @@ def main(cfg, log):
 
         # generate sketch by prompt engineering
         try:
-            sketch_fp = os.path.join(sketch_dir, f'{base_name}_{sketchLLM.model_in_run}.txt')
+            sketch_fp = os.path.join(sketch_dir, f'{base_name}.txt')
             sketch_result = sketchLLM.chat(tabular_data)
             if isinstance(sketch_result, tuple):
                 # expect LangChain.ChatOpenAI response
@@ -61,7 +62,7 @@ def main(cfg, log):
         slice_csv = os.path.join(slice_dir, csv_file)
         fixed_csv = os.path.join(agent_dir, csv_file)
 
-        is_identical, fix_diff_list = compare_csv_files(slice_csv, fixed_csv, log)
+        is_identical, fix_diff_list = evaluate.compare_csv_files(slice_csv, fixed_csv, log)
         log.info(f'{base_name} imputation validated as: {is_identical}\n')
 
         # Files are not identical
@@ -84,7 +85,7 @@ if __name__ == '__main__':
     # check exp dir, store all tests with related file I/Os
     exp_dir = args.exp_dir
     if not os.path.isdir(exp_dir):
-        raise NotADirectoryError(f'{exp_dir} does not exist')
+        raise NotADirectoryError
 
     # init logger
     log_fp = os.path.join(exp_dir, 'run.log')
