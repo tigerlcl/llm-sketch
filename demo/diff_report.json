@@ -1,0 +1,16 @@
+[
+    {
+        "slice": "Flight_Route_8.csv",
+        "row": 1,
+        "column": "Total_Stops",
+        "raw_value": "non-stop",
+        "fixed_value": "1 stop"
+    },
+    {
+        "slice": "Flight_Route_20.csv",
+        "row": 1,
+        "column": "Total_Stops",
+        "raw_value": "1 stop",
+        "fixed_value": "2 stops"
+    }
+]

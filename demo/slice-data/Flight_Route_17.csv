@@ -1,0 +1,7 @@
+Airline,Date_of_Journey,Source,Destination,Route,Dep_Time,Arrival_Time,Duration,Total_Stops
+Multiple carriers,24/06/2019,Delhi,Cochin,DEL → BOM → COK,10:00,19:00,9h,1 stop
+SpiceJet,18/03/2019,Kolkata,Banglore,CCU → BLR,06:55,09:35,2h 40m,non-stop
+IndiGo,1/06/2019,Delhi,Cochin,DEL → BLR → COK,02:00,07:45,5h 45m,1 stop
+IndiGo,6/05/2019,Kolkata,Banglore,CCU → NAG → BLR,18:05,23:30,5h 25m,1 stop
+Air Asia,12/04/2019,Banglore,Delhi,BLR → DEL,04:55,07:45,2h 50m,non-stop
+Multiple carriers,9/05/2019,Delhi,Cochin,DEL → BOM → COK,06:40,19:15,12h 35m,1 stop

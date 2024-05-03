@@ -1,0 +1,122 @@
+[
+    {
+        "slice": "Flight_Route_1.csv",
+        "row": 1,
+        "col": "Source",
+        "value": "Mumbai"
+    },
+    {
+        "slice": "Flight_Route_2.csv",
+        "row": 4,
+        "col": "Destination",
+        "value": "Cochin"
+    },
+    {
+        "slice": "Flight_Route_3.csv",
+        "row": 5,
+        "col": "Route",
+        "value": "CCU → BLR"
+    },
+    {
+        "slice": "Flight_Route_4.csv",
+        "row": 2,
+        "col": "Total_Stops",
+        "value": "non-stop"
+    },
+    {
+        "slice": "Flight_Route_5.csv",
+        "row": 5,
+        "col": "Source",
+        "value": "Kolkata"
+    },
+    {
+        "slice": "Flight_Route_6.csv",
+        "row": 0,
+        "col": "Destination",
+        "value": "Banglore"
+    },
+    {
+        "slice": "Flight_Route_7.csv",
+        "row": 0,
+        "col": "Route",
+        "value": "DEL → BOM → COK"
+    },
+    {
+        "slice": "Flight_Route_8.csv",
+        "row": 1,
+        "col": "Total_Stops",
+        "value": "non-stop"
+    },
+    {
+        "slice": "Flight_Route_9.csv",
+        "row": 5,
+        "col": "Source",
+        "value": "Kolkata"
+    },
+    {
+        "slice": "Flight_Route_10.csv",
+        "row": 1,
+        "col": "Destination",
+        "value": "Banglore"
+    },
+    {
+        "slice": "Flight_Route_11.csv",
+        "row": 3,
+        "col": "Route",
+        "value": "BLR → DEL"
+    },
+    {
+        "slice": "Flight_Route_12.csv",
+        "row": 3,
+        "col": "Total_Stops",
+        "value": "1 stop"
+    },
+    {
+        "slice": "Flight_Route_13.csv",
+        "row": 2,
+        "col": "Source",
+        "value": "Kolkata"
+    },
+    {
+        "slice": "Flight_Route_14.csv",
+        "row": 0,
+        "col": "Destination",
+        "value": "Banglore"
+    },
+    {
+        "slice": "Flight_Route_15.csv",
+        "row": 3,
+        "col": "Route",
+        "value": "DEL → BOM → COK"
+    },
+    {
+        "slice": "Flight_Route_16.csv",
+        "row": 5,
+        "col": "Total_Stops",
+        "value": "non-stop"
+    },
+    {
+        "slice": "Flight_Route_17.csv",
+        "row": 4,
+        "col": "Source",
+        "value": "Banglore"
+    },
+    {
+        "slice": "Flight_Route_18.csv",
+        "row": 3,
+        "col": "Destination",
+        "value": "Banglore"
+    },
+    {
+        "slice": "Flight_Route_19.csv",
+        "row": 1,
+        "col": "Route",
+        "value": "DEL → JDH → BOM → COK"
+    },
+    {
+        "slice": "Flight_Route_20.csv",
+        "row": 1,
+        "col": "Total_Stops",
+        "value": "1 stop"
+    }
+]

@@ -1,21 +1,11 @@
 environment: test
-slice_dir: '' # for all outputs
-input_dir: '' #  dirty table
-sketch_config:
-  prompt_type: logical # or cot, formula
-  work_dir: './sketch'
-  llm: openai # or ollama
-agent_config:
-  timeout: 10
-  work_dir: './agent' # save the scripts, may add to .gitignore
-  llm: openai # or ollama, backend LLM for agent
-llm_config:
-  openai:
-    # base_url, no need to set
-    api_key: sk-xxx
-    model: gpt-4-turbo  # or gpt-4 / gpt-4-1106-preview
-    temperature: 0.2
-  ollama:
-    base_url: http://localhost:11434/v1
-    api_key: ollama # required, but unused
-    model: llama3 # llama2， gemma
+slice_dir: ./slice-data # ground truth
+input_dir: ./input-data # dirty table
+prompt_type: sketch # or cot
+sketch_work_dir: './sketch'
+agent_work_dir: './agent' # save the scripts
+openai_config:
+  # base_url, no need to set
+  api_key: sk-xxxxx
+  model: gpt-4-turbo  # or gpt-4 / gpt-4-1106-preview
+  temperature: 0

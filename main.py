@@ -2,7 +2,7 @@ import os
 import yaml
 import argparse
 
-from llm.chat import SketchLLM
+from llm.chat import sketch_llm
 from llm.agent import CodeAgent
 from utils import file_io, logger
 from eval import evaluate
@@ -10,15 +10,14 @@ from eval import evaluate
 
 def main(cfg, log):
     # init sketch llm
-    sketchLLM = SketchLLM(cfg['sketch_config'], cfg['llm_config'])
-    log.info(f"Backend LLM: {sketchLLM.model_in_run}")
+    log.info(f"Backend LLM: {cfg['openai_config']['model']}")
 
     # init code agent
-    codeAgent = CodeAgent(agent_dir, cfg['agent_config'], cfg['llm_config'])
+    codeAgent = CodeAgent(agent_dir, cfg['openai_config'])
 
-    # init diff report
-    diff_report = list()
-    diff_report_fp = os.path.join(exp_dir, 'diff_report.json')
+    # output path
+    fix_report = list()
+    fix_report_fp = os.path.join(exp_dir, 'fix_report.json')
 
     # Read input data
     for csv_file in os.listdir(input_dir):
@@ -32,7 +31,7 @@ def main(cfg, log):
         # generate sketch by prompt engineering
         try:
             sketch_fp = os.path.join(sketch_dir, f'{base_name}.txt')
-            sketch_result = sketchLLM.chat(tabular_data)
+            sketch_result = sketch_llm(tabular_data, cfg)
             if isinstance(sketch_result, tuple):
                 # expect LangChain.ChatOpenAI response
                 sketch_result, sketch_cost = sketch_result
@@ -62,13 +61,13 @@ def main(cfg, log):
         slice_csv = os.path.join(slice_dir, csv_file)
         fixed_csv = os.path.join(agent_dir, csv_file)
 
-        is_identical, fix_diff_list = evaluate.compare_csv_files(slice_csv, fixed_csv, log)
+        is_identical, fix_summary = evaluate.compare_csv_files(slice_csv, fixed_csv, log)
         log.info(f'{base_name} imputation validated as: {is_identical}\n')
 
-        # Files are not identical
-        if len(fix_diff_list) > 0:
-            diff_report.extend(fix_diff_list)
-            file_io.write_json_file(diff_report, diff_report_fp)  # update the diff report for each test
+        # store fix result
+        if len(fix_summary) > 0:
+            fix_report.extend(fix_summary)
+            file_io.write_json_file(fix_report, fix_report_fp)
 
 
 if __name__ == '__main__':
@@ -90,7 +89,7 @@ if __name__ == '__main__':
     # init logger
     log_fp = os.path.join(exp_dir, 'run.log')
     logger = logger.setup_logger(fp=log_fp)
-    logger.info(f'Config Initialized {exp_dir}, sketch type: {config["sketch_config"]["prompt_type"]}')
+    logger.info(f'Config Initialized {exp_dir}, prompt type: {config["prompt_type"]}')
 
     # check slice dir (original clean data as ground truth)
     slice_dir = str(os.path.join(exp_dir, config['slice_dir']))
@@ -99,11 +98,11 @@ if __name__ == '__main__':
     input_dir = str(os.path.join(exp_dir, config['input_dir']))
 
     # check sketch working dir
-    sketch_dir = str(os.path.join(exp_dir, config['sketch_config']['work_dir']))
+    sketch_dir = str(os.path.join(exp_dir, config['sketch_work_dir']))
     file_io.check_directory(sketch_dir)
 
     # check agent working dir (fixed data will be saved here)
-    agent_dir = str(os.path.join(exp_dir, config['agent_config']['work_dir']))
+    agent_dir = str(os.path.join(exp_dir, config['agent_work_dir']))
     file_io.check_directory(agent_dir)
 
     main(config, logger)

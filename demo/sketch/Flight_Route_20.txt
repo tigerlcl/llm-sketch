@@ -1,0 +1,36 @@
+### Related Columns
+The columns related to the issue of missing values in the 'Total_Stops' column are primarily the 'Route' and 'Duration' columns, as these directly relate to the number of stops a flight makes. Here are the relevant columns:
+
+```python
+['Route', 'Duration', 'Total_Stops']
+```
+
+### Tuple Sampling
+To provide a sample of records without issues in the 'Total_Stops' column, I will randomly select a few entries from the provided data:
+
+```python
+[
+    ('BLR → BOM → DEL', '15h 50m', '1 stop'),
+    ('DEL → HYD → MAA → COK', '20h 10m', '2 stops'),
+    ('CCU → BOM → BLR', '11h 45m', '1 stop'),
+    ('MAA → CCU', '2h 15m', 'non-stop'),
+    ('DEL → BOM → COK', '11h', '1 stop')
+]
+```
+
+### Rule Mining
+Based on the sampled data, we can infer a rule to estimate the 'Total_Stops' from the 'Route' and 'Duration'. Here's a simple rule based on the number of arrows (→) in the 'Route', which typically indicates the number of legs in the journey minus one (which corresponds to the number of stops):
+
+```python
+def estimate_stops(route):
+    # Count the number of segments in the route
+    segments = route.count('→')
+    if segments == 0:
+        return 'non-stop'
+    elif segments == 1:
+        return '1 stop'
+    else:
+        return f'{segments} stops'
+```
+
+This function can be used to fill in missing 'Total_Stops' values based on the 'Route' information.

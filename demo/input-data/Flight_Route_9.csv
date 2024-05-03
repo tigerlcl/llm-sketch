@@ -1,0 +1,7 @@
+Airline,Date_of_Journey,Source,Destination,Route,Dep_Time,Arrival_Time,Duration,Total_Stops
+IndiGo,09/03/2019,Banglore,New Delhi,BLR → DEL,13:10,16:10,3h,non-stop
+Air India,12/03/2019,Kolkata,Banglore,CCU → BLR,14:15,16:45,2h 30m,non-stop
+Jet Airways,12/06/2019,Kolkata,Banglore,CCU → BOM → BLR,20:00,08:15 13 Jun,12h 15m,1 stop
+Jet Airways,6/05/2019,Kolkata,Banglore,CCU → BOM → BLR,21:10,10:05 07 May,12h 55m,1 stop
+Vistara,6/05/2019,Kolkata,Banglore,CCU → DEL → BLR,20:20,20:20 07 May,24h,1 stop
+Vistara,1/04/2019,?,Banglore,CCU → DEL → BLR,20:20,20:20 02 Apr,24h,1 stop

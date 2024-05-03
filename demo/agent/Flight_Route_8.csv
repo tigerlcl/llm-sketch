@@ -1,0 +1,7 @@
+Airline,Date_of_Journey,Source,Destination,Route,Dep_Time,Arrival_Time,Duration,Total_Stops
+Jet Airways,9/06/2019,Delhi,Cochin,DEL → JAI → BOM → COK,05:30,04:25 10 Jun,22h 55m,2 stops
+SpiceJet,12/03/2019,Chennai,Kolkata,MAA → CCU,09:30,12:05,2h 35m,1 stop
+Jet Airways,18/05/2019,Kolkata,Banglore,CCU → BOM → BLR,16:30,16:20 19 May,23h 50m,1 stop
+Multiple carriers,6/03/2019,Delhi,Cochin,DEL → BOM → COK,12:50,01:35 07 Mar,12h 45m,1 stop
+SpiceJet,27/03/2019,Kolkata,Banglore,CCU → BLR,22:20,00:40 28 Mar,2h 20m,non-stop
+Jet Airways,15/03/2019,Mumbai,Hyderabad,BOM → HYD,02:55,04:25,1h 30m,non-stop

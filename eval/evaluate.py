@@ -37,31 +37,28 @@ def compare_csv_files(raw_csv, fixed_csv, logger):
         return False, None
 
     # Compare DataFrames
-    diff_cells = []
+    fix_summary = []
     try:
         res = df_raw.compare(df_fixed)
     except Exception as e:
         logger.error(f"Error comparing {raw_csv} and {fixed_csv}: {e}")
         return False, None
 
-    if not res.empty:
-        # Iterate through the comparison result
-        for row in res.index:
-            for col in res.columns.get_level_values(0).unique():  # get_level_values(0) gives unique column names
-                if not pd.isna(res.at[row, (col, 'self')]):
-                    raw_value = res.at[row, (col, 'self')]
-                    # fixed_value may get None if fix failed
-                    fixed_value = res.at[row, (col, 'other')] if not pd.isna(res.at[row, (col, 'other')]) else ''
+    # Iterate through the comparison result
+    for row in res.index:
+        for col in res.columns.get_level_values(0).unique():  # get_level_values(0) gives unique column names
+            if not pd.isna(res.at[row, (col, 'self')]):
+                raw_value = res.at[row, (col, 'self')]
+                # fixed_value may get None if fix failed
+                fixed_value = res.at[row, (col, 'other')] if not pd.isna(res.at[row, (col, 'other')]) else ''
 
-                    diff_cells.append({
-                        'slice': os.path.basename(raw_csv),
-                        'row': row,
-                        'column': col,
-                        'raw_value': raw_value,
-                        'fixed_value': fixed_value
-                    })
+                fix_summary.append({
+                    'slice': os.path.basename(raw_csv),
+                    'row': row,
+                    'column': col,
+                    'raw_value': raw_value,
+                    'fixed_value': fixed_value,
+                    'is_fixed': fixed_value != raw_value
+                })
 
-        return False, diff_cells  # Files are not identical
-    else:
-        # Files are identical
-        return True, {}
+    return res.empty, fix_summary

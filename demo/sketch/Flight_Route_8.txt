@@ -1,0 +1,32 @@
+### Related Columns
+The columns related to the issue of missing values in 'Total_Stops' are:
+```python
+['Source', 'Destination', 'Route', 'Total_Stops']
+```
+
+### Tuple Sampling
+Randomly selected no-issue records based on the related columns:
+```python
+[
+    ('Delhi', 'Cochin', 'DEL → JAI → BOM → COK', '2 stops'),
+    ('Kolkata', 'Banglore', 'CCU → BOM → BLR', '1 stop'),
+    ('Delhi', 'Cochin', 'DEL → BOM → COK', '1 stop'),
+    ('Kolkata', 'Banglore', 'CCU → BLR', 'non-stop'),
+    ('Mumbai', 'Hyderabad', 'BOM → HYD', 'non-stop')
+]
+```
+
+### Rule Mining
+The rule to determine the 'Total_Stops' based on 'Route':
+```python
+def determine_stops(route):
+    segments = route.split(' → ')
+    num_stops = len(segments) - 1
+    if num_stops == 0:
+        return 'non-stop'
+    elif num_stops == 1:
+        return '1 stop'
+    else:
+        return f'{num_stops} stops'
+```
+This function splits the 'Route' by the arrow symbol, counts the segments, and then determines the number of stops accordingly.

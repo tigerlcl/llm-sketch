@@ -43,7 +43,8 @@ def chunk_dirty_slice(args):
         slice_df.reset_index(drop=True, inplace=True)
         slice_df.to_csv(os.path.join(slice_dir, fn), index=False)
 
-        missing_indices = [(row, col) for row in slice_df.index for col in columns]
+        col = columns[i % len(columns)]
+        missing_indices = [(row, col) for row in slice_df.index]
         random.shuffle(missing_indices)  # for randomness
 
         # Add noise ensuring every cell is processed once only on current slice
