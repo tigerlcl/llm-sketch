@@ -63,7 +63,7 @@ class CodeAgent:
             Initialize a Pandas DataFrame object according to the input data. 
             Implement the fixing plan and find the missing value.
             You must print the fixing result in JSON format:
-            \u007b"row_index": ..., "column_name": ..., "result": ...\u007b
+            \u007b"row_index": ..., "column_name": ..., "result": ...\u007d
             
             Here is the input data:\n{data}
             
@@ -88,6 +88,7 @@ class CodeAgent:
         if match:
             # Extract the JSON object from the matched substring
             json_str = match.group(1)
+            json_str = json_str.replace("'", '"')  # replace single quotes with double quotes
             json_obj = json.loads(json_str)
             return json_obj
         else:
