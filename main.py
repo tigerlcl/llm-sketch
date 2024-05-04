@@ -71,11 +71,15 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Load Project Configuration")
     parser.add_argument('--config', type=str, default='./etc/config_template.yaml', help="path to config file")
     parser.add_argument('--exp-dir', type=str, default='./experiments/test', help="path to experiment directory")
+    parser.add_argument('--prompt-type', type=str, help="prompt type: cot or sketch")
     args = parser.parse_args()
 
     # load project-wise config in YAML file
     with open(args.config, 'r') as f:
         config = yaml.safe_load(f)
+
+    # assert prompt type
+    config['prompt_type'] = args.prompt_type
 
     # check exp dir, store all tests with related file I/Os
     exp_dir = args.exp_dir

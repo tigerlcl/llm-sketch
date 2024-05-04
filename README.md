@@ -40,21 +40,27 @@ To begin with, we will focus on the missing value imputation task, which is a co
 
 `columns` indicates the column fields where the missing values are took from the raw data.
 
+`prompt-type` decides the prompting strategy. currently, we support `sketch` and `cot`.
+
 ```shell
 # preprocess raw tabular data to mimic the missing value problem
 python preprocessing/chunk_table.py \
 --dataset datasets/Flight_Route.csv \
---columns "Source,Destination,Route,Total_Stops" \
---exp-dir demo \
+--columns "Route,Total_Stops" \
+--exp-dir demo_sketch \
 --num-slices 20 \
 --num-rows 6
 
 # run imputation pipeline on experiment directory
  python main.py \
  --config etc/config_private.yaml \
- --exp-dir demo
+ --prompt-type sketch \
+ --exp-dir demo_sketch
 ```
 
+> Note: the `etc/config_private.yaml` is for local use only. You should configure some fields like `openai_config`. After the experiment is done, 
+> you can find report and log files in the experiment directory. Make a copy before running the next experiment if using the same data slices.
+> Default setting will override the previous experiment output.
 
 ## Related Resources
 - [OpenAI](https://platform.openai.com/) for backend serving LLM.

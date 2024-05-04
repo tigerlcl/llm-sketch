@@ -137,6 +137,7 @@ venv.bak/
 *private.yaml
 experiments/
 datasets/
+demo*/
 
 
 # mkdocs documentation

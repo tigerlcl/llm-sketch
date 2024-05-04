@@ -1,7 +1,6 @@
 environment: test
 slice_dir: ./slice-data # ground truth
 input_dir: ./input-data # dirty table
-prompt_type: sketch # or cot
 sketch_work_dir: './sketch'
 agent_work_dir: './agent' # save the scripts
 openai_config:
