@@ -31,8 +31,7 @@ python preprocessing/chunk_table.py \
 --columns "Source,Destination,Route" \
 --exp-dir demo \
 --num-slices 5 \
---num-rows 6 \
---num-missing 1
+--num-rows 6
 
 # run pipeline on  experiment directory
  python main.py \

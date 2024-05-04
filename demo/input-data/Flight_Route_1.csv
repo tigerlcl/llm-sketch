@@ -1,7 +1,0 @@
-Airline,Date_of_Journey,Source,Destination,Route,Dep_Time,Arrival_Time,Duration,Total_Stops
-Jet Airways,21/03/2019,Delhi,Cochin,DEL → BOM → COK,15:00,04:25 22 Mar,13h 25m,1 stop
-Air India,6/03/2019,?,Hyderabad,BOM → JDH → DEL → HYD,09:40,23:45,14h 5m,2 stops
-Multiple carriers,12/06/2019,Delhi,Cochin,DEL → BOM → COK,08:45,19:15,10h 30m,1 stop
-Jet Airways,9/05/2019,Kolkata,Banglore,CCU → BOM → BLR,20:00,04:40 10 May,8h 40m,1 stop
-Air India,01/03/2019,Banglore,New Delhi,BLR → DEL,17:00,19:45,2h 45m,non-stop
-Jet Airways,15/03/2019,Banglore,New Delhi,BLR → BOM → DEL,22:50,07:40 16 Mar,8h 50m,1 stop

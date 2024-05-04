@@ -1,7 +1,0 @@
-Airline,Date_of_Journey,Source,Destination,Route,Dep_Time,Arrival_Time,Duration,Total_Stops
-IndiGo,21/03/2019,Delhi,Cochin,DEL → HYD → MAA → COK,06:40,21:20,14h 40m,2 stops
-SpiceJet,12/05/2019,Chennai,Kolkata,MAA → CCU,17:45,20:05,2h 20m,non-stop
-Jet Airways,18/06/2019,Delhi,Cochin,DEL → COK,09:50,13:05,3h 15m,non-stop
-IndiGo,12/04/2019,Kolkata,?,CCU → BLR,15:15,17:45,2h 30m,non-stop
-IndiGo,15/05/2019,Delhi,Cochin,DEL → PNQ → COK,23:30,04:35 16 May,5h 5m,1 stop
-IndiGo,3/06/2019,Mumbai,Hyderabad,BOM → HYD,12:00,13:30,1h 30m,non-stop

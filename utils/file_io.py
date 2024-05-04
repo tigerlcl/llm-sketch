@@ -18,8 +18,11 @@ def write_json_file(file_data, fp):
         json.dump(file_data, f, ensure_ascii=False, indent=4)
 
 
+def read_json_file(fp):
+    with open(fp, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+
 def check_directory(directory):
     if not os.path.exists(directory):
         os.makedirs(directory)
-
-

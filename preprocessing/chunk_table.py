@@ -9,10 +9,8 @@ def chunk_dirty_slice(args):
     dataset = args.dataset
     columns = [col for col in args.columns.split(',')]
     exp_dir = args.exp_dir
-
     num_slices = args.num_slices
     num_rows = args.num_rows
-    num_missing = args.num_missing
 
     random.seed(42)  # for reproducibility`
 
@@ -30,10 +28,10 @@ def chunk_dirty_slice(args):
     os.makedirs(input_dir, exist_ok=True)
 
     # Loop to create and process slices
-    slice_report = list()
+    slice_report = dict()
     for i in range(num_slices):
         # unifiled file name
-        fn = f"{base_name}_{i+1}.csv"
+        fn = f"{base_name}_{i + 1}.csv"
 
         # Randomly select row indices without replacement for slicing
         rows_to_select = random.sample(range(len(df)), num_rows)
@@ -43,24 +41,22 @@ def chunk_dirty_slice(args):
         slice_df.reset_index(drop=True, inplace=True)
         slice_df.to_csv(os.path.join(slice_dir, fn), index=False)
 
+        # missing value equally distributed by columns
         col = columns[i % len(columns)]
         missing_indices = [(row, col) for row in slice_df.index]
         random.shuffle(missing_indices)  # for randomness
 
-        # Add noise ensuring every cell is processed once only on current slice
-        for _ in range(min(num_missing, len(missing_indices))):
-            row, col = missing_indices.pop()  # Pop ensures no repeats
-            value = slice_df.at[row, col]
-            slice_report.append(
-                {
-                    "slice": fn,
-                    "row": row,
-                    "col": col,
-                    "value": value,
-                }
-            )
-            slice_df.at[row, col] = '?'  # override
-
+        # start with single missing value for each slice
+        row, col = missing_indices.pop()
+        value = slice_df.at[row, col]
+        slice_report.update({
+            fn: {
+                "row_index": row,
+                "column_name": col,
+                "value": value,
+            }
+        })
+        slice_df.at[row, col] = '?'  # override
         slice_df.to_csv(os.path.join(input_dir, fn), index=False)
 
     # Save dirty JSON
@@ -78,7 +74,7 @@ if __name__ == '__main__':
 
     parser.add_argument('--num-slices', '-s', type=int, default=5, help="number of slices from dataset")
     parser.add_argument('--num-rows', '-r', type=int, default=6, help="number of rows per slice")
-    parser.add_argument('--num-missing', '-m', type=int, default=1, help="number of missing values per slice")
+
     args = parser.parse_args()
 
     chunk_dirty_slice(args)

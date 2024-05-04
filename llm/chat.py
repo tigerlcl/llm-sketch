@@ -24,7 +24,7 @@ def sketch_llm(data, cfg):
     with get_openai_callback() as cb:
         result = chain.invoke({"table": data})
         cost_summary = {
-            'total_cost': round(cb.total_cost, 5),
+            'total_cost': cb.total_cost,
             'prompt_tokens': cb.prompt_tokens,
             'completion_tokens': cb.completion_tokens,
             'total_tokens': cb.total_tokens,

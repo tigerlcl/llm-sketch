@@ -5,7 +5,6 @@ import argparse
 from llm.chat import sketch_llm
 from llm.agent import CodeAgent
 from utils import file_io, logger
-from eval import evaluate
 
 
 def main(cfg, log):
@@ -13,7 +12,7 @@ def main(cfg, log):
     log.info(f"Backend LLM: {cfg['openai_config']['model']}")
 
     # init code agent
-    codeAgent = CodeAgent(agent_dir, cfg['openai_config'])
+    codeAgent = CodeAgent(cfg['openai_config'])
 
     # output path
     fix_report = list()
@@ -29,45 +28,42 @@ def main(cfg, log):
         print(f'Running test on file {base_name}...')
 
         # generate sketch by prompt engineering
-        try:
-            sketch_fp = os.path.join(sketch_dir, f'{base_name}.txt')
-            sketch_result = sketch_llm(tabular_data, cfg)
-            if isinstance(sketch_result, tuple):
-                # expect LangChain.ChatOpenAI response
-                sketch_result, sketch_cost = sketch_result
-                log.info(f'Sketch cost: {sketch_cost}')
+        sketch_fp = os.path.join(sketch_dir, f'{base_name}.txt')
+        sketch_result, sketch_cost = sketch_llm(tabular_data, cfg)
 
-            # store the LLM response
-            file_io.write_txt_file(sketch_result, sketch_fp)
-            log.info(f'Sketch result saved: {base_name}')
-
-        except Exception as e:
-            log.error(f"sketch {base_name} failed with error {e}", exc_info=True)
-            continue
+        # store the Sketch response
+        file_io.write_txt_file(sketch_result, sketch_fp)
+        log.info(f'Sketch result saved: {base_name}')
 
         # run code agent
-        try:
-            chat_history, chat_cost = codeAgent.agent_chat(csv_file, tabular_data, sketch_result)
-            log.info(f'Agent cost: {chat_cost}')
+        chat_cost, chat_history, chat_summary = codeAgent.agent_chat(tabular_data, sketch_result)
+        file_io.write_json_file(chat_history, os.path.join(agent_dir, f'{base_name}.json'))
+        log.info(f'Agent result saved: {base_name}')
 
-            file_io.write_json_file(chat_history, os.path.join(agent_dir, f'{base_name}_agent.json'))
-            log.info(f'Agent executed: {base_name}')
-
-        except Exception as e:
-            log.error(f"agent {base_name} failed with error {e}", exc_info=True)
-            continue
+        if isinstance(chat_summary, dict):
+            fixed_value = chat_summary["result"]
+        else:
+            fixed_value = ""
 
         # validate the agent result
-        slice_csv = os.path.join(slice_dir, csv_file)
-        fixed_csv = os.path.join(agent_dir, csv_file)
+        raw_result = slice_report.get(csv_file)
+        value = raw_result["value"]
+        is_fixed = value == fixed_value
 
-        is_identical, fix_summary = evaluate.compare_csv_files(slice_csv, fixed_csv, log)
-        log.info(f'{base_name} imputation validated as: {is_identical}\n')
+        fix_summary = raw_result.copy()
+        fix_summary.update({
+            'slice': csv_file,
+            'fixed_value': fixed_value,
+            'is_fixed': is_fixed,
+            'sketch_cost': round(sketch_cost['total_cost'], 5),
+            'agent_cost': round(chat_cost['total_cost'], 5),
+            'fix_cost': round(chat_cost['total_cost'] + sketch_cost['total_cost'], 5),
+        })
+        fix_report.append(fix_summary)
+        log.info(f'{base_name} imputation validated as: {is_fixed}\n')
 
         # store fix result
-        if len(fix_summary) > 0:
-            fix_report.extend(fix_summary)
-            file_io.write_json_file(fix_report, fix_report_fp)
+        file_io.write_json_file(fix_report, fix_report_fp)
 
 
 if __name__ == '__main__':
@@ -85,6 +81,9 @@ if __name__ == '__main__':
     exp_dir = args.exp_dir
     if not os.path.isdir(exp_dir):
         raise NotADirectoryError
+
+    # load slice report
+    slice_report = file_io.read_json_file(os.path.join(exp_dir, 'slice_report.json'))
 
     # init logger
     log_fp = os.path.join(exp_dir, 'run.log')
