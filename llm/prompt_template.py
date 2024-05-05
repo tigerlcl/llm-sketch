@@ -9,7 +9,7 @@ def cot_prompt() -> ChatPromptTemplate:
             You are an AI assistant on fixing missing value denoted by a particular character '?' in tabular data.
             Your reply must start with "Let's think step by step 
             """),
-            HumanMessagePromptTemplate.from_template("Here is the data: {table}")
+            HumanMessagePromptTemplate.from_template("Here is the data: {table}\nPresent the answer in the end and you must format the result in a string: the missing value is ##your answer##, you must wrap the answer with double '#' symbol")
         ]
     )
     return prompt

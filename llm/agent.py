@@ -59,7 +59,7 @@ class CodeAgent:
         chat_result = code_executor_agent.initiate_chat(
             code_writer_agent,
             message=
-            f"""Here is the requirement:
+            f"""Here is the requirement: 
             Initialize a Pandas DataFrame object according to the input data. 
             Implement the fixing plan and find the missing value.
             You must print the fixing result in JSON format:
@@ -75,14 +75,15 @@ class CodeAgent:
         # parse chat_result
         # post-process chat_result
         chat_cost = chat_result.cost['usage_including_cached_inference']
+        total_cost = round(chat_cost['total_cost'], 5)
         chat_history = chat_result.chat_history
-        if chat_result.summary == "":
-            return chat_cost, chat_history, None
 
-        chat_summary = self.parse_chat_summary(chat_result.summary)
-        return chat_cost, chat_history, chat_summary
+        chat_summary = self._parse_chat_summary(chat_result.summary)
+        fixed_value = chat_summary["result"] if isinstance(chat_summary, dict) else ""
 
-    def parse_chat_summary(self, summary_str):
+        return total_cost, chat_history, fixed_value
+
+    def _parse_chat_summary(self, summary_str):
         # Search for the pattern in the string
         match = re.search(self.summary_pattern, summary_str)
         if match:
