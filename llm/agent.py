@@ -42,7 +42,6 @@ class CodeAgent:
             "code_writer",
             system_message=self.code_writer_system_message,
             llm_config=self.code_writer_llm_cfg,
-            # code_execution_config=False,  # Turn off code execution for this agent.
             max_consecutive_auto_reply=1,
             human_input_mode="NEVER",
         )
@@ -60,9 +59,11 @@ class CodeAgent:
             code_writer_agent,
             message=
             f"""Here is the requirement: 
-            Initialize a Pandas DataFrame object according to the input data. 
             Implement the fixing plan and find the missing value.
-            You must print the fixing result in JSON format:
+            Initialize a Pandas DataFrame object according to the input data. 
+            Be very careful that the imputation value must align with the data format from the same column.
+            
+            You must print the result in JSON format:
             \u007b"row_index": ..., "column_name": ..., "result": ...\u007d
             
             Here is the input data:\n{data}
@@ -90,7 +91,10 @@ class CodeAgent:
             # Extract the JSON object from the matched substring
             json_str = match.group(1)
             json_str = json_str.replace("'", '"')  # replace single quotes with double quotes
-            json_obj = json.loads(json_str)
+            try:
+                json_obj = json.loads(json_str)
+            except json.decoder.JSONDecodeError:
+                return None
             return json_obj
         else:
             return None

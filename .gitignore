@@ -136,8 +136,8 @@ venv.bak/
 .ropeproject
 *private.yaml
 experiments/
-datasets/
-demo*/
+dataset/
+demo/
 
 
 # mkdocs documentation

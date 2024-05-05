@@ -52,9 +52,9 @@ def main(cfg, log):
 
         fix_summary = raw_result.copy()
         fix_summary.update({
-            'slice': csv_file,
             'fixed_value': fixed_value,
             'is_fixed': is_fixed,
+            'slice': csv_file,
         })
         fix_report.append(fix_summary)
         log.info(f'{base_name} imputation validated as: {is_fixed}\n')

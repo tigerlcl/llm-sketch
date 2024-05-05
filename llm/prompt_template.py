@@ -23,9 +23,8 @@ def sketch_prompt() -> ChatPromptTemplate:
             Please draft solution according to the following instruction:
             
             [Related Columns]: Locate the problematic columns and related columns that can help fix the issue. Show all together in an array.
-            [Tuple Sampling]: Randomly select no-issue records based on above columns, and show the result in an array of tuple.
-            [Rule Mining]: Find out the rule which is expected to fit in sampled results, and present in code block.
-            [Value Normalization]: Check if the returned value from rule strictly aligned with the formats of other values in the same column. If not, add normaliation processing into rule.
+            [Tuple Sampling]: Randomly select several no-issue records based on above columns, and show the result in an array of tuple.
+            [Rule Mining]: Find out the rule that describes the relationship of sampled results. Present it in Python code block. 
             """),
             HumanMessagePromptTemplate.from_template("Here is the data: {table}")
         ]

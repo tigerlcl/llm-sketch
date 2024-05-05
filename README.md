@@ -23,11 +23,11 @@ To begin with, we will focus on the missing value imputation task, which is a co
   - logger.py
 - preprocessing
   - chunk_table.py
-- demo: experiment details for demonstration
+- demo: collections of experiment with each sub-directory as an experiment
   - slice-data: raw data
   - input-data: the noise added data as the input
-  - agent: agent chat history
-  - sketch: the prompt-based sketched fixing plan for solving the problem
+  - agent: code agent chat history (only for `prompt_type=sketch`)
+  - sketch: the prompt-based fixing plan for solving the problem
   - run.log: the log of the experiment
   - slice_report.json: the report indicates where the missing values are located
   - fix_report.json: the report indicates the imputation result
@@ -36,7 +36,7 @@ To begin with, we will focus on the missing value imputation task, which is a co
 ## CLI Command
 `exp-dir` is to store all tests with related file I/Os on sketch, agent result and imputation evaluation
 
-`dataset` is downloaded from Kaggle for demonstration purposes. Here is the [link](https://www.kaggle.com/datasets/jillanisofttech/flight-price-prediction-dataset).
+`dataset` is downloaded from Kaggle for demonstration purposes. Here is the link: [flight](https://www.kaggle.com/datasets/jillanisofttech/flight-price-prediction-dataset), [supermarket](https://www.kaggle.com/datasets/lovishbansal123/sales-of-a-supermarket)
 
 `columns` indicates the column fields where the missing values are took from the raw data.
 
@@ -44,18 +44,27 @@ To begin with, we will focus on the missing value imputation task, which is a co
 
 ```shell
 # preprocess raw tabular data to mimic the missing value problem
+## for flight data
 python preprocessing/chunk_table.py \
---dataset datasets/Flight_Route.csv \
---columns "Route,Total_Stops" \
---exp-dir demo_sketch \
+--dataset dataset/flight.csv \
+--columns "Source,Route,Dep_Time,Duration" \
+--exp-dir demo/flight_sketch \
+--num-slices 20 \
+--num-rows 6
+
+## for supermarket data
+python preprocessing/chunk_table.py \
+--dataset dataset/supermarket.csv \
+--columns "Source,Route,Dep_Time,Duration" \
+--exp-dir demo/flight_sketch \
 --num-slices 20 \
 --num-rows 6
 
 # run imputation pipeline on experiment directory
- python main.py \
- --config etc/config_private.yaml \
- --prompt-type sketch \
- --exp-dir demo_sketch
+python main.py \
+--config etc/config_private.yaml \
+--prompt-type sketch \
+--exp-dir demo/flight_sketch
 ```
 
 > Note: the `etc/config_private.yaml` is for local use only. You should configure some fields like `openai_config`. After the experiment is done, 
