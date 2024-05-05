@@ -1,0 +1,52 @@
+### Step 1: Identify Problematic and Related Columns
+
+From the provided data, it's clear that the column with missing values (denoted by '?') is the `Route` column. To fix the missing value in the `Route` column, we can use related columns that might influence or determine the route. These columns include `Source`, `Destination`, and `Total_Stops`.
+
+**Problematic and Related Columns Array:**
+```python
+['Route', 'Source', 'Destination', 'Total_Stops']
+```
+
+### Step 2: Tuple Sampling
+
+To understand the relationship between `Route`, `Source`, `Destination`, and `Total_Stops`, we will sample some records that do not have missing values in the `Route` column.
+
+**Sampled Records:**
+```python
+[
+    ('DEL → COK', 'Delhi', 'Cochin', 'non-stop'),
+    ('CCU → BLR', 'Kolkata', 'Banglore', 'non-stop'),
+    ('DEL → HYD → COK', 'Delhi', 'Cochin', '1 stop'),
+    ('DEL → IDR → BOM → COK', 'Delhi', 'Cochin', '2 stops'),
+    ('DEL → BOM → COK', 'Delhi', 'Cochin', '1 stop')
+]
+```
+
+### Step 3: Rule Mining
+
+From the sampled data, we can observe a pattern or rule that can help us deduce the missing `Route` based on `Source`, `Destination`, and `Total_Stops`. Here's a potential rule:
+
+- If `Source` is 'Delhi' and `Destination` is 'Cochin', then:
+  - If `Total_Stops` is 'non-stop', the `Route` is 'DEL → COK'.
+  - If `Total_Stops` is '1 stop', the `Route` could be 'DEL → HYD → COK' or 'DEL → BOM → COK'.
+  - If `Total_Stops` is '2 stops', the `Route` is 'DEL → IDR → BOM → COK'.
+
+**Python Code Block for Rule:**
+```python
+def infer_route(source, destination, total_stops):
+    if source == 'Delhi' and destination == 'Cochin':
+        if total_stops == 'non-stop':
+            return 'DEL → COK'
+        elif total_stops == '1 stop':
+            # Assuming a common intermediate stop based on frequency in data
+            return 'DEL → BOM → COK'
+        elif total_stops == '2 stops':
+            return 'DEL → IDR → BOM → COK'
+    return None
+
+# Example usage:
+missing_route = infer_route('Delhi', 'Cochin', '2 stops')
+print(missing_route)  # Output: 'DEL → IDR → BOM → COK'
+```
+
+This rule is based on the observed data and assumes that the most common routes for a given number of stops between specific source and destination pairs are consistent. Adjustments may be needed as more data becomes available.

@@ -1,0 +1,21 @@
+Let's think step by step about how to identify and address the missing value denoted by '?' in the provided dataset.
+
+1. **Identify the Missing Value**: We need to locate where the '?' appears in the dataset. From the data you provided, it's clear that the '?' is in the 'Dep_Time' column for the first row.
+
+2. **Understand the Context**: The missing value is in the 'Dep_Time' column. This column represents the departure time of the flight.
+
+3. **Analyze Related Data**: To estimate the missing 'Dep_Time', we can look at other columns that might give us clues. The 'Arrival_Time' and 'Duration' of the flight could be helpful. For the row in question:
+   - Arrival_Time: 12:35 19 May
+   - Duration: 13h 30m
+
+4. **Calculate Missing 'Dep_Time'**: 
+   - Convert the 'Arrival_Time' to a datetime object.
+   - Convert 'Duration' to a time delta.
+   - Subtract 'Duration' from 'Arrival_Time' to estimate 'Dep_Time'.
+
+   Given 'Arrival_Time' is 12:35 on 19 May and 'Duration' is 13 hours and 30 minutes, we can backtrack from the arrival time to estimate the departure time:
+   - 12:35 PM (19 May) minus 13 hours and 30 minutes would be around 11:05 PM on 18 May.
+
+5. **Conclusion**: The missing 'Dep_Time' for the first row can be estimated as approximately 11:05 PM on 18 May.
+
+Thus, the missing value is ##11:05 PM on 18 May##.

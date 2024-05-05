@@ -1,0 +1,14 @@
+Let's think step by step about how to address the missing value in the provided dataset. The missing value is denoted by '?' in the 'Route' column for the 'Multiple carriers' airline on the journey from Delhi to Cochin on 12/06/2019.
+
+1. **Identify the Pattern**: First, we need to look at other entries for flights from Delhi to Cochin to see if there's a common route pattern among similar entries. 
+
+2. **Analyze Similar Entries**: From the data provided:
+   - IndiGo, 3/06/2019, Delhi to Cochin, Route: DEL → COK, non-stop
+   - Air Asia, 27/06/2019, Delhi to Cochin, Route: DEL → BLR → COK, 1 stop
+   - Multiple carriers, 21/03/2019, Delhi to Cochin, Route: DEL → BOM → COK, 1 stop
+
+3. **Determine the Most Likely Route**: Since the flight with the missing route value has '1 stop', it's unlikely to be a direct flight like the IndiGo flight. The routes for the 1-stop flights from Delhi to Cochin in the dataset are either through Bangalore (BLR) or Mumbai (BOM).
+
+4. **Conclusion**: Given that 'Multiple carriers' also has another entry with a 1-stop route going through Mumbai (BOM), it's reasonable to assume that the missing route might follow this pattern, especially considering the popularity of Mumbai as a hub.
+
+Thus, the missing value is ##DEL → BOM → COK##.

@@ -1,0 +1,53 @@
+### Step 1: Locate the Problematic and Related Columns
+
+From the provided data, it's clear that the column with missing values (denoted by '?') is `Dep_Time`. To address this issue, we need to consider columns that can help us infer the missing `Dep_Time`. The related columns would likely be `Route`, `Arrival_Time`, and `Duration` as these can help estimate the departure time based on the route duration and arrival time.
+
+**Problematic and Related Columns Array:**
+```python
+['Route', 'Dep_Time', 'Arrival_Time', 'Duration']
+```
+
+### Step 2: Tuple Sampling
+
+We will randomly select several records that do not have issues (i.e., records where `Dep_Time` is not missing) focusing on the columns identified above. This will help us understand the typical relationship between these columns.
+
+**Sampled Records Array of Tuples:**
+```python
+[
+    ('BLR → DEL', '09:30', '12:20', '2h 50m'),
+    ('CCU → DEL → BLR', '17:00', '23:25', '6h 25m'),
+    ('BLR → BOM → DEL', '05:45', '11:25', '5h 40m'),
+    ('CCU → BLR', '10:20', '12:55', '2h 35m'),
+    ('BLR → BOM → BHO → DEL', '06:45', '09:25 13 Mar', '26h 40m')
+]
+```
+
+### Step 3: Rule Mining
+
+To derive a rule for estimating `Dep_Time`, we can use the relationship between `Arrival_Time`, `Duration`, and `Route`. Here's a Python function that could estimate `Dep_Time` based on these relationships:
+
+```python
+from datetime import datetime, timedelta
+
+def parse_time(time_str):
+    """ Helper function to parse time in hh:mm format possibly with date """
+    return datetime.strptime(time_str.split()[0], '%H:%M')
+
+def estimate_dep_time(arrival_time, duration):
+    """ Estimate departure time based on arrival time and duration """
+    arrival_dt = parse_time(arrival_time)
+    duration_parts = duration.split('h ')
+    hours = int(duration_parts[0])
+    minutes = int(duration_parts[1].replace('m', '')) if len(duration_parts) > 1 else 0
+    duration_td = timedelta(hours=hours, minutes=minutes)
+    estimated_dep_time = arrival_dt - duration_td
+    return estimated_dep_time.strftime('%H:%M')
+
+# Example usage:
+arrival_time = '19:45'
+duration = '2h 45m'
+estimated_dep_time = estimate_dep_time(arrival_time, duration)
+print(f"Estimated Departure Time: {estimated_dep_time}")
+```
+
+This function calculates the departure time by subtracting the duration from the arrival time. It assumes that the times are on the same day, which is a limitation in cases where the flight might span multiple days. Further refinement would be needed to handle such cases accurately.

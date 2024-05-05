@@ -1,0 +1,14 @@
+Let's think step by step about how to identify and address the missing value in the provided dataset. The dataset consists of columns such as Airline, Date_of_Journey, Source, Destination, Route, Dep_Time, Arrival_Time, Duration, and Total_Stops. Each row represents a flight record.
+
+1. **Identify the Missing Value**: We need to scan through each column of each row to find where the '?' appears. From the provided data, it is clear that the missing value '?' is in the 'Duration' column for the flight operated by "Multiple carriers Premium economy" from Delhi to Cochin on 21/03/2019.
+
+2. **Understanding the Context**: The 'Duration' column represents the total time taken from departure to arrival. This is calculated as the difference between the 'Arrival_Time' and 'Dep_Time', considering any date changes.
+
+3. **Calculate the Missing Value**: 
+   - Departure Time (Dep_Time) for the flight is 06:00.
+   - Arrival Time (Arrival_Time) is 12:35 on the same day.
+   - To find the duration, we calculate the time difference: 12:35 - 06:00 = 6 hours and 35 minutes.
+
+4. **Conclusion**: The missing value in the 'Duration' column for the flight on 21/03/2019 by Multiple carriers Premium economy from Delhi to Cochin is '6h 35m'.
+
+Thus, the missing value is ##6h 35m##.

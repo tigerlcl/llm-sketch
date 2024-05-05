@@ -1,0 +1,40 @@
+### Related Columns
+To address the missing value in the "Gross income" column, we can utilize the following columns that are related and can help in deriving the missing value:
+
+```python
+["Unit price", "Quantity", "Tax 5%", "Total", "Costs of goods sold", "Gross margin percentage", "Gross income"]
+```
+
+### Tuple Sampling
+We will randomly select several records that do not have issues in the "Gross income" column. Here are a few sampled records:
+
+```python
+[
+    (51.71, 4, 10.342, 217.182, 206.84, 4.8, 9.92832),
+    (67.26, 4, 13.452, 282.492, 269.04, 4.8, 12.91392),
+    (58.75, 6, 17.625, 370.125, 352.5, 4.8, 16.92),
+    (57.74, 3, 8.661, 181.881, 173.22, 4.8, 8.31456)
+]
+```
+
+### Rule Mining
+From the sampled data, we can observe a pattern or rule to calculate the "Gross income". The "Gross income" seems to be calculated as the difference between "Total" and "Costs of goods sold". Here is the Python code to calculate "Gross income":
+
+```python
+def calculate_gross_income(total, costs_of_goods_sold):
+    return total - costs_of_goods_sold
+```
+
+Using this function, we can fix the missing value in the "Gross income" column for the problematic record:
+
+```python
+# Problematic record details
+total = 127.26
+costs_of_goods_sold = 121.2
+
+# Calculate missing Gross income
+missing_gross_income = calculate_gross_income(total, costs_of_goods_sold)
+print("Calculated Gross Income:", missing_gross_income)
+```
+
+This approach should correctly fill in the missing value for "Gross income" based on the observed rule from the sampled data.

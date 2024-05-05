@@ -1,0 +1,51 @@
+### Step 1: Identify Problematic and Related Columns
+
+From the provided data, it's clear that the column with missing values (denoted by '?') is the `Route` column. To fix the missing value in the `Route` column, we can use related columns that might influence or determine the route. These columns include `Source`, `Destination`, and `Total_Stops`.
+
+**Problematic and Related Columns:**
+```python
+['Route', 'Source', 'Destination', 'Total_Stops']
+```
+
+### Step 2: Tuple Sampling
+
+To understand the relationship between the `Route`, `Source`, `Destination`, and `Total_Stops`, we will sample some records that do not have missing values in the `Route` column.
+
+**Sampled Records:**
+```python
+[
+    ('CCU → HYD → BLR', 'Kolkata', 'Banglore', '1 stop'),
+    ('BOM → HYD', 'Mumbai', 'Hyderabad', 'non-stop'),
+    ('DEL → BOM → COK', 'Delhi', 'Cochin', '1 stop'),
+    ('CCU → BLR', 'Kolkata', 'Banglore', 'non-stop'),
+    ('CCU → DEL → BLR', 'Kolkata', 'Banglore', '1 stop')
+]
+```
+
+### Step 3: Rule Mining
+
+From the sampled records, we can observe a pattern or rule that can help us deduce the missing `Route` value. The rule can be described as follows:
+
+- If `Total_Stops` is 'non-stop', the `Route` is directly from `Source` to `Destination`.
+- If `Total_Stops` is '1 stop', there is usually an intermediate major city or hub involved.
+
+**Python Code to Describe the Rule:**
+```python
+def infer_route(source, destination, total_stops):
+    if total_stops == 'non-stop':
+        return f"{source[:3]} → {destination[:3]}"
+    elif total_stops == '1 stop':
+        # Assuming a major city or hub based on common patterns
+        if source == 'Kolkata' and destination == 'Banglore':
+            return "CCU → DEL → BLR"  # Example: Delhi as a common hub
+        elif source == 'Delhi' and destination == 'Cochin':
+            return "DEL → BOM → COK"  # Example: Mumbai as a common hub
+        # Add more conditions based on further data analysis
+    return None
+
+# Example usage:
+missing_route = infer_route('Kolkata', 'Banglore', '1 stop')
+print(missing_route)  # Output should be "CCU → DEL → BLR"
+```
+
+This function `infer_route` uses the observed rules to predict the missing `Route` based on `Source`, `Destination`, and `Total_Stops`. More conditions can be added as more data is analyzed or available.

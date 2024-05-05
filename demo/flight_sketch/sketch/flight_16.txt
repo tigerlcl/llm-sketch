@@ -1,0 +1,51 @@
+### Step 1: Related Columns Identification
+
+From the provided data, the column with missing values is `Total_Stops`. The columns that are related and can help fix the issue are `Route` and `Duration` as they directly relate to the number of stops a flight makes.
+
+**Related Columns Array:**
+```python
+['Route', 'Duration', 'Total_Stops']
+```
+
+### Step 2: Tuple Sampling
+
+To understand the relationship between `Route`, `Duration`, and `Total_Stops`, we will sample some records that do not have missing values in the `Total_Stops` column.
+
+**Sampled Data Array of Tuples:**
+```python
+[
+    ('DEL → BOM → COK', '12h 25m', '1 stop'),
+    ('MAA → CCU', '2h 15m', 'non-stop'),
+    ('BOM → HYD', '1h 30m', 'non-stop'),
+    ('DEL → BOM → COK', '9h 15m', '1 stop'),
+    ('CCU → BOM → BLR', '18h 10m', '1 stop')
+]
+```
+
+### Step 3: Rule Mining
+
+From the sampled data, we can derive a rule to predict the `Total_Stops` based on `Route` and `Duration`. Here's a simple rule based on the observation:
+
+- If the `Route` contains more than one arrow (`→`), it typically indicates at least one stop.
+- The `Duration` can give a rough estimate if the flight is likely non-stop (usually shorter durations).
+
+**Python Code Block for Rule Mining:**
+```python
+def predict_total_stops(route, duration):
+    if '→' in route:
+        segments = route.split(' → ')
+        if len(segments) > 2:
+            return '1 stop'  # Simplified assumption for one intermediate stop
+        else:
+            return 'non-stop'
+    else:
+        return 'non-stop'  # Default to non-stop if no arrow is found in the route
+
+# Example usage:
+sample_route = 'BOM → HYD'
+sample_duration = '1h 30m'
+predicted_stops = predict_total_stops(sample_route, sample_duration)
+print(f"Predicted Total Stops for route {sample_route} with duration {sample_duration}: {predicted_stops}")
+```
+
+This rule is quite basic and assumes that routes with more than two segments have one stop. More complex rules could be developed with a more detailed dataset and analysis.

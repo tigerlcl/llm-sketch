@@ -1,0 +1,37 @@
+### Related Columns
+The columns related to the issue of missing values in the 'Dep_Time' column are:
+```python
+['Airline', 'Date_of_Journey', 'Source', 'Destination', 'Route', 'Dep_Time', 'Arrival_Time', 'Duration', 'Total_Stops']
+```
+
+### Tuple Sampling
+Randomly selected no-issue records based on the related columns:
+```python
+[
+    ('Jet Airways', '6/03/2019', 'Mumbai', 'Hyderabad', 'BOM → BDQ → DEL → HYD', '13:05', '16:50 07 Mar', '27h 45m', '2 stops'),
+    ('Jet Airways', '9/04/2019', 'Banglore', 'Delhi', 'BLR → DEL', '08:20', '11:20', '3h', 'non-stop'),
+    ('Air India', '9/05/2019', 'Kolkata', 'Banglore', 'CCU → MAA → BLR', '14:35', '14:35 10 May', '24h', '1 stop'),
+    ('Jet Airways', '21/05/2019', 'Kolkata', 'Banglore', 'CCU → DEL → BLR', '17:00', '18:00 22 May', '25h', '1 stop')
+]
+```
+
+### Rule Mining
+To infer the missing 'Dep_Time' based on the given data, we can observe the relationship between 'Route' and 'Dep_Time' from the sampled data. Here's a Python code block that describes a potential rule:
+
+```python
+def infer_departure_time(route):
+    route_to_time_map = {
+        'BOM → BDQ → DEL → HYD': '13:05',
+        'BLR → DEL': '08:20',
+        'CCU → MAA → BLR': '14:35',
+        'CCU → DEL → BLR': '17:00'
+    }
+    return route_to_time_map.get(route, 'Unknown')  # Default to 'Unknown' if route not found
+
+# Example usage:
+missing_dep_time_route = 'DEL → AMD → BOM → COK'
+estimated_dep_time = infer_departure_time(missing_dep_time_route)
+print(f"Estimated Departure Time for route {missing_dep_time_route}: {estimated_dep_time}")
+```
+
+This rule uses a simple mapping from known routes to their corresponding departure times. If a route is not found in the map, it returns 'Unknown'. This can be refined further with more data or more complex algorithms if necessary.

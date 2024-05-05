@@ -1,0 +1,44 @@
+### Step 1: Locate the Problematic and Related Columns
+
+From the provided data, it is clear that the column with missing values (denoted by '?') is the `Route` column. To fix this issue, we need to consider columns that are related to `Route`. These columns include `Source`, `Destination`, and `Total_Stops` as they directly influence the route taken by the flight.
+
+**Problematic and Related Columns Array:**
+```python
+['Route', 'Source', 'Destination', 'Total_Stops']
+```
+
+### Step 2: Tuple Sampling
+
+To understand the relationship between the `Route`, `Source`, `Destination`, and `Total_Stops`, we will sample some records that do not have missing values in the `Route` column.
+
+**Sampled Records Array of Tuple:**
+```python
+[
+    ('DEL → AMD → BOM → COK', 'Delhi', 'Cochin', '2 stops'),
+    ('CCU → BLR', 'Kolkata', 'Banglore', 'non-stop'),
+    ('DEL → BOM → COK', 'Delhi', 'Cochin', '1 stop'),
+    ('BLR → HYD → DEL', 'Banglore', 'New Delhi', '1 stop')
+]
+```
+
+### Step 3: Rule Mining
+
+From the sampled data, we can derive a rule to predict the `Route` based on `Source`, `Destination`, and `Total_Stops`. Here's a simple rule based on the provided data:
+
+```python
+def predict_route(source, destination, total_stops):
+    if source == 'Delhi' and destination == 'Cochin':
+        if total_stops == '2 stops':
+            return 'DEL → AMD → BOM → COK'
+        elif total_stops == '1 stop':
+            return 'DEL → BOM → COK'
+    elif source == 'Kolkata' and destination == 'Banglore':
+        if total_stops == 'non-stop':
+            return 'CCU → BLR'
+    elif source == 'Banglore' and destination == 'New Delhi':
+        if total_stops == '1 stop':
+            return 'BLR → HYD → DEL'
+    return 'Route Unknown'
+```
+
+This Python function `predict_route` uses simple conditional statements to determine the `Route` based on `Source`, `Destination`, and `Total_Stops`. This rule is derived from the sampled data and may need further refinement with more comprehensive data.

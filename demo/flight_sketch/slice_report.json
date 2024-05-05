@@ -1,0 +1,102 @@
+{
+    "flight_1.csv": {
+        "row_index": 1,
+        "column_name": "Route",
+        "value": "DEL → BOM → COK"
+    },
+    "flight_2.csv": {
+        "row_index": 5,
+        "column_name": "Dep_Time",
+        "value": "09:35"
+    },
+    "flight_3.csv": {
+        "row_index": 2,
+        "column_name": "Duration",
+        "value": "6h 35m"
+    },
+    "flight_4.csv": {
+        "row_index": 0,
+        "column_name": "Total_Stops",
+        "value": "non-stop"
+    },
+    "flight_5.csv": {
+        "row_index": 5,
+        "column_name": "Route",
+        "value": "CCU → BOM → BLR"
+    },
+    "flight_6.csv": {
+        "row_index": 2,
+        "column_name": "Dep_Time",
+        "value": "14:05"
+    },
+    "flight_7.csv": {
+        "row_index": 2,
+        "column_name": "Duration",
+        "value": "20h 10m"
+    },
+    "flight_8.csv": {
+        "row_index": 2,
+        "column_name": "Total_Stops",
+        "value": "non-stop"
+    },
+    "flight_9.csv": {
+        "row_index": 5,
+        "column_name": "Route",
+        "value": "DEL → PNQ → COK"
+    },
+    "flight_10.csv": {
+        "row_index": 0,
+        "column_name": "Dep_Time",
+        "value": "23:05"
+    },
+    "flight_11.csv": {
+        "row_index": 5,
+        "column_name": "Duration",
+        "value": "5h 15m"
+    },
+    "flight_12.csv": {
+        "row_index": 3,
+        "column_name": "Total_Stops",
+        "value": "1 stop"
+    },
+    "flight_13.csv": {
+        "row_index": 4,
+        "column_name": "Route",
+        "value": "BOM → HYD"
+    },
+    "flight_14.csv": {
+        "row_index": 3,
+        "column_name": "Dep_Time",
+        "value": "17:00"
+    },
+    "flight_15.csv": {
+        "row_index": 4,
+        "column_name": "Duration",
+        "value": "3h"
+    },
+    "flight_16.csv": {
+        "row_index": 1,
+        "column_name": "Total_Stops",
+        "value": "non-stop"
+    },
+    "flight_17.csv": {
+        "row_index": 5,
+        "column_name": "Route",
+        "value": "DEL → JAI → BOM → COK"
+    },
+    "flight_18.csv": {
+        "row_index": 3,
+        "column_name": "Dep_Time",
+        "value": "12:55"
+    },
+    "flight_19.csv": {
+        "row_index": 0,
+        "column_name": "Duration",
+        "value": "11h 30m"
+    },
+    "flight_20.csv": {
+        "row_index": 0,
+        "column_name": "Total_Stops",
+        "value": "1 stop"
+    }
+}

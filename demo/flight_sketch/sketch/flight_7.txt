@@ -1,0 +1,59 @@
+### Step 1: Related Columns Identification
+
+From the provided data, the column with missing values is `Duration`. The related columns that can help fix the issue are likely `Dep_Time`, `Arrival_Time`, and `Total_Stops` as these directly relate to the flight duration.
+
+**Related Columns Array:**
+```python
+['Dep_Time', 'Arrival_Time', 'Duration', 'Total_Stops']
+```
+
+### Step 2: Tuple Sampling
+
+To understand the relationship and possibly derive a rule, we will sample some records that do not have missing values in the `Duration` column.
+
+**Sampled Data:**
+```python
+[
+    ('09:00', '19:15', '10h 15m', '1 stop'),
+    ('10:00', '12:35 02 Jun', '26h 35m', '1 stop'),
+    ('11:10', '14:05', '2h 55m', 'non-stop'),
+    ('11:35', '14:00', '2h 25m', 'non-stop'),
+    ('20:35', '19:10 13 Mar', '22h 35m', '1 stop')
+]
+```
+
+### Step 3: Rule Mining
+
+To derive the duration from `Dep_Time` and `Arrival_Time`, we need to consider the possibility of the flight spanning over to the next day(s). Here's a Python function to calculate the duration:
+
+```python
+from datetime import datetime, timedelta
+
+def calculate_duration(dep_time, arrival_time):
+    fmt = '%H:%M'
+    # Handle cases where arrival time includes day information
+    if ' ' in arrival_time:
+        arrival_time, arrival_day = arrival_time.split(' ')
+        dep_time_dt = datetime.strptime(dep_time, fmt)
+        arrival_time_dt = datetime.strptime(arrival_time, fmt)
+        # Calculate the difference in days
+        day_diff = int(arrival_day.split(' ')[1]) - int(dep_time_dt.day)
+        arrival_time_dt += timedelta(days=day_diff)
+    else:
+        dep_time_dt = datetime.strptime(dep_time, fmt)
+        arrival_time_dt = datetime.strptime(arrival_time, fmt)
+        # Handle overnight flights
+        if arrival_time_dt < dep_time_dt:
+            arrival_time_dt += timedelta(days=1)
+    
+    # Calculate duration
+    duration = arrival_time_dt - dep_time_dt
+    hours, remainder = divmod(duration.seconds, 3600)
+    minutes = remainder // 60
+    return f"{hours}h {minutes}m"
+
+# Example usage:
+calculate_duration('09:00', '19:15')
+```
+
+This function handles both same-day and next-day arrivals, calculating the total duration in hours and minutes. Adjustments are made for flights that arrive the next day or later by parsing the day information from the `Arrival_Time` if present.

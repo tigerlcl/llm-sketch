@@ -1,0 +1,14 @@
+Let's think step by step about how to address the missing value in the data provided. The missing value is in the "Total" column for the row with Invoice ID "213-72-6612". To find this missing value, we can use the formula:
+
+\[ \text{Total} = (\text{Unit price} \times \text{Quantity}) + \text{Tax 5\%} \]
+
+From the data:
+- Unit price = 43.25
+- Quantity = 2
+- Tax 5% = 4.325
+
+Plugging these values into the formula gives:
+\[ \text{Total} = (43.25 \times 2) + 4.325 = 86.5 + 4.325 = 90.825 \]
+
+Thus, the missing value is 90.825. Presenting this in the required format:
+the missing value is ##90.825##

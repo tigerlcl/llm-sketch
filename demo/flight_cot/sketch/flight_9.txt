@@ -1,0 +1,9 @@
+Let's think step by step about how to identify and address the missing value in the provided dataset. The dataset consists of columns such as Airline, Date_of_Journey, Source, Destination, Route, Dep_Time, Arrival_Time, Duration, and Total_Stops. Each row represents a flight record.
+
+1. **Identify the Missing Value**: We need to locate the row and column where the missing value ('?') appears. By examining the data, we can see that the missing value is in the 'Route' column of the last row, where the airline is SpiceJet, the source is Delhi, and the destination is Cochin.
+
+2. **Understand the Context**: The 'Route' column typically shows the sequence of airports used for the flight. For other flights from Delhi to Cochin in the dataset, the routes are 'DEL → AMD → BOM → COK' and 'DEL → BOM → COK'.
+
+3. **Determine the Most Likely Value**: Since the flight is from Delhi to Cochin and has one stop, and considering the pattern in other similar routes, a common stopover in such routes is Bombay (BOM). Therefore, the most probable route for this flight would be directly from Delhi to Cochin with a stop in Bombay, which is 'DEL → BOM → COK'.
+
+Thus, the missing value is ##DEL → BOM → COK##.

@@ -1,0 +1,17 @@
+Let's think step by step about how to address the missing value in the dataset provided. We need to find the missing value in the 'Duration' column for the Air India flight from Kolkata to Banglore.
+
+1. **Identify the Missing Value**: The missing value is in the 'Duration' column for the Air India flight on 24/03/2019 from Kolkata to Banglore.
+
+2. **Understand the Data**: The flight departs at 09:25 on 24/03/2019 and arrives at 05:35 on 25/03/2019.
+
+3. **Calculate the Duration**: 
+   - Departure Time: 09:25 on 24/03/2019
+   - Arrival Time: 05:35 on 25/03/2019
+   - To calculate the duration, convert both times into a 24-hour format and calculate the difference.
+
+4. **Convert Time and Calculate**:
+   - From 09:25 on 24th to 09:25 on 25th is 24 hours.
+   - From 09:25 to 05:35 is a reduction of 3 hours and 50 minutes.
+   - So, 24 hours - 3 hours 50 minutes = 20 hours 10 minutes.
+
+Therefore, the missing value is ##20h 10m##.

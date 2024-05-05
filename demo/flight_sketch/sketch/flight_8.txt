@@ -1,0 +1,44 @@
+### Step 1: Related Columns Identification
+
+From the provided data, the missing value is found in the `Total_Stops` column for the airline IndiGo traveling from Banglore to Delhi. To fix this issue, we can use the `Route` column which describes the journey path and can help determine the number of stops.
+
+**Related Columns**: `['Route', 'Total_Stops']`
+
+### Step 2: Tuple Sampling
+
+To understand the relationship between `Route` and `Total_Stops`, we will sample some records that do not have missing values in the `Total_Stops` column.
+
+**Sampled Data**:
+```python
+[
+    ("CCU → BLR", "non-stop"),
+    ("DEL → BOM → COK", "1 stop"),
+    ("DEL → MAA → COK", "1 stop"),
+    ("DEL → BOM → COK", "1 stop")
+]
+```
+
+### Step 3: Rule Mining
+
+From the sampled data, we can observe a pattern that the number of stops is directly related to the number of intermediate airports in the `Route`. Here's a Python function to determine the number of stops based on the route:
+
+```python
+def determine_stops(route):
+    # Split the route by '→' to find the number of segments
+    segments = route.split(" → ")
+    # The number of stops is one less than the number of segments
+    num_stops = len(segments) - 1
+    # Return the appropriate string based on the number of stops
+    if num_stops == 0:
+        return "non-stop"
+    elif num_stops == 1:
+        return "1 stop"
+    else:
+        return f"{num_stops} stops"
+
+# Example usage:
+route_example = "BLR → DEL"
+print(determine_stops(route_example))  # Output should be "non-stop" for the given problematic record
+```
+
+This function can be used to fill in the missing values in the `Total_Stops` column based on the `Route` information.

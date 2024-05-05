@@ -1,0 +1,9 @@
+Let's think step by step about how to identify and address the missing value in the provided dataset. The dataset consists of columns such as Airline, Date_of_Journey, Source, Destination, Route, Dep_Time, Arrival_Time, Duration, and Total_Stops. We need to find the missing value denoted by '?'.
+
+1. **Identify the column with the missing value**: By examining each row, we notice that the '?' appears in the 'Total_Stops' column for the Jet Airways flight on 3/06/2019 from Delhi to Cochin.
+
+2. **Determine the appropriate value for the missing entry**: The route for this flight is 'DEL → BOM → COK', which indicates that the flight stops at BOM (Mumbai) on its way from DEL (Delhi) to COK (Cochin). This means the flight has one stop.
+
+3. **Conclusion**: The missing value in the 'Total_Stops' column for the Jet Airways flight on 3/06/2019 should be '1 stop'.
+
+Thus, the missing value is ##1 stop##.

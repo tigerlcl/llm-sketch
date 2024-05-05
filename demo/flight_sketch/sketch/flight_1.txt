@@ -1,0 +1,46 @@
+### Step 1: Locate the Problematic and Related Columns
+
+From the provided data, the column with missing values (denoted by '?') is the `Route` column. To fix this issue, we can use related columns that might help in deducing the missing `Route`. The related columns are `Source`, `Destination`, and `Total_Stops` as these directly influence the route taken by the flight.
+
+**Problematic and Related Columns Array:**
+```python
+['Route', 'Source', 'Destination', 'Total_Stops']
+```
+
+### Step 2: Tuple Sampling
+
+To understand the relationship between `Source`, `Destination`, `Total_Stops`, and `Route`, we will sample some records that do not have missing values in the `Route` column.
+
+**Sampled Records:**
+```python
+[
+    ('DEL → COK', 'Delhi', 'Cochin', 'non-stop'),
+    ('BLR → BOM → DEL', 'Banglore', 'New Delhi', '1 stop'),
+    ('DEL → BLR → COK', 'Delhi', 'Cochin', '1 stop'),
+    ('DEL → BOM → COK', 'Delhi', 'Cochin', '1 stop')
+]
+```
+
+### Step 3: Rule Mining
+
+From the sampled data, we can deduce a rule to predict the missing `Route` based on `Source`, `Destination`, and `Total_Stops`. Here's a simple rule based on the observations:
+
+**Python Code Block for Rule Mining:**
+```python
+def predict_route(source, destination, total_stops):
+    if source == 'Delhi' and destination == 'Cochin':
+        if total_stops == 'non-stop':
+            return 'DEL → COK'
+        elif total_stops == '1 stop':
+            return 'DEL → BOM → COK'  # Most common route for 1 stop based on sample
+    elif source == 'Banglore' and destination == 'New Delhi':
+        if total_stops == '1 stop':
+            return 'BLR → BOM → DEL'
+    return 'Route Unknown'  # Default case if no rule matches
+
+# Example usage:
+missing_route = predict_route('Delhi', 'Cochin', '1 stop')
+print(missing_route)  # Output should be 'DEL → BOM → COK'
+```
+
+This function uses a simple if-else structure to determine the route based on the source, destination, and number of stops. More complex datasets might require more sophisticated methods such as machine learning models to predict the route accurately.

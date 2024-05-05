@@ -1,0 +1,65 @@
+### Related Columns
+The columns related to the issue of missing 'Duration' value are:
+- `Dep_Time`: Departure time of the flight.
+- `Arrival_Time`: Arrival time of the flight.
+- `Duration`: Total duration of the flight (which is missing in one record).
+
+These columns are directly related as the duration can be calculated from the difference between the departure and arrival times. Here they are in an array:
+
+```python
+['Dep_Time', 'Arrival_Time', 'Duration']
+```
+
+### Tuple Sampling
+To understand the relationship and possibly derive a rule, we can sample some records that do not have missing 'Duration'. Here are a few samples:
+
+```python
+[
+    ('16:45', '07:10 07 Jun', '14h 25m'),
+    ('08:25', '19:50', '11h 25m'),
+    ('20:35', '11:25 02 Mar', '14h 50m'),
+    ('20:25', '01:30 10 May', '5h 5m'),
+    ('14:35', '04:25 16 Jun', '13h 50m')
+]
+```
+
+### Rule Mining
+To calculate the `Duration` from `Dep_Time` and `Arrival_Time`, we can use Python's datetime library to handle the time calculations, considering potential overnight flights. Here's a Python function that demonstrates this:
+
+```python
+from datetime import datetime, timedelta
+
+def calculate_duration(dep_time, arrival_time):
+    # Format strings for datetime parsing
+    time_format = "%H:%M"
+    datetime_format = "%H:%M %d %b"
+    
+    # Parse the departure time
+    dep_datetime = datetime.strptime(dep_time, time_format)
+    
+    # Check if arrival time contains date (indicating next day or later)
+    if ' ' in arrival_time:
+        arr_datetime = datetime.strptime(arrival_time, datetime_format)
+    else:
+        arr_datetime = datetime.strptime(arrival_time, time_format)
+        # If arrival time is earlier in the day, assume it's the next day
+        if arr_datetime < dep_datetime:
+            arr_datetime += timedelta(days=1)
+    
+    # Calculate duration
+    duration = arr_datetime - dep_datetime
+    hours, remainder = divmod(duration.seconds, 3600)
+    minutes = remainder // 60
+    
+    # Format duration string
+    duration_str = f"{hours}h {minutes}m"
+    return duration_str
+
+# Example usage:
+dep_time = '07:30'
+arrival_time = '19:00'
+duration = calculate_duration(dep_time, arrival_time)
+print(f"Calculated Duration: {duration}")
+```
+
+This function handles both same-day and next-day arrivals, which is crucial for accurately calculating flight durations that span midnight.

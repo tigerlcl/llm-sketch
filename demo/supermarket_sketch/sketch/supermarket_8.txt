@@ -1,0 +1,51 @@
+### Step 1: Locate the Problematic and Related Columns
+
+From the provided data, it's clear that the column with missing values (denoted by '?') is the "Gross income" column. To address this, we need to identify related columns that can help compute or infer the missing values. The related columns are:
+
+- "Total"
+- "Costs of goods sold"
+- "Gross margin percentage"
+
+These columns are directly related to the calculation of "Gross income". Thus, the array of problematic and related columns is:
+
+```python
+["Total", "Costs of goods sold", "Gross margin percentage", "Gross income"]
+```
+
+### Step 2: Tuple Sampling
+
+We will randomly select several records that do not have issues (i.e., records where "Gross income" is not '?') to understand the relationship between these columns. Here are three sampled records:
+
+```python
+[
+    (181.881, 173.22, 4.8, 8.31456),
+    (681.975, 649.5, 4.8, 31.176),
+    (446.964, 425.68, 4.8, 20.43264)
+]
+```
+
+### Step 3: Rule Mining
+
+From the sampled data, we can observe a pattern or rule for calculating "Gross income". The formula seems to be:
+
+\[ \text{Gross income} = \text{Total} - \text{Costs of goods sold} \]
+
+This can be confirmed by checking if the calculated "Gross income" from the formula matches the provided "Gross income" in the samples. Let's implement this in Python:
+
+```python
+def calculate_gross_income(total, costs_of_goods_sold):
+    return total - costs_of_goods_sold
+
+# Example usage:
+sample_data = [
+    (181.881, 173.22, 4.8, 8.31456),
+    (681.975, 649.5, 4.8, 31.176),
+    (446.964, 425.68, 4.8, 20.43264)
+]
+
+for data in sample_data:
+    calculated_gross_income = calculate_gross_income(data[0], data[1])
+    print(f"Calculated Gross Income: {calculated_gross_income}, Actual Gross Income: {data[3]}")
+```
+
+This Python code block defines a function to calculate "Gross income" and tests it with the sampled data to ensure accuracy.

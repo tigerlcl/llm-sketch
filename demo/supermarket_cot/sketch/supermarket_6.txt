@@ -1,0 +1,18 @@
+Let's think step by step about how to find the missing value in the 'Gross income' column for the first row of the data.
+
+1. **Understanding the Data**: The columns relevant to calculating 'Gross income' are:
+   - **Total**: Total price including tax.
+   - **Costs of goods sold**: Price without tax.
+
+2. **Formula for Gross Income**: Gross income can be calculated as the difference between the Total and the Costs of goods sold.
+   \[ \text{Gross income} = \text{Total} - \text{Costs of goods sold} \]
+
+3. **Apply the Formula**:
+   - For the first row:
+     - Total = 390.7995
+     - Costs of goods sold = 372.19
+   \[ \text{Gross income} = 390.7995 - 372.19 = 18.6095 \]
+
+Thus, the missing value in the 'Gross income' column for the first row is 18.6095.
+
+Therefore, the formatted result is: the missing value is ##18.6095##.

@@ -1,0 +1,44 @@
+### Step 1: Related Columns
+The columns related to the issue of missing values in the 'Total_Stops' column are primarily 'Route' and 'Duration', as these columns can help infer the number of stops based on the route taken and the duration of the flight.
+
+```python
+related_columns = ['Route', 'Duration', 'Total_Stops']
+```
+
+### Step 2: Tuple Sampling
+We will sample a few records that do not have missing values in the 'Total_Stops' column to understand the relationship between 'Route', 'Duration', and 'Total_Stops'.
+
+```python
+sampled_records = [
+    ('BLR → DEL', '2h 50m', 'non-stop'),
+    ('CCU → BOM → BLR', '9h 45m', '1 stop'),
+    ('CCU → BOM → BLR', '7h 30m', '1 stop'),
+    ('DEL → BOM → COK', '13h', '1 stop'),
+    ('CCU → BLR', '2h 30m', 'non-stop')
+]
+```
+
+### Step 3: Rule Mining
+From the sampled records, we can derive a rule to infer the 'Total_Stops' based on the 'Route' and 'Duration'. Here's a simple Python function to apply this rule:
+
+```python
+def infer_total_stops(route, duration):
+    if '→' not in route:
+        return 'non-stop'
+    else:
+        segments = route.split(' → ')
+        # Subtract 1 because the number of stops is one less than the number of segments
+        num_stops = len(segments) - 1
+        if num_stops == 1:
+            return '1 stop'
+        elif num_stops > 1:
+            return f'{num_stops} stops'
+        else:
+            return 'non-stop'
+
+# Example usage:
+print(infer_total_stops('BLR → DEL', '2h 50m'))  # Output: non-stop
+print(infer_total_stops('CCU → BOM → BLR', '9h 45m'))  # Output: 1 stop
+```
+
+This function checks the number of segments in the route (split by '→') and calculates the number of stops accordingly. The number of stops is always one less than the number of segments in the route.

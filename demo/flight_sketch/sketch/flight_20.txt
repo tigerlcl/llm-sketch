@@ -1,0 +1,44 @@
+### Step 1: Related Columns Identification
+
+From the provided data, the column with missing values is `Total_Stops`. The columns that are related and can help fix the issue are `Route` and `Destination`. These columns are directly related to the number of stops an airline makes.
+
+**Related Columns Array:**
+```python
+['Route', 'Destination', 'Total_Stops']
+```
+
+### Step 2: Tuple Sampling
+
+To understand the relationship between `Route`, `Destination`, and `Total_Stops`, we will sample some records that do not have missing values in the `Total_Stops` column.
+
+**Sampled Data Array of Tuples:**
+```python
+[
+    ('CCU → BLR', 'Banglore', 'non-stop'),
+    ('CCU → BOM → BLR', 'Banglore', '1 stop'),
+    ('MAA → CCU', 'Kolkata', 'non-stop')
+]
+```
+
+### Step 3: Rule Mining
+
+From the sampled data, we can derive a rule to determine the `Total_Stops` based on the `Route` and `Destination`. Here's a Python function that implements this rule:
+
+```python
+def determine_stops(route, destination):
+    if '→' in route:
+        segments = route.split(' → ')
+        # Number of stops is one less than the number of segments in the route
+        num_stops = len(segments) - 1
+        if num_stops == 1:
+            return '1 stop'
+        elif num_stops > 1:
+            return f'{num_stops} stops'
+    return 'non-stop'
+
+# Example usage:
+print(determine_stops('BLR → BOM → DEL', 'New Delhi'))  # Output: '1 stop'
+print(determine_stops('CCU → BLR', 'Banglore'))         # Output: 'non-stop'
+```
+
+This function checks the number of segments in the `Route` and calculates the number of stops accordingly. If there is only one segment, it returns 'non-stop'. If there are multiple segments, it calculates the stops as one less than the number of segments.

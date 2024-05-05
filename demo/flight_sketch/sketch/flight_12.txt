@@ -1,0 +1,46 @@
+### Step 1: Related Columns
+
+From the provided data, it appears that the column with missing values is `Total_Stops`. The columns that are related and can help fix the issue are `Route` and `Total_Stops` since the number of stops is directly related to the route taken by the flight.
+
+```python
+related_columns = ['Route', 'Total_Stops']
+```
+
+### Step 2: Tuple Sampling
+
+To understand the relationship between `Route` and `Total_Stops`, we will sample some records where `Total_Stops` is not missing.
+
+```python
+sampled_records = [
+    ("DEL → UDR → BOM → COK", "2 stops"),
+    ("CCU → BOM → BLR", "1 stop"),
+    ("CCU → DEL → BLR", "1 stop"),
+    ("CCU → BOM → BLR", "1 stop"),
+    ("CCU → BOM → BLR", "1 stop")
+]
+```
+
+### Step 3: Rule Mining
+
+From the sampled records, we can derive a rule that the number of stops is one less than the number of arrows in the `Route` string. Here's how you can implement this in Python:
+
+```python
+def calculate_stops(route):
+    # Count the number of arrows which indicates the number of segments in the route
+    segments = route.count('→')
+    # The number of stops is one less than the number of segments
+    stops = segments - 1
+    # Return the number of stops as a string with appropriate suffix
+    if stops == 0:
+        return "non-stop"
+    elif stops == 1:
+        return "1 stop"
+    else:
+        return f"{stops} stops"
+
+# Example usage:
+route_example = "DEL → BOM → COK"
+print(calculate_stops(route_example))  # Output should be "1 stop"
+```
+
+This rule can be applied to fill in the missing values in the `Total_Stops` column based on the `Route` column.

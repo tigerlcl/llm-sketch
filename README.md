@@ -23,6 +23,9 @@ To begin with, we will focus on the missing value imputation task, which is a co
   - logger.py
 - preprocessing
   - chunk_table.py
+- dataset
+  - flight.csv: [Kaggle Link](https://www.kaggle.com/datasets/jillanisofttech/flight-price-prediction-dataset)
+  - supermarket.csv,  [Kaggle Link](https://www.kaggle.com/datasets/lovishbansal123/sales-of-a-supermarket)
 - demo: collections of experiment with each sub-directory as an experiment
   - slice-data: raw data
   - input-data: the noise added data as the input
@@ -36,7 +39,7 @@ To begin with, we will focus on the missing value imputation task, which is a co
 ## CLI Command
 `exp-dir` is to store all tests with related file I/Os on sketch, agent result and imputation evaluation
 
-`dataset` is downloaded from Kaggle for demonstration purposes. Here is the link: [flight](https://www.kaggle.com/datasets/jillanisofttech/flight-price-prediction-dataset), [supermarket](https://www.kaggle.com/datasets/lovishbansal123/sales-of-a-supermarket)
+`dataset` is downloaded from Kaggle for demonstration purposes. 
 
 `columns` indicates the column fields where the missing values are took from the raw data.
 

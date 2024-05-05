@@ -1,0 +1,12 @@
+Let's think step by step about how to address the missing value in the 'Total_Stops' column for the first row of the dataset.
+
+1. **Understanding the Data**: The column 'Total_Stops' indicates the number of stops between the source and the destination. The missing value is in the first row for a flight from Banglore to New Delhi.
+
+2. **Analyzing Similar Routes**: We can look at other entries in the dataset with the same route, 'BLR → DEL', to infer the missing value. From the dataset:
+   - The second row, which is a flight from Banglore to Delhi (a nearby destination to New Delhi) with the route 'BLR → DEL', is marked as 'non-stop'.
+
+3. **Assumption**: Since New Delhi and Delhi can be considered the same destination for flight routing purposes, and given that another flight on the same route is non-stop, it is reasonable to assume that the flight from Banglore to New Delhi with the route 'BLR → DEL' is also non-stop.
+
+4. **Conclusion**: The missing value in the 'Total_Stops' column for the flight from Banglore to New Delhi should be 'non-stop'.
+
+Therefore, the missing value is ##non-stop##.

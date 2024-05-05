@@ -1,0 +1,44 @@
+### Step 1: Related Columns
+
+To address the missing value in the "Gross income" column, we need to identify the columns that are directly related to it. Based on the data provided, "Gross income" can be calculated from other columns. The related columns are:
+
+- **Total**
+- **Costs of goods sold**
+
+These columns are used to compute the "Gross income" as follows:
+\[ \text{Gross income} = \text{Total} - \text{Costs of goods sold} \]
+
+The array of related columns is:
+```python
+["Total", "Costs of goods sold", "Gross income"]
+```
+
+### Step 2: Tuple Sampling
+
+We will randomly select several records that do not have issues (i.e., records where "Gross income" is not missing) to understand the relationship between the columns. Here are three sampled records:
+
+```python
+[
+    (270.585, 257.7, 12.885),  # From Invoice ID 539-21-7227
+    (408.492, 389.04, 19.452),  # From Invoice ID 210-74-9613
+    (151.515, 144.3, 7.215)     # From Invoice ID 120-54-2248
+]
+```
+
+### Step 3: Rule Mining
+
+From the sampled data, we can observe that the "Gross income" is calculated as the difference between "Total" and "Costs of goods sold". This can be represented in Python as follows:
+
+```python
+def calculate_gross_income(total, costs_of_goods_sold):
+    return total - costs_of_goods_sold
+```
+
+Using this function, we can compute the missing "Gross income" for any record where it is missing by applying the rule to the related columns. For instance, for the record with missing "Gross income":
+
+```python
+missing_gross_income = calculate_gross_income(232.155, 221.1)
+print(missing_gross_income)  # Output should be 11.055
+```
+
+This method ensures that the missing values are accurately computed based on the existing data relationships.

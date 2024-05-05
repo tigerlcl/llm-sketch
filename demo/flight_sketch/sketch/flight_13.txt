@@ -1,0 +1,46 @@
+### Step 1: Locate the Problematic and Related Columns
+
+From the provided data, it's clear that the column with missing values (denoted by '?') is the `Route` column. To fix the missing value in the `Route` column, we can use related columns such as `Source` and `Destination` which provide information about the start and end points of the journey.
+
+**Problematic and Related Columns:**
+```python
+columns = ['Source', 'Destination', 'Route']
+```
+
+### Step 2: Tuple Sampling
+
+To understand the relationship between `Source`, `Destination`, and `Route`, we will sample some records that do not have missing values in the `Route` column.
+
+**Sampled Records:**
+```python
+sampled_records = [
+    ('Mumbai', 'Hyderabad', 'BOM → HYD'),
+    ('Delhi', 'Cochin', 'DEL → BLR → COK'),
+    ('Kolkata', 'Banglore', 'CCU → BOM → BLR'),
+    ('Delhi', 'Cochin', 'DEL → HYD → COK'),
+    ('Kolkata', 'Banglore', 'CCU → DEL → BLR')
+]
+```
+
+### Step 3: Rule Mining
+
+From the sampled records, we can derive a rule that describes the relationship between `Source`, `Destination`, and `Route`. This rule can be used to predict or fill in missing `Route` values based on `Source` and `Destination`.
+
+**Python Code for Rule Mining:**
+```python
+def predict_route(source, destination):
+    route_rules = {
+        ('Mumbai', 'Hyderabad'): 'BOM → HYD',
+        ('Delhi', 'Cochin'): 'DEL → BLR → COK',
+        ('Kolkata', 'Banglore'): 'CCU → BOM → BLR',
+        ('Delhi', 'Cochin'): 'DEL → HYD → COK',
+        ('Kolkata', 'Banglore'): 'CCU → DEL → BLR'
+    }
+    return route_rules.get((source, destination), "Route Unknown")
+
+# Example usage:
+missing_route = predict_route('Mumbai', 'Hyderabad')
+print("Predicted Route:", missing_route)
+```
+
+This function `predict_route` uses a dictionary to map pairs of `Source` and `Destination` to their corresponding `Route`. If a pair is not found in the dictionary, it returns "Route Unknown". This can be expanded or refined with more data or different logic as needed.

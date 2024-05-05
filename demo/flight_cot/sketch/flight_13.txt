@@ -1,0 +1,13 @@
+Let's think step by step about how to identify and address the missing value in your dataset. 
+
+1. **Identify the Missing Value**: First, we need to locate where the missing value is in the dataset. From the data you provided, it's clear that the missing value is represented by a '?' character. In the row for SpiceJet, under the 'Route' column, the value is missing.
+
+2. **Understanding the Data**: The 'Route' column describes the journey path from the source to the destination. For other airlines, this column contains the airport codes connected by arrows (→).
+
+3. **Analyzing Similar Entries**: To predict the missing 'Route', we can look at other entries with the same 'Source' and 'Destination'. However, in this dataset, there are no other entries directly from Mumbai to Hyderabad to compare directly.
+
+4. **General Knowledge of Routes**: Given that the flight is from Mumbai to Hyderabad and is non-stop, the route would typically be a direct flight from Mumbai (BOM) to Hyderabad (HYD).
+
+5. **Conclusion**: Based on the analysis, the most likely route for the SpiceJet flight from Mumbai to Hyderabad, which is non-stop, would be "BOM → HYD".
+
+Thus, the missing value is ##BOM → HYD##.

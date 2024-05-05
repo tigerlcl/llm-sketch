@@ -1,0 +1,38 @@
+### Related Columns
+
+For the missing value in the `Dep_Time` column, the related columns that can help fix the issue are likely to be `Airline`, `Source`, `Destination`, `Route`, and `Total_Stops`. These columns can provide context that might influence departure times.
+
+```python
+related_columns = ['Airline', 'Source', 'Destination', 'Route', 'Dep_Time', 'Total_Stops']
+```
+
+### Tuple Sampling
+
+To provide a better understanding of the relationship between these columns, we can sample some records that do not have missing values in the `Dep_Time` column.
+
+```python
+sampled_records = [
+    ("Multiple carriers", "Delhi", "Cochin", "DEL → BOM → COK", "14:00", "1 stop"),
+    ("Jet Airways", "Delhi", "Cochin", "DEL → BOM → COK", "14:00", "1 stop"),
+    ("Jet Airways", "Kolkata", "Banglore", "CCU → BOM → BLR", "21:10", "1 stop"),
+    ("IndiGo", "Mumbai", "Hyderabad", "BOM → HYD", "06:25", "non-stop")
+]
+```
+
+### Rule Mining
+
+From the sampled records, we can attempt to derive a rule that might help predict or fill in missing `Dep_Time` values based on the `Route` and `Total_Stops`.
+
+```python
+def predict_dep_time(route, total_stops):
+    if "DEL → BOM → COK" in route and total_stops == "1 stop":
+        return "14:00"
+    elif "CCU → BOM → BLR" in route and total_stops == "1 stop":
+        return "21:10"
+    elif "BOM → HYD" in route and total_stops == "non-stop":
+        return "06:25"
+    else:
+        return "Unknown"  # Default case if no rule matches
+```
+
+This function provides a basic framework to predict `Dep_Time` based on the `Route` and `Total_Stops`. More complex rules can be added as more data is analyzed or more patterns are recognized.

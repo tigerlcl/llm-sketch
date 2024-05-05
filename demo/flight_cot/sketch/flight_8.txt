@@ -1,0 +1,11 @@
+Let's think step by step about how to address the missing value in the dataset provided. We need to identify the missing value and then determine the most appropriate way to fill it.
+
+1. **Identify the Missing Value**: We see that the missing value is in the 'Total_Stops' column for the flight operated by IndiGo from Banglore to Delhi. The entry is marked with a '?'.
+
+2. **Analyze Similar Routes**: To find a suitable value for the missing 'Total_Stops', we can look at other entries with similar routes. The route in question is 'BLR → DEL'.
+
+3. **Check for Consistency in Data**: From the data provided, there is no other direct entry for the route 'BLR → DEL' to compare directly. However, considering the general knowledge about flights between major cities like Bangalore and Delhi, these are typically direct flights unless specified otherwise.
+
+4. **Determine the Most Likely Value**: Given the nature of the route (between two major hubs), and the absence of any indication of a stop in the route description ('BLR → DEL'), it is reasonable to conclude that this is a non-stop flight.
+
+Therefore, the missing value is ##non-stop##.

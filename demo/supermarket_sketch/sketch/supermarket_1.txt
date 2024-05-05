@@ -1,0 +1,30 @@
+### Step 1: Related Columns Identification
+
+From the provided data, it appears that the column with missing values is the "Total" column. To fix the missing values in the "Total" column, we can use related columns that contribute to its calculation. The related columns are:
+- Unit price
+- Quantity
+- Tax 5%
+- Total (itself for reference)
+- Costs of goods sold
+
+These columns are involved in the computation of the "Total" value. The formula for "Total" is generally:
+\[ \text{Total} = (\text{Unit price} \times \text{Quantity}) + \text{Tax 5\%} \]
+
+### Step 2: Tuple Sampling
+
+Let's randomly select several records that do not have issues in the "Total" column to understand the relationship between these values. Here are three sampled records:
+
+1. (46.95, 5, 11.7375, 246.4875, 234.75)
+2. (27.02, 3, 4.053, 85.113, 81.06)
+3. (30.62, 1, 1.531, 32.151, 30.62)
+
+### Step 3: Rule Mining
+
+Based on the sampled data, we can derive the following rule in Python to compute the "Total" when it is missing:
+
+```python
+def calculate_total(unit_price, quantity, tax):
+    return (unit_price * quantity) + tax
+```
+
+This function can be used to fill in the missing values in the "Total" column by applying it to the rows where "Total" is missing, using the "Unit price", "Quantity", and "Tax 5%" columns.
