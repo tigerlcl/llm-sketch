@@ -48,7 +48,8 @@ def main(cfg, log):
         # validate the agent result
         raw_result = slice_report.get(csv_file)
         value = raw_result["value"]
-        is_fixed = value == fixed_value
+        # compare the value in str
+        is_fixed = str(value) == str(fixed_value)
 
         fix_summary = raw_result.copy()
         fix_summary.update({
