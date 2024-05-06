@@ -1,3 +1,0 @@
-In the provided data, the missing value denoted by '?' is in the column "Total_Stops" for the flight operated by Jet Airways on 3/06/2019 from Delhi to Cochin. The route for this flight is "DEL → BOM → COK", which indicates that the flight has 1 stop.
-
-Therefore, the missing value is ##1 stop##.

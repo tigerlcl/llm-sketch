@@ -1,8 +1,0 @@
-In the provided data, the missing value denoted by '?' is found in the 'Duration' column for the Jet Airways flight from Banglore to Delhi on 3/05/2019. The departure time is 19:50 and the arrival time is 22:50. To calculate the duration:
-
-- Departure Time: 19:50
-- Arrival Time: 22:50
-
-The duration between these times is 3 hours. Therefore, the missing value is 3h.
-
-Thus, the missing value is ##3h##.

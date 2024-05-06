@@ -1,5 +1,0 @@
-Let's think step by step about how to identify and address the missing value in the provided dataset. The dataset consists of several columns: Airline, Date_of_Journey, Source, Destination, Route, Dep_Time, Arrival_Time, Duration, and Total_Stops. Each row represents a flight record.
-
-Upon examining the data, we notice that there is a '?' in the Dep_Time column for the Jet Airways flight on 12/06/2019 from Kolkata to Bangalore. This indicates that the departure time for this flight is missing.
-
-To present the answer as requested, we format the missing value information as follows: the missing value is ##Dep_Time##.

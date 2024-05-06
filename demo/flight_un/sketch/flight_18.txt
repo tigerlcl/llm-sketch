@@ -1,3 +1,0 @@
-In the provided data, the missing value denoted by '?' is found in the 'Dep_Time' column for the Air India flight on 21/03/2019 from Delhi to Cochin. 
-
-Therefore, the formatted answer is: the missing value is ##Dep_Time##.

@@ -17,7 +17,7 @@ def _build_prompt(prompt_type):
         raise ValueError(f"Invalid prompt type: {prompt_type}")
 
 
-def sketch_llm(data, cfg):
+def llm_chat(data, cfg):
     prompt = _build_prompt(cfg['prompt_type'])
     llm = ChatOpenAI(**cfg['openai_config'])
     parser = StrOutputParser()

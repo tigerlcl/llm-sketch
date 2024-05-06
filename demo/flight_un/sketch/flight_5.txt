@@ -1,1 +1,0 @@
-In the provided data, the missing value denoted by '?' is in the 'Route' column for the flight from Jet Airways on 24/05/2019 traveling from Kolkata to Banglore. The missing value is ##CCU → DEL → BLR##.

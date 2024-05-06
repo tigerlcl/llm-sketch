@@ -2,7 +2,7 @@ import os
 import yaml
 import argparse
 
-from llm.chat import sketch_llm, parse_chat_result
+from llm.chat import llm_chat, parse_chat_result
 from llm.coding import CodeAgent
 from utils import file_io, logger
 
@@ -12,7 +12,7 @@ def main(cfg, log):
 
     # output path
     fix_report = list()
-    fix_report_fp = os.path.join(exp_dir, 'fix_report.json')
+    fix_report_fp = os.path.join(exp_dir, cfg['report_dir'], f'fix_{cfg["prompt_type"]}.json')
 
     # Read input data
     for csv_file in os.listdir(input_dir):
@@ -23,24 +23,24 @@ def main(cfg, log):
         log.info(f'test init: {base_name}')
 
         # generate solution by prompt engineering
-        sketch_fp = os.path.join(sketch_dir, f'{base_name}.txt')
-        sketch_result, sketch_cost = sketch_llm(tabular_data, cfg)
+        llm_fp = os.path.join(llm_dir, f'{base_name}.txt')
+        chat_result, llm_cost = llm_chat(tabular_data, cfg)
 
         # store the Sketch response
-        file_io.write_txt_file(sketch_result, sketch_fp)
-        log.info(f'Sketch result saved with cost: {sketch_cost}')
+        file_io.write_txt_file(chat_result, llm_fp)
+        log.info(f'LLM chat result saved with cost: {llm_cost}')
 
         if cfg['prompt_type'] == "cot" or cfg['prompt_type'] == "un":
-            fixed_value = parse_chat_result(sketch_result)
+            fixed_value = parse_chat_result(chat_result)
         elif cfg['prompt_type'] == "sketch":
             # check agent working dir (fixed data will be saved here)
-            agent_dir = str(os.path.join(exp_dir, config['agent_work_dir']))
-            file_io.check_directory(agent_dir)
+            code_dir = str(os.path.join(exp_dir, config['code_work_dir']))
+            file_io.check_directory(code_dir)
 
             # convert sketch output as PyCode for imputation test
             codeAgent = CodeAgent(cfg['openai_config'])
-            agent_cost, chat_history, fixed_value = codeAgent.agent_chat(tabular_data, sketch_result)
-            file_io.write_json_file(chat_history, os.path.join(agent_dir, f'{base_name}.json'))
+            agent_cost, chat_history, fixed_value = codeAgent.agent_chat(tabular_data, chat_result)
+            file_io.write_json_file(chat_history, os.path.join(code_dir, f'{base_name}.json'))
             log.info(f'Agent result saved with cost: {agent_cost}')
         else:
             raise ValueError(f"Invalid prompt type: {cfg['prompt_type']}")
@@ -85,10 +85,10 @@ if __name__ == '__main__':
         raise NotADirectoryError
 
     # load slice report
-    slice_report = file_io.read_json_file(os.path.join(exp_dir, 'slice_report.json'))
+    slice_report = file_io.read_json_file(os.path.join(exp_dir, config['report_dir'], 'slice_report.json'))
 
     # init logger
-    log_fp = os.path.join(exp_dir, 'run.log')
+    log_fp = os.path.join(exp_dir, config['log_dir'], f'run_{config["prompt_type"]}.log')
     logger = logger.setup_logger(fp=log_fp)
     logger.info(f'Config Initialized {exp_dir}, prompt type: {config["prompt_type"]}')
 
@@ -99,7 +99,7 @@ if __name__ == '__main__':
     input_dir = str(os.path.join(exp_dir, config['input_dir']))
 
     # check sketch working dir
-    sketch_dir = str(os.path.join(exp_dir, config['sketch_work_dir']))
-    file_io.check_directory(sketch_dir)
+    llm_dir = str(os.path.join(exp_dir, config['llm_work_dir'], config['prompt_type']))
+    file_io.check_directory(llm_dir)
 
     main(config, logger)

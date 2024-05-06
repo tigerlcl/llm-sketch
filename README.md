@@ -51,7 +51,7 @@ To begin with, we will focus on the missing value imputation task, which is a co
 python preprocessing/chunk_table.py \
 --dataset dataset/flight.csv \
 --columns "Route,Dep_Time,Duration,Total_Stops" \
---exp-dir demo/flight_sketch \
+--exp-dir demo_0507/flight_sketch \
 --num-slices 20 \
 --num-rows 6
 
@@ -59,7 +59,7 @@ python preprocessing/chunk_table.py \
 python preprocessing/chunk_table.py \
 --dataset dataset/supermarket.csv \
 --columns "Total,Gross income" \
---exp-dir demo/supermarket_sketch \
+--exp-dir demo_0507/supermarket_sketch \
 --num-slices 10 \
 --num-rows 5
 
@@ -68,8 +68,8 @@ python main.py \
 --config etc/config_private.yaml \
 --prompt-type sketch \
 # --prompt-type un, cot \
---exp-dir demo/flight_sketch
-# --exp-dir demo/supermarket_sketch
+--exp-dir demo_0507/flight_sketch
+# --exp-dir demo_0507/supermarket_sketch
 ```
 
 > Note: the `etc/config_private.yaml` is for local use only. You should configure some fields like `openai_config`. After the experiment is done, 

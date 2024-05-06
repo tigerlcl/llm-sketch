@@ -11,10 +11,9 @@ class CodeAgent:
         self.code_writer_system_message = """
         You are a helpful AI Assistant for Python coding
     
-        Don't include multiple code blocks in one response. 
+        Suggest the full code instead of partial code or code changes. Don't include multiple code blocks in one response. 
         The user can't modify your code. So do not suggest incomplete code which requires users to modify.  
         The user cannot provide any feedback or perform any action beyond executing the code you suggest.  
-        Suggest the full code instead of partial code or code changes.
         """
 
         # Create a temporary directory to store the code files.
@@ -48,7 +47,6 @@ class CodeAgent:
 
         code_executor_agent = ConversableAgent(
             "code_executor",
-
             llm_config=False,  # Turn off LLM for this agent.
             code_execution_config={"executor": self.executor},  # Use the local command line code executor.
             human_input_mode="NEVER",  # Autonomous
@@ -60,8 +58,7 @@ class CodeAgent:
             message=
             f"""Here is the requirement: 
             Implement the fixing plan and find the missing value.
-            Initialize a Pandas DataFrame object according to the input data. 
-            Be very careful that the imputation value must align with the data format from the same column.
+            Initialize a Pandas DataFrame object for the input data.
             
             You must print the result in JSON format:
             \u007b"row_index": ..., "column_name": ..., "result": ...\u007d
@@ -70,10 +67,8 @@ class CodeAgent:
             
             Here is the fixing plan:\n{sketch_message}
             """,
-            summary_method="last_msg",
         )
 
-        # parse chat_result
         # post-process chat_result
         chat_cost = chat_result.cost['usage_including_cached_inference']
         total_cost = round(chat_cost['total_cost'], 5)

@@ -1,44 +1,43 @@
-from langchain.prompts import ChatPromptTemplate, HumanMessagePromptTemplate
-from langchain_core.messages import SystemMessage
+from langchain.prompts import ChatPromptTemplate
 
 
 def un_prompt() -> ChatPromptTemplate:
-    prompt = ChatPromptTemplate.from_messages(
-        [
-            SystemMessage("""
-            You are an AI assistant on fixing missing value denoted by a particular character '?' in tabular data.
-            """),
-            HumanMessagePromptTemplate.from_template("Here is the data: {table}\nPresent the answer in the end and you must format the result in a string: the missing value is ##your answer##, you must wrap the answer with double '#' symbol")
-        ]
+    prompt = ChatPromptTemplate.from_template(
+            template=("""
+            Please help fix missing value. Here is the data: {table}
+            
+            Present the answer in the end and you must format the result in a string: the missing value is ##your answer##, 
+            You must wrap the answer with double '#' symbol
+            """)
     )
     return prompt
 
 
 def cot_prompt() -> ChatPromptTemplate:
-    prompt = ChatPromptTemplate.from_messages(
-        [
-            SystemMessage("""
-            You are an AI assistant on fixing missing value denoted by a particular character '?' in tabular data.
-            Your reply must start with "Let's think step by step 
-            """),
-            HumanMessagePromptTemplate.from_template("Here is the data: {table}\nPresent the answer in the end and you must format the result in a string: the missing value is ##your answer##, you must wrap the answer with double '#' symbol")
-        ]
+    prompt = ChatPromptTemplate.from_template(
+            template=("""
+            Please help fix missing value. Here is the data: {table}
+            You must reply starting with: Let's think step by step
+            
+            Present the answer in the end and you must format the result in a string: the missing value is ##your answer##, 
+            you must wrap the answer with double '#' symbol
+            """)
     )
     return prompt
 
 
 def sketch_prompt() -> ChatPromptTemplate:
-    prompt = ChatPromptTemplate.from_messages(
-        [
-            SystemMessage("""
-            You are an AI assistant on fixing missing value denoted by a particular character '?' in tabular data.
-            Please draft solution according to the following instruction:
-            
-            [Related Columns]: Locate the problematic columns and related columns that can help fix the issue. Show all together in an array.
-            [Tuple Sampling]: Randomly select several no-issue records based on above columns, and show the result in an array of tuple.
-            [Rule Mining]: Find out the rule that describes the relationship of sampled results. Present it in Python code block. 
-            """),
-            HumanMessagePromptTemplate.from_template("Here is the data: {table}")
-        ]
+    prompt = ChatPromptTemplate.from_template(
+
+            template=("""
+            Please help fix missing value. Here is the data: {table}
+            You must draft solution according to the following instruction:
+            [Issue targeting]: Scan through the data and identify the missing value issue.
+            [Columns Filtering]: Locate column where the issue occurred and other columns that can help fix the issue.
+            [Entry Sampling]: Randomly select several no-issue entries based on the filtered columns.
+            [Rule Mining]: Learn from the similar entries and find out the rule that can support all samples. 
+            [Rule Applying]: Use the analyzed rule to infer and impute the missing value.
+            [Output Normalization]: Make sure that the imputation result must align with the same format of column where the issue occurred.
+            """)
     )
     return prompt

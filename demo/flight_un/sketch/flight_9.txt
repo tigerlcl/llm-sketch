@@ -1,1 +1,0 @@
-In the provided data, the missing value denoted by '?' is in the 'Route' column for the SpiceJet flight on 9/06/2019 from Delhi to Cochin. The missing value is ##DEL → COK##.

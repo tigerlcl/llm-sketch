@@ -1,8 +1,10 @@
 environment: test
 slice_dir: ./slice-data # ground truth
-input_dir: ./input-data # dirty table
-sketch_work_dir: './sketch'
-agent_work_dir: './agent' # save the scripts
+input_dir: ./dirty-data # dirty table
+llm_work_dir: './chat'
+code_work_dir: './code' # save the scripts
+report_dir: './report'
+log_dir: './log'
 openai_config:
   # base_url, no need to set
   api_key: sk-xxxxx

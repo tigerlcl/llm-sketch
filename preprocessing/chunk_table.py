@@ -2,6 +2,7 @@ import os
 import json
 import argparse
 import pandas as pd
+from numpy import NaN
 import random
 
 
@@ -24,7 +25,7 @@ def chunk_dirty_slice(args):
     slice_dir = os.path.join(exp_dir, 'slice-data')
     os.makedirs(slice_dir, exist_ok=True)
 
-    input_dir = os.path.join(exp_dir, 'input-data')
+    input_dir = os.path.join(exp_dir, 'dirty-data')
     os.makedirs(input_dir, exist_ok=True)
 
     # Loop to create and process slices
@@ -56,11 +57,11 @@ def chunk_dirty_slice(args):
                 "value": value,
             }
         })
-        slice_df.at[row, col] = '?'  # override
+        slice_df.at[row, col] = NaN  # override
         slice_df.to_csv(os.path.join(input_dir, fn), index=False)
 
     # Save dirty JSON
-    input_path = os.path.join(exp_dir, "slice_report.json")
+    input_path = os.path.join(exp_dir, "report/slice_report.json")
     with open(input_path, 'w', encoding='utf-8') as f:
         json.dump(slice_report, f, ensure_ascii=False, indent=4)
 
