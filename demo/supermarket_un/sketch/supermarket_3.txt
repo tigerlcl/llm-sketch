@@ -1,0 +1,12 @@
+To find the missing value in the 'Total' column for the row with Invoice ID '325-90-8763', we can use the formula:
+
+\[ \text{Total} = \text{Costs of goods sold} + \text{Tax 5\%} \]
+
+From the data provided:
+- Costs of goods sold = 465.7
+- Tax 5% = 23.285
+
+Using the formula:
+\[ \text{Total} = 465.7 + 23.285 = 488.985 \]
+
+Thus, the missing value is ##488.985##.

@@ -7,6 +7,8 @@ from langchain_core.output_parsers import StrOutputParser
 
 
 def _build_prompt(prompt_type):
+    if prompt_type == 'un':
+        return prompt_template.un_prompt()
     if prompt_type == 'cot':
         return prompt_template.cot_prompt()
     elif prompt_type == 'sketch':
@@ -24,19 +26,13 @@ def sketch_llm(data, cfg):
     # track token usage
     with get_openai_callback() as cb:
         result = chain.invoke({"table": data})
-        # cost_summary = {
-        #     'total_cost': cb.total_cost,
-        #     'prompt_tokens': cb.prompt_tokens,
-        #     'completion_tokens': cb.completion_tokens,
-        #     'total_tokens': cb.total_tokens,
-        # }
         return result, round(cb.total_cost, 5),
 
 
-def parse_cot_summary(summary_str):
+def parse_chat_result(result):
     # Search for the pattern in the string
     pattern = r'the missing value is ##(.+)##'
-    match = re.search(pattern, summary_str)
+    match = re.search(pattern, result)
 
     # If a match is found, extract the code output
     if match:

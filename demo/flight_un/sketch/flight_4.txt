@@ -1,0 +1,5 @@
+In the provided data, the missing value for the 'Total_Stops' column in the first row can be inferred based on the route provided. The route for the first row is "BLR → DEL", which indicates a direct flight from Bangalore to New Delhi without any stops. This is similar to the routes in the second and sixth rows, which are also direct flights from Bangalore to Delhi and have 'Total_Stops' listed as 'non-stop'.
+
+Therefore, the missing value for 'Total_Stops' in the first row should be 'non-stop'.
+
+Formatted answer: the missing value is ##non-stop##.

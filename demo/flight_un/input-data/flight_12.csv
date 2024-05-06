@@ -1,0 +1,7 @@
+Airline,Date_of_Journey,Source,Destination,Route,Dep_Time,Arrival_Time,Duration,Total_Stops
+Air India,6/06/2019,Delhi,Cochin,DEL → UDR → BOM → COK,13:20,07:40 07 Jun,18h 20m,2 stops
+Jet Airways,1/04/2019,Kolkata,Banglore,CCU → BOM → BLR,08:25,22:35,14h 10m,1 stop
+Vistara,15/05/2019,Kolkata,Banglore,CCU → DEL → BLR,20:20,22:40 16 May,26h 20m,1 stop
+Jet Airways,3/06/2019,Delhi,Cochin,DEL → BOM → COK,09:00,19:00,10h,?
+Jet Airways,6/05/2019,Kolkata,Banglore,CCU → BOM → BLR,20:00,12:00 07 May,16h,1 stop
+Jet Airways,12/06/2019,Kolkata,Banglore,CCU → BOM → BLR,18:55,22:35 13 Jun,27h 40m,1 stop

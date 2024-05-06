@@ -2,6 +2,18 @@ from langchain.prompts import ChatPromptTemplate, HumanMessagePromptTemplate
 from langchain_core.messages import SystemMessage
 
 
+def un_prompt() -> ChatPromptTemplate:
+    prompt = ChatPromptTemplate.from_messages(
+        [
+            SystemMessage("""
+            You are an AI assistant on fixing missing value denoted by a particular character '?' in tabular data.
+            """),
+            HumanMessagePromptTemplate.from_template("Here is the data: {table}\nPresent the answer in the end and you must format the result in a string: the missing value is ##your answer##, you must wrap the answer with double '#' symbol")
+        ]
+    )
+    return prompt
+
+
 def cot_prompt() -> ChatPromptTemplate:
     prompt = ChatPromptTemplate.from_messages(
         [

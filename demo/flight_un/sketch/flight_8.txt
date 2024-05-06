@@ -1,0 +1,3 @@
+In the provided data, the missing value denoted by '?' is found in the 'Total_Stops' column for the flight operated by IndiGo from Banglore to Delhi. To determine the appropriate value for this missing entry, we can analyze the route provided, which is "BLR → DEL". This route indicates a direct flight from Bangalore to Delhi without any intermediate stops.
+
+Therefore, the missing value is ##non-stop##.

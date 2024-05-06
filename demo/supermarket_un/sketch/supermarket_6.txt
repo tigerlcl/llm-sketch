@@ -1,0 +1,15 @@
+To find the missing value for the 'Gross income' in the first row of the data, we can use the formula:
+
+\[ \text{Gross income} = \text{Total} - \text{Costs of goods sold} \]
+
+From the data provided:
+- Total for the first row is 390.7995
+- Costs of goods sold for the first row is 372.19
+
+Using the formula:
+\[ \text{Gross income} = 390.7995 - 372.19 = 18.6095 \]
+
+Thus, the missing value is 18.6095.
+
+Formatted result:
+the missing value is ##18.6095##

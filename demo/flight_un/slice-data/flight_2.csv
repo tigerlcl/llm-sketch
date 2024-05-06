@@ -1,0 +1,7 @@
+Airline,Date_of_Journey,Source,Destination,Route,Dep_Time,Arrival_Time,Duration,Total_Stops
+SpiceJet,18/05/2019,Mumbai,Hyderabad,BOM → HYD,22:45,00:15 19 May,1h 30m,non-stop
+Air India,6/03/2019,Delhi,Cochin,DEL → BOM → COK,08:00,19:15,11h 15m,1 stop
+IndiGo,21/04/2019,Banglore,Delhi,BLR → DEL,16:55,19:55,3h,non-stop
+IndiGo,12/06/2019,Banglore,Delhi,BLR → DEL,07:10,10:05,2h 55m,non-stop
+Air India,01/03/2019,Banglore,New Delhi,BLR → CCU → GAU → DEL,05:50,22:10,16h 20m,2 stops
+Jet Airways,12/06/2019,Kolkata,Banglore,CCU → DEL → BLR,09:35,21:05,11h 30m,1 stop

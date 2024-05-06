@@ -1,0 +1,3 @@
+In the provided data, the missing value denoted by '?' is found in the 'Dep_Time' column for the Jet Airways flight on 9/05/2019 from Kolkata to Banglore. The missing value is the departure time of this flight.
+
+Therefore, the formatted answer is: the missing value is ##Dep_Time##.

@@ -1,0 +1,9 @@
+In the provided data, the missing value denoted by '?' is in the 'Total_Stops' column for the Jet Airways flight from Banglore to New Delhi. To determine the correct value for this missing entry, we can look at other entries with similar routes.
+
+From the data:
+- Jet Airways, 12/03/2019, Banglore, New Delhi, BLR → BOM → DEL, 07:00, 23:00, 16h, ?
+- Jet Airways, 01/03/2019, Banglore, New Delhi, BLR → BOM → DEL, 14:05, 10:25 02 Mar, 20h 20m, 1 stop
+
+Both flights have the same route (BLR → BOM → DEL). The second entry indicates that this route has '1 stop'. Therefore, it is reasonable to assume that the missing value for the first entry should also be '1 stop'.
+
+Thus, the missing value is ##1 stop##.

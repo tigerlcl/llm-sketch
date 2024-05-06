@@ -15,9 +15,9 @@ To begin with, we will focus on the missing value imputation task, which is a co
   - config_template.yaml
   - config_private.yaml (for local only)
 - llm
-  - prompt_template.py: cot, sketch 
+  - prompt_template.py: un, cot, sketch 
   - chat.py: chat with openai models
-  - agent.py: code writer & code executor, LLM as backend
+  - coding.py: code writer & code executor, LLM as backend
 - utils (helper functions)
   - file_io.py: txt, csv, json
   - logger.py
@@ -67,6 +67,7 @@ python preprocessing/chunk_table.py \
 python main.py \
 --config etc/config_private.yaml \
 --prompt-type sketch \
+# --prompt-type un, cot \
 --exp-dir demo/flight_sketch
 # --exp-dir demo/supermarket_sketch
 ```

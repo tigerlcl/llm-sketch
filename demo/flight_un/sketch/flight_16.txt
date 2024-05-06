@@ -1,0 +1,3 @@
+In the provided data, the missing value denoted by '?' is found in the 'Total_Stops' column for the flight from Mumbai to Hyderabad by Jet Airways on 21/05/2019. The route for this flight is 'BOM → HYD', which is a direct flight from Mumbai to Hyderabad. Typically, a direct flight like this would be classified as 'non-stop'.
+
+Therefore, the missing value is ##non-stop##.

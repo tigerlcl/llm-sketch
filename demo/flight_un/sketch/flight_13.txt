@@ -1,0 +1,3 @@
+In the provided data, the missing value denoted by '?' is found in the 'Route' column for the airline 'SpiceJet' traveling from Mumbai to Hyderabad. The correct format for the missing value in this context is typically the sequence of airport codes representing the journey from the source to the destination. Since the flight is non-stop from Mumbai to Hyderabad, the route should be a direct one from Mumbai's airport code (BOM) to Hyderabad's airport code (HYD).
+
+Therefore, the missing value is ##BOM → HYD##.

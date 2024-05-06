@@ -1,0 +1,8 @@
+In the provided data, the missing value denoted by '?' is found in the 'Route' column for the airline "Multiple carriers" on the date "12/06/2019" from Delhi to Cochin. To determine the most likely route for this entry, we can look at the other entries for flights from Delhi to Cochin by "Multiple carriers" to find a common route.
+
+From the data:
+- Multiple carriers, 21/03/2019, Delhi, Cochin, DEL → BOM → COK, 07:30, 19:15, 11h 45m, 1 stop
+
+It appears that the route for "Multiple carriers" from Delhi to Cochin typically includes a stop in Bombay (BOM). Therefore, the missing route for the entry on 12/06/2019 is likely the same as the one listed on 21/03/2019.
+
+Thus, the missing value is ##DEL → BOM → COK##.

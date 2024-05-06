@@ -1,0 +1,19 @@
+To determine the missing value in the "Duration" column for the SpiceJet flight on 9/04/2019 from Delhi to Cochin, we can calculate the time difference between the "Dep_Time" and "Arrival_Time".
+
+For the SpiceJet flight:
+- Departure Time (Dep_Time): 06:05
+- Arrival Time (Arrival_Time): 11:20
+
+To calculate the duration:
+- Convert both times into minutes past midnight:
+  - Dep_Time: \(6 \times 60 + 5 = 365\) minutes
+  - Arrival_Time: \(11 \times 60 + 20 = 680\) minutes
+- Duration in minutes: \(680 - 365 = 315\) minutes
+
+Convert the duration back to hours and minutes:
+- Hours: \(315 \div 60 = 5\) hours
+- Minutes: \(315 \mod 60 = 15\) minutes
+
+Thus, the duration is "5h 15m".
+
+Therefore, the missing value is ##5h 15m##.

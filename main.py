@@ -2,8 +2,8 @@ import os
 import yaml
 import argparse
 
-from llm.sketch import sketch_llm, parse_cot_summary
-from llm.agent import CodeAgent
+from llm.chat import sketch_llm, parse_chat_result
+from llm.coding import CodeAgent
 from utils import file_io, logger
 
 
@@ -30,8 +30,8 @@ def main(cfg, log):
         file_io.write_txt_file(sketch_result, sketch_fp)
         log.info(f'Sketch result saved with cost: {sketch_cost}')
 
-        if cfg['prompt_type'] == "cot":
-            fixed_value = parse_cot_summary(sketch_result)
+        if cfg['prompt_type'] == "cot" or cfg['prompt_type'] == "un":
+            fixed_value = parse_chat_result(sketch_result)
         elif cfg['prompt_type'] == "sketch":
             # check agent working dir (fixed data will be saved here)
             agent_dir = str(os.path.join(exp_dir, config['agent_work_dir']))
@@ -43,7 +43,7 @@ def main(cfg, log):
             file_io.write_json_file(chat_history, os.path.join(agent_dir, f'{base_name}.json'))
             log.info(f'Agent result saved with cost: {agent_cost}')
         else:
-            raise ValueError("Invalid prompt type")
+            raise ValueError(f"Invalid prompt type: {cfg['prompt_type']}")
 
         # validate the agent result
         raw_result = slice_report.get(csv_file)
@@ -69,7 +69,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Load Project Configuration")
     parser.add_argument('--config', type=str, default='./etc/config_template.yaml', help="path to config file")
     parser.add_argument('--exp-dir', type=str, default='./experiments/test', help="path to experiment directory")
-    parser.add_argument('--prompt-type', type=str, help="prompt type: cot or sketch")
+    parser.add_argument('--prompt-type', type=str, help="prompt type: un, cot or sketch")
     args = parser.parse_args()
 
     # load project-wise config in YAML file

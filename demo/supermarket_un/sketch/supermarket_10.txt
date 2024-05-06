@@ -1,0 +1,12 @@
+To find the missing value in the "Gross income" column for the row with Invoice ID "148-82-2527", we can use the formula:
+
+\[ \text{Gross income} = \text{Total} - \text{Costs of goods sold} \]
+
+From the data:
+- Total for Invoice ID "148-82-2527" is 127.26
+- Costs of goods sold for Invoice ID "148-82-2527" is 121.2
+
+Using the formula:
+\[ \text{Gross income} = 127.26 - 121.2 = 6.06 \]
+
+Thus, the missing value is ##6.06##.
