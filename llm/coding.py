@@ -35,6 +35,7 @@ class CodeAgent:
         }
 
         self.summary_pattern = r'Code output: ({.*})'
+        self.py_block = r"^```python\n|\n```$"
 
     def agent_chat(self, data, sketch_message):
         code_writer_agent = AssistantAgent(
@@ -60,7 +61,7 @@ class CodeAgent:
             Implement the fixing plan and find the missing value.
             Initialize a Pandas DataFrame object for the input data.
             
-            You must print the result in JSON format:
+            You must print the result in JSON format with no indent:
             \u007b"row_index": ..., "column_name": ..., "result": ...\u007d
             
             Here is the input data:\n{data}
@@ -72,12 +73,13 @@ class CodeAgent:
         # post-process chat_result
         chat_cost = chat_result.cost['usage_including_cached_inference']
         total_cost = round(chat_cost['total_cost'], 5)
-        chat_history = chat_result.chat_history
+        code_block = chat_result.chat_history[-2]['content']  # index -2 for the last message from code writer
+        chat_code = re.sub(self.py_block, "", code_block, flags=re.MULTILINE)
 
         chat_summary = self._parse_chat_summary(chat_result.summary)
         fixed_value = chat_summary["result"] if isinstance(chat_summary, dict) else ""
 
-        return total_cost, chat_history, fixed_value
+        return total_cost, chat_code, fixed_value
 
     def _parse_chat_summary(self, summary_str):
         # Search for the pattern in the string

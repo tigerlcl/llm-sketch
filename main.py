@@ -39,8 +39,8 @@ def main(cfg, log):
 
             # convert llm output as PyCode for imputation test
             codeAgent = CodeAgent(cfg['openai_config'])
-            agent_cost, chat_history, fixed_value = codeAgent.agent_chat(tabular_data, chat_result)
-            file_io.write_json_file(chat_history, os.path.join(code_dir, f'{base_name}.json'))
+            agent_cost, agent_code, fixed_value = codeAgent.agent_chat(tabular_data, chat_result)
+            file_io.write_txt_file(agent_code, os.path.join(code_dir, f'{base_name}.py'))
             log.info(f'Agent result saved with cost: {agent_cost}')
         else:
             raise ValueError(f"Invalid prompt type: {cfg['prompt_type']}")
