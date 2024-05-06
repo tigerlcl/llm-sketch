@@ -12,7 +12,7 @@ def main(cfg, log):
 
     # output path
     fix_report = list()
-    fix_report_fp = os.path.join(exp_dir, cfg['report_dir'], f'fix_{cfg["prompt_type"]}.json')
+    fix_report_fp = os.path.join(report_dir, f'fix_{cfg["prompt_type"]}.json')
 
     # Read input data
     for csv_file in os.listdir(input_dir):
@@ -26,7 +26,7 @@ def main(cfg, log):
         llm_fp = os.path.join(llm_dir, f'{base_name}.txt')
         chat_result, llm_cost = llm_chat(tabular_data, cfg)
 
-        # store the Sketch response
+        # store the llm response
         file_io.write_txt_file(chat_result, llm_fp)
         log.info(f'LLM chat result saved with cost: {llm_cost}')
 
@@ -37,7 +37,7 @@ def main(cfg, log):
             code_dir = str(os.path.join(exp_dir, config['code_work_dir']))
             file_io.check_directory(code_dir)
 
-            # convert sketch output as PyCode for imputation test
+            # convert llm output as PyCode for imputation test
             codeAgent = CodeAgent(cfg['openai_config'])
             agent_cost, chat_history, fixed_value = codeAgent.agent_chat(tabular_data, chat_result)
             file_io.write_json_file(chat_history, os.path.join(code_dir, f'{base_name}.json'))
@@ -84,22 +84,25 @@ if __name__ == '__main__':
     if not os.path.isdir(exp_dir):
         raise NotADirectoryError
 
-    # load slice report
-    slice_report = file_io.read_json_file(os.path.join(exp_dir, config['report_dir'], 'slice_report.json'))
-
     # init logger
     log_fp = os.path.join(exp_dir, config['log_dir'], f'run_{config["prompt_type"]}.log')
     logger = logger.setup_logger(fp=log_fp)
     logger.info(f'Config Initialized {exp_dir}, prompt type: {config["prompt_type"]}')
 
     # check slice dir (original clean data as ground truth)
-    slice_dir = str(os.path.join(exp_dir, config['slice_dir']))
+    slice_dir = os.path.join(exp_dir, config['slice_dir'])
 
     # check table input dir (dirty table input)
-    input_dir = str(os.path.join(exp_dir, config['input_dir']))
+    input_dir = os.path.join(exp_dir, config['input_dir'])
 
-    # check sketch working dir
-    llm_dir = str(os.path.join(exp_dir, config['llm_work_dir'], config['prompt_type']))
+    # check report dir
+    report_dir = os.path.join(exp_dir, config['report_dir'])
+
+    # load slice report
+    slice_report = file_io.read_json_file(os.path.join(report_dir, 'slice_report.json'))
+
+    # check llm working dir
+    llm_dir = os.path.join(exp_dir, config['llm_work_dir'], config['prompt_type'])
     file_io.check_directory(llm_dir)
 
     main(config, logger)

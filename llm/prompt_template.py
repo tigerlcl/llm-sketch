@@ -28,7 +28,6 @@ def cot_prompt() -> ChatPromptTemplate:
 
 def sketch_prompt() -> ChatPromptTemplate:
     prompt = ChatPromptTemplate.from_template(
-
             template=("""
             Please help fix missing value. Here is the data: {table}
             You must draft solution according to the following instruction:

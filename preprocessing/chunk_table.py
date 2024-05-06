@@ -9,7 +9,6 @@ import random
 def chunk_dirty_slice(args):
     dataset = args.dataset
     columns = [col for col in args.columns.split(',')]
-    exp_dir = args.exp_dir
     num_slices = args.num_slices
     num_rows = args.num_rows
 
@@ -20,13 +19,6 @@ def chunk_dirty_slice(args):
 
     # Read the CSV into a DataFrame
     df = pd.read_csv(dataset)
-
-    # Ensure directories exist
-    slice_dir = os.path.join(exp_dir, 'slice-data')
-    os.makedirs(slice_dir, exist_ok=True)
-
-    input_dir = os.path.join(exp_dir, 'dirty-data')
-    os.makedirs(input_dir, exist_ok=True)
 
     # Loop to create and process slices
     slice_report = dict()
@@ -60,9 +52,9 @@ def chunk_dirty_slice(args):
         slice_df.at[row, col] = NaN  # override
         slice_df.to_csv(os.path.join(input_dir, fn), index=False)
 
-    # Save dirty JSON
-    input_path = os.path.join(exp_dir, "report/slice_report.json")
-    with open(input_path, 'w', encoding='utf-8') as f:
+    # Save slice report as JSON
+    report_fp = os.path.join(report_dir, "slice_report.json")
+    with open(report_fp, 'w', encoding='utf-8') as f:
         json.dump(slice_report, f, ensure_ascii=False, indent=4)
 
 
@@ -77,5 +69,16 @@ if __name__ == '__main__':
     parser.add_argument('--num-rows', '-r', type=int, default=6, help="number of rows per slice")
 
     args = parser.parse_args()
+
+    exp_dir = args.exp_dir
+    # Ensure directories exist
+    slice_dir = os.path.join(exp_dir, 'slice-data')
+    os.makedirs(slice_dir, exist_ok=True)
+
+    input_dir = os.path.join(exp_dir, 'dirty-data')
+    os.makedirs(input_dir, exist_ok=True)
+
+    report_dir = os.path.join(exp_dir, 'report')
+    os.makedirs(report_dir, exist_ok=True)
 
     chunk_dirty_slice(args)
