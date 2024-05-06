@@ -84,8 +84,12 @@ if __name__ == '__main__':
     if not os.path.isdir(exp_dir):
         raise NotADirectoryError
 
+    # check log dir
+    log_dir = os.path.join(exp_dir, config['log_dir'])
+    file_io.check_directory(log_dir)
+
     # init logger
-    log_fp = os.path.join(exp_dir, config['log_dir'], f'run_{config["prompt_type"]}.log')
+    log_fp = os.path.join(log_dir, f'run_{config["prompt_type"]}.log')
     logger = logger.setup_logger(fp=log_fp)
     logger.info(f'Config Initialized {exp_dir}, prompt type: {config["prompt_type"]}')
 
