@@ -46,18 +46,18 @@ Mimic noisy data, preprocess raw tabular data to mimic the missing value problem
 # for flight data
 python chunk_table.py \
 --dataset dataset/flight.csv \
---columns "Destination,Route,Duration,Total_Stops" \
+--columns "Source,Total_Stops" \
 --exp-dir demo/flight \
---num-slices 20 \
---num-rows 8
+--num-slices 10 \
+--num-rows 7
 
 # for supermarket data
 python chunk_table.py \
 --dataset dataset/supermarket.csv \
---columns "Total,Gross income" \
+--columns "Tax 5%,Total" \
 --exp-dir demo/supermarket \
 --num-slices 10 \
---num-rows 8
+--num-rows 5
 ```
 
 Run imputation pipeline on experiment directory
@@ -71,7 +71,7 @@ python main.py \
 
 # for supermarket data
 --config etc/config_private.yaml \
---prompt-type cot \
+--prompt-type un \
 --exp-dir demo/supermarket
 ```
 
