@@ -1,0 +1,3 @@
+The missing value in the dataset is in the "Source" column for the Jet Airways flight on 6/06/2019. The correct value for "Source" should be "Delhi" based on the route provided (DEL → NAG → BOM → COK).
+
+Therefore, the answer is: the missing value is ##Delhi##.

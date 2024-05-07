@@ -1,0 +1,13 @@
+To find the missing value for the "Tax 5%" in the first row, we can use the formula:
+
+\[ \text{Tax 5%} = \text{Unit price} \times \text{Quantity} \times 0.05 \]
+
+Given the "Unit price" is 95 and the "Quantity" is 7, we can calculate:
+
+\[ \text{Tax 5%} = 95 \times 7 \times 0.05 = 33.25 \]
+
+Thus, the missing value is 33.25. 
+
+Presenting the answer as requested:
+
+the missing value is ##33.25##

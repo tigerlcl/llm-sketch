@@ -1,0 +1,44 @@
+### Step-by-Step Solution to Fix Missing Value
+
+#### [Issue Targeting]
+Upon reviewing the provided data, it is evident that there is a missing value in the `Total_Stops` column for the entry:
+```
+Jet Airways,21/05/2019,Delhi,Cochin,DEL → AMD → BOM → COK,19:10,19:00 22 May,23h 50m,
+```
+
+#### [Columns Filtering]
+To address this issue, the `Route` column will be crucial as it details the stops between the source and destination. The `Total_Stops` column, which has the missing value, will also be focused on.
+
+#### [Entry Sampling]
+Let's sample a few entries with no issues in the `Route` and `Total_Stops` columns:
+```
+Jet Airways,9/06/2019,Kolkata,Banglore,CCU → DEL → BLR,09:35,10:55 10 Jun,25h 20m,1 stop
+Multiple carriers,27/06/2019,Delhi,Cochin,DEL → BOM → COK,07:00,19:00,12h,1 stop
+Jet Airways,01/03/2019,Banglore,New Delhi,BLR → BOM → DEL,16:55,09:00 02 Mar,16h 5m,1 stop
+```
+
+#### [Rule Mining]
+From the sampled entries, it is observed that:
+- `CCU → DEL → BLR` corresponds to `1 stop`
+- `DEL → BOM → COK` corresponds to `1 stop`
+- `BLR → BOM → DEL` corresponds to `1 stop`
+
+The number of stops is one less than the number of segments in the route (separated by arrows).
+
+#### [Rule Formulation]
+We can formulate a rule to determine the number of stops based on the route:
+```python
+def calculate_total_stops(route):
+    segments = route.split(" → ")
+    if len(segments) > 1:
+        return f"{len(segments) - 1} stop" if (len(segments) - 1) == 1 else f"{len(segments) - 1} stops"
+    else:
+        return "non-stop"
+
+# Applying the rule to the entry with the missing value
+missing_route = "DEL → AMD → BOM → COK"
+total_stops_calculated = calculate_total_stops(missing_route)
+print("Calculated Total Stops:", total_stops_calculated)
+```
+
+This function splits the route by " → ", counts the segments, and calculates the stops accordingly. If there's only one segment, it returns "non-stop". For more than one segment, it returns the count of segments minus one, appropriately formatted as "1 stop" or "n stops". This solution will be used to impute the missing value in the `Total_Stops` column.

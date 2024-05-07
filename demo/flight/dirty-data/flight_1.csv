@@ -1,0 +1,8 @@
+Airline,Date_of_Journey,Source,Destination,Route,Dep_Time,Arrival_Time,Duration,Total_Stops
+IndiGo,12/06/2019,Chennai,Kolkata,MAA → CCU,22:05,00:25 13 Jun,2h 20m,non-stop
+Jet Airways,3/06/2019,Mumbai,Hyderabad,BOM → HYD,10:20,11:50,1h 30m,non-stop
+Jet Airways,15/06/2019,Delhi,Cochin,DEL → LKO → BOM → COK,09:25,12:35 16 Jun,27h 10m,2 stops
+Jet Airways,21/03/2019,Delhi,Cochin,DEL → IXC → BOM → COK,06:20,04:25 22 Mar,22h 5m,2 stops
+Vistara,15/03/2019,,Kolkata,MAA → CCU,07:05,09:20,2h 15m,non-stop
+IndiGo,3/03/2019,Delhi,Cochin,DEL → HYD → COK,11:55,22:20,10h 25m,1 stop
+Air Asia,24/03/2019,Kolkata,Banglore,CCU → DEL → BLR,07:35,19:25,11h 50m,1 stop

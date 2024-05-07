@@ -1,0 +1,52 @@
+### Step 1: Issue Targeting
+Upon examining the data, it is evident that there is a missing value in the "Source" column for the Vistara flight on 15/03/2019 from an unknown source to Kolkata.
+
+### Step 2: Columns Filtering
+To address this issue, we can focus on the "Route" and "Destination" columns, as these can provide insights into the missing "Source" value.
+
+### Step 3: Entry Sampling
+Let's sample entries that have no issues in the "Source", "Route", and "Destination" columns:
+- IndiGo, 12/06/2019, Chennai, Kolkata, MAA → CCU, 22:05, 00:25 13 Jun, 2h 20m, non-stop
+- Jet Airways, 3/06/2019, Mumbai, Hyderabad, BOM → HYD, 10:20, 11:50, 1h 30m, non-stop
+- Air Asia, 24/03/2019, Kolkata, Banglore, CCU → DEL → BLR, 07:35, 19:25, 11h 50m, 1 stop
+
+### Step 4: Rule Mining
+From the sampled entries:
+- The route "MAA → CCU" corresponds to the source "Chennai" and destination "Kolkata".
+- The route "BOM → HYD" corresponds to the source "Mumbai" and destination "Hyderabad".
+- The route "CCU → DEL → BLR" corresponds to the source "Kolkata" and destination "Banglore".
+
+From this, we can observe that the first airport code in the "Route" column corresponds to the "Source" city.
+
+### Step 5: Rule Formulation
+Given the route "MAA → CCU" for the entry with the missing source, the first airport code "MAA" stands for Chennai. Thus, the missing source should be "Chennai".
+
+Here's the Python function that implements this rule:
+
+```python
+def impute_missing_source(route):
+    # Extract the first airport code from the route
+    source_code = route.split(" → ")[0]
+    
+    # Map of airport codes to city names
+    airport_to_city = {
+        "MAA": "Chennai",
+        "BOM": "Mumbai",
+        "DEL": "Delhi",
+        "CCU": "Kolkata",
+        "HYD": "Hyderabad",
+        "IXC": "Chandigarh",
+        "LKO": "Lucknow",
+        "BLR": "Bangalore"
+    }
+    
+    # Return the corresponding city name for the source code
+    return airport_to_city.get(source_code, "Unknown")
+
+# Example usage:
+missing_source_route = "MAA → CCU"
+imputed_source = impute_missing_source(missing_source_route)
+print("Imputed Source:", imputed_source)
+```
+
+This function will correctly impute the missing "Source" value for the Vistara flight on 15/03/2019.

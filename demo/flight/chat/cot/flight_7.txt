@@ -1,0 +1,16 @@
+Let's think step by step about how to identify and fix the missing value in the dataset provided.
+
+1. **Identify the missing value**: We need to look at each column and check if there is any missing data. By examining the dataset, we can see that the fifth row under the column 'Source' is missing a value. The row details are:
+   - Airline: Jet Airways
+   - Date_of_Journey: 6/06/2019
+   - Source: (missing)
+   - Destination: Cochin
+   - Route: DEL → NAG → BOM → COK
+   - Dep_Time: 14:35
+   - Arrival_Time: 04:25 07 Jun
+   - Duration: 13h 50m
+   - Total_Stops: 2 stops
+
+2. **Determine the missing value**: Since the 'Route' starts with 'DEL', which stands for Delhi, and considering the pattern in other rows where the source city is the starting point of the route, it's logical to conclude that the missing 'Source' should be 'Delhi'.
+
+Therefore, the missing value is ##Delhi##.

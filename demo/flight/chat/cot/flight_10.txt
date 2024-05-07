@@ -1,0 +1,9 @@
+Let's think step by step about how to identify and fix the missing value in the dataset provided.
+
+1. **Identify the missing value**: We need to check each column of each row to see where the data might be incomplete. Upon inspection, we notice that the row for GoAir on 1/06/2019 from Delhi to Cochin with the route "DEL → BOM → COK" is missing the value for `Total_Stops`.
+
+2. **Understand the context**: The route "DEL → BOM → COK" implies that there are two legs to the journey (Delhi to Mumbai, Mumbai to Cochin), which means there is one stopover.
+
+3. **Determine the correct value**: Since there is one stopover in the journey, the correct value for `Total_Stops` should be "1 stop".
+
+Thus, the missing value is ##1 stop##.

@@ -1,0 +1,17 @@
+To find the missing value in the "Health and beauty" row, we need to calculate the total before tax and then determine the missing tax value. The formula for calculating the tax is:
+
+\[ \text{Tax} = \text{Total} - (\text{Unit price} \times \text{Quantity}) \]
+
+Given:
+- Unit price = 97
+- Quantity = 9
+- Total = 916.65
+
+Calculating the total before tax:
+\[ \text{Total before tax} = 97 \times 9 = 873 \]
+
+Now, calculating the missing tax:
+\[ \text{Tax} = 916.65 - 873 = 43.65 \]
+
+Thus, the missing value is:
+the missing value is ##43.65##.

@@ -1,0 +1,9 @@
+Let's think step by step to identify and fix the missing value in the provided dataset.
+
+1. **Identify the Missing Value**: We need to check each column for any missing entries. By examining the data, we can see that the 'Source' column is missing an entry for the Vistara flight on 15/03/2019.
+
+2. **Determine the Correct Value**: The route for the Vistara flight is listed as "MAA → CCU". This indicates that the flight departs from Chennai (MAA) and arrives in Kolkata (CCU).
+
+3. **Conclusion**: The missing 'Source' for the Vistara flight on 15/03/2019 should be 'Chennai'.
+
+Therefore, the missing value is ##Chennai##.

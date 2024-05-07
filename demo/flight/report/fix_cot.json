@@ -1,0 +1,82 @@
+[
+    {
+        "row_index": 5,
+        "column_name": "Total_Stops",
+        "value": "2 stops",
+        "fixed_value": "2 stops",
+        "is_fixed": true,
+        "slice": "flight_8.csv"
+    },
+    {
+        "row_index": 1,
+        "column_name": "Source",
+        "value": "Delhi",
+        "fixed_value": "Delhi",
+        "is_fixed": true,
+        "slice": "flight_9.csv"
+    },
+    {
+        "row_index": 3,
+        "column_name": "Total_Stops",
+        "value": "1 stop",
+        "fixed_value": "1 stop",
+        "is_fixed": true,
+        "slice": "flight_4.csv"
+    },
+    {
+        "row_index": 0,
+        "column_name": "Source",
+        "value": "Banglore",
+        "fixed_value": "Bangalore",
+        "is_fixed": false,
+        "slice": "flight_5.csv"
+    },
+    {
+        "row_index": 4,
+        "column_name": "Source",
+        "value": "Delhi",
+        "fixed_value": "Delhi",
+        "is_fixed": true,
+        "slice": "flight_7.csv"
+    },
+    {
+        "row_index": 2,
+        "column_name": "Total_Stops",
+        "value": "1 stop",
+        "fixed_value": "1 stop",
+        "is_fixed": true,
+        "slice": "flight_6.csv"
+    },
+    {
+        "row_index": 4,
+        "column_name": "Total_Stops",
+        "value": "1 stop",
+        "fixed_value": null,
+        "is_fixed": false,
+        "slice": "flight_2.csv"
+    },
+    {
+        "row_index": 0,
+        "column_name": "Source",
+        "value": "Delhi",
+        "fixed_value": "Delhi",
+        "is_fixed": true,
+        "slice": "flight_3.csv"
+    },
+    {
+        "row_index": 4,
+        "column_name": "Source",
+        "value": "Chennai",
+        "fixed_value": "Chennai",
+        "is_fixed": true,
+        "slice": "flight_1.csv"
+    },
+    {
+        "row_index": 3,
+        "column_name": "Total_Stops",
+        "value": "1 stop",
+        "fixed_value": "1 stop",
+        "is_fixed": true,
+        "slice": "flight_10.csv"
+    }
+]

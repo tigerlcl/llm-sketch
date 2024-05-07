@@ -1,0 +1,34 @@
+### Issue Targeting
+Upon reviewing the data provided, it is evident that there is a missing value in the "Total" column for the first entry (Electronic accessories).
+
+### Columns Filtering
+To address this issue, we need to focus on the "Unit price", "Quantity", "Tax 5%", and "Total" columns. These columns are directly related and can help in calculating the missing "Total" value.
+
+### Entry Sampling
+Let's sample a few entries with no missing values to understand the relationship:
+1. Electronic accessories, Unit price: 21, Quantity: 10, Tax 5%: 10.5, Total: 220.5
+2. Health and beauty, Unit price: 81, Quantity: 7, Tax 5%: 28.35, Total: 595.35
+3. Sports and travel, Unit price: 95, Quantity: 4, Tax 5%: 19.0, Total: 399.0
+
+### Rule Mining
+From the sampled entries, we observe that the Total is calculated as follows:
+\[ \text{Total} = (\text{Unit price} \times \text{Quantity}) + \text{Tax 5%} \]
+This formula consistently applies across the sampled entries.
+
+### Rule Formulation
+Using the observed rule, we can now formulate a function to calculate the missing "Total" value:
+
+```python
+def calculate_total(unit_price, quantity, tax):
+    return (unit_price * quantity) + tax
+
+# Applying the function to the missing value case:
+unit_price = 77
+quantity = 1
+tax = 3.85
+
+total = calculate_total(unit_price, quantity, tax)
+print("Calculated Total for missing entry:", total)
+```
+
+This function should correctly impute the missing "Total" value for the entry with missing data based on the consistent pattern observed in other entries.

@@ -1,0 +1,9 @@
+Let's think step by step about how to find the missing value in the dataset. The missing value is in the "Tax 5%" column for the "Health and beauty" product line where the unit price is 70 and the quantity is 5. 
+
+To calculate the missing tax value, we use the formula:
+\[ \text{Tax 5%} = (\text{Unit Price} \times \text{Quantity}) \times 0.05 \]
+
+Plugging in the values:
+\[ \text{Tax 5%} = (70 \times 5) \times 0.05 = 350 \times 0.05 = 17.5 \]
+
+Thus, the missing value is ##17.5##.

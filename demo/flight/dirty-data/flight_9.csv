@@ -1,0 +1,8 @@
+Airline,Date_of_Journey,Source,Destination,Route,Dep_Time,Arrival_Time,Duration,Total_Stops
+Jet Airways,9/05/2019,Banglore,Delhi,BLR → DEL,18:55,22:00,3h 5m,non-stop
+IndiGo,21/03/2019,,Cochin,DEL → BOM → COK,10:45,21:00,10h 15m,1 stop
+Jet Airways,01/03/2019,Banglore,New Delhi,BLR → BOM → DEL,05:45,20:20,14h 35m,1 stop
+Jet Airways,21/03/2019,Delhi,Cochin,DEL → BOM → COK,18:15,18:50 22 Mar,24h 35m,1 stop
+IndiGo,6/05/2019,Kolkata,Banglore,CCU → HYD → BLR,15:15,20:05,4h 50m,1 stop
+Jet Airways,15/05/2019,Kolkata,Banglore,CCU → BOM → BLR,14:05,23:35,9h 30m,1 stop
+Air Asia,24/05/2019,Kolkata,Banglore,CCU → IXR → DEL → BLR,15:10,23:30,8h 20m,2 stops

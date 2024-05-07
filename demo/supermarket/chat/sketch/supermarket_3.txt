@@ -1,0 +1,40 @@
+### Issue Targeting
+Upon reviewing the data, it's clear that there is a missing value in the "Tax 5%" column for the "Health and beauty" product line.
+
+### Columns Filtering
+To address this issue, we need to focus on the "Tax 5%", "Unit price", and "Quantity" columns. These columns are directly related and can help in calculating the missing value.
+
+### Entry Sampling
+We will sample a few entries from the dataset that do not have missing values in the "Tax 5%" column:
+
+1. Sports and travel: Unit price = 39, Quantity = 1, Tax 5% = 1.95
+2. Home and lifestyle: Unit price = 37, Quantity = 7, Tax 5% = 12.95
+3. Food and beverages: Unit price = 16, Quantity = 6, Tax 5% = 4.8
+4. Home and lifestyle: Unit price = 56, Quantity = 7, Tax 5% = 19.6
+
+### Rule Mining
+From the sampled entries, we observe that the "Tax 5%" value is calculated as 5% of the product of "Unit price" and "Quantity". The formula to calculate "Tax 5%" is:
+\[ \text{Tax 5%} = (\text{Unit price} \times \text{Quantity}) \times 0.05 \]
+
+### Rule Formulation
+We can now formulate this rule into a Python function to compute the missing "Tax 5%" value:
+
+```python
+def calculate_tax(unit_price, quantity):
+    return (unit_price * quantity) * 0.05
+```
+
+### Impute Missing Value
+Using the above function, we can calculate the missing "Tax 5%" for the "Health and beauty" product line:
+
+```python
+# Given values
+unit_price = 97
+quantity = 9
+
+# Calculate missing Tax 5%
+missing_tax = calculate_tax(unit_price, quantity)
+print(f"The calculated Tax 5% for Health and beauty is: {missing_tax}")
+```
+
+This function and calculation will provide the missing "Tax 5%" value for the "Health and beauty" product line based on the observed rule from other entries.

@@ -1,0 +1,32 @@
+### Step 1: Issue Targeting
+Upon reviewing the data, it is evident that there is a missing value in the "Total_Stops" column for the entry:
+- Multiple carriers, 6/06/2019, Delhi, Cochin, DEL → BOM → COK, 04:55, 19:00, 14h 5m, (missing value here)
+
+### Step 2: Columns Filtering
+To address the missing value in the "Total_Stops" column, we can utilize the "Route" column, which describes the journey from the source to the destination through various stops.
+
+### Step 3: Entry Sampling
+Let's sample several entries from the dataset that have no issues in the "Total_Stops" column and share a similar "Route" pattern:
+- Multiple carriers, 3/06/2019, Delhi, Cochin, DEL → BOM → COK, 07:30, 19:15, 11h 45m, 1 stop
+- Jet Airways, 9/03/2019, Delhi, Cochin, DEL → BOM → COK, 02:15, 19:45, 17h 30m, 1 stop
+
+### Step 4: Rule Mining
+From the sampled entries, we observe that when the "Route" is "DEL → BOM → COK", the "Total_Stops" is consistently recorded as "1 stop".
+
+### Step 5: Rule Formulation
+Based on the observed rule, we can formulate a function to impute the missing value in the "Total_Stops" column when the "Route" is "DEL → BOM → COK".
+
+```python
+def impute_total_stops(route):
+    if route == "DEL → BOM → COK":
+        return "1 stop"
+    else:
+        return None  # This function can be expanded to handle other routes if needed
+
+# Applying the function to the missing value case
+missing_route = "DEL → BOM → COK"
+imputed_value = impute_total_stops(missing_route)
+print(f"The imputed value for 'Total_Stops' where the route is '{missing_route}' is: {imputed_value}")
+```
+
+This function checks if the route matches "DEL → BOM → COK" and returns "1 stop" if true, effectively fixing the missing value in the dataset.

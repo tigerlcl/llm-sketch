@@ -1,0 +1,72 @@
+2024-05-07 12:35:27,716 - root - INFO - Config Initialized demo/supermarket, prompt type: sketch
+2024-05-07 12:35:27,717 - root - INFO - Backend LLM: gpt-4-turbo
+2024-05-07 12:35:27,717 - root - INFO - test init: supermarket_10
+2024-05-07 12:35:50,869 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:35:50,891 - root - INFO - LLM chat result saved with cost: 0.01514
+2024-05-07 12:36:08,503 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:36:08,796 - root - INFO - Agent result saved with cost: 0.01733
+2024-05-07 12:36:08,796 - root - INFO - supermarket_10 imputation validated as: True
+
+2024-05-07 12:36:08,796 - root - INFO - test init: supermarket_5
+2024-05-07 12:36:33,413 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:36:33,417 - root - INFO - LLM chat result saved with cost: 0.01818
+2024-05-07 12:36:47,573 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:36:47,868 - root - INFO - Agent result saved with cost: 0.01745
+2024-05-07 12:36:47,868 - root - INFO - supermarket_5 imputation validated as: True
+
+2024-05-07 12:36:47,868 - root - INFO - test init: supermarket_4
+2024-05-07 12:37:08,149 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:37:08,155 - root - INFO - LLM chat result saved with cost: 0.01661
+2024-05-07 12:37:26,138 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:37:26,441 - root - INFO - Agent result saved with cost: 0.01853
+2024-05-07 12:37:26,441 - root - INFO - supermarket_4 imputation validated as: False
+
+2024-05-07 12:37:26,442 - root - INFO - test init: supermarket_6
+2024-05-07 12:37:45,107 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:37:45,114 - root - INFO - LLM chat result saved with cost: 0.01587
+2024-05-07 12:38:04,605 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:38:04,907 - root - INFO - Agent result saved with cost: 0.01898
+2024-05-07 12:38:04,908 - root - INFO - supermarket_6 imputation validated as: True
+
+2024-05-07 12:38:04,908 - root - INFO - test init: supermarket_7
+2024-05-07 12:38:24,348 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:38:24,355 - root - INFO - LLM chat result saved with cost: 0.01428
+2024-05-07 12:38:41,968 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:38:42,266 - root - INFO - Agent result saved with cost: 0.01629
+2024-05-07 12:38:42,267 - root - INFO - supermarket_7 imputation validated as: True
+
+2024-05-07 12:38:42,267 - root - INFO - test init: supermarket_3
+2024-05-07 12:39:07,639 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:39:07,645 - root - INFO - LLM chat result saved with cost: 0.0166
+2024-05-07 12:39:30,661 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:39:30,965 - root - INFO - Agent result saved with cost: 0.01837
+2024-05-07 12:39:30,966 - root - INFO - supermarket_3 imputation validated as: False
+
+2024-05-07 12:39:30,966 - root - INFO - test init: supermarket_2
+2024-05-07 12:39:47,674 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:39:47,684 - root - INFO - LLM chat result saved with cost: 0.01434
+2024-05-07 12:40:01,397 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:40:01,712 - root - INFO - Agent result saved with cost: 0.01638
+2024-05-07 12:40:01,712 - root - INFO - supermarket_2 imputation validated as: True
+
+2024-05-07 12:40:01,712 - root - INFO - test init: supermarket_1
+2024-05-07 12:40:26,375 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:40:26,381 - root - INFO - LLM chat result saved with cost: 0.01648
+2024-05-07 12:40:42,740 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:40:43,081 - root - INFO - Agent result saved with cost: 0.01791
+2024-05-07 12:40:43,082 - root - INFO - supermarket_1 imputation validated as: True
+
+2024-05-07 12:40:43,082 - root - INFO - test init: supermarket_9
+2024-05-07 12:40:58,277 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:40:58,280 - root - INFO - LLM chat result saved with cost: 0.01485
+2024-05-07 12:41:13,783 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:41:14,092 - root - INFO - Agent result saved with cost: 0.01679
+2024-05-07 12:41:14,093 - root - INFO - supermarket_9 imputation validated as: True
+
+2024-05-07 12:41:14,093 - root - INFO - test init: supermarket_8
+2024-05-07 12:41:36,887 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:41:36,893 - root - INFO - LLM chat result saved with cost: 0.01544
+2024-05-07 12:41:53,461 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:41:53,773 - root - INFO - Agent result saved with cost: 0.01758
+2024-05-07 12:41:53,773 - root - INFO - supermarket_8 imputation validated as: True
+

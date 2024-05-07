@@ -1,0 +1,48 @@
+### Issue Targeting
+Upon reviewing the dataset, it's clear that there is a missing value in the "Source" column for the first entry (Air India).
+
+### Columns Filtering
+To address the missing "Source" value, we can use the "Route" column, which provides the sequence of airports used for the journey. This column can help determine the starting airport, which corresponds to the "Source".
+
+### Entry Sampling
+Let's sample a few entries with no issues in the "Source" and "Route" columns to understand how the "Source" relates to the "Route":
+
+1. Jet Airways, 18/05/2019, Kolkata, Banglore, CCU → DEL → BLR, 09:35, 09:45 19 May, 24h 10m, 1 stop
+2. Multiple carriers, 27/05/2019, Delhi, Cochin, DEL → BOM → COK, 11:40, 21:00, 9h 20m, 1 stop
+3. IndiGo, 24/03/2019, Banglore, New Delhi, BLR → DEL, 04:00, 06:50, 2h 50m, non-stop
+
+### Rule Mining
+From the samples, it's evident that the first airport code in the "Route" column corresponds to the "Source" city's airport code:
+- CCU corresponds to Kolkata
+- DEL corresponds to Delhi
+- BLR corresponds to Banglore
+
+### Rule Formulation
+We can formulate a function that extracts the first airport code from the "Route" and maps it to the city name to fill in the missing "Source" value.
+
+```python
+def impute_missing_source(route):
+    # Mapping of airport codes to city names
+    airport_to_city = {
+        'DEL': 'Delhi',
+        'CCU': 'Kolkata',
+        'BLR': 'Banglore',
+        'BOM': 'Mumbai',
+        'GOI': 'Goa',
+        'COK': 'Cochin',
+        'JAI': 'Jaipur'
+    }
+    
+    # Extract the first airport code from the route
+    first_airport_code = route.split(' → ')[0]
+    
+    # Return the corresponding city name
+    return airport_to_city.get(first_airport_code, "Unknown")
+
+# Example usage for the missing value in the dataset
+missing_source_route = "DEL → GOI → BOM → COK"
+imputed_source = impute_missing_source(missing_source_route)
+print(f"The imputed source for the route '{missing_source_route}' is {imputed_source}.")
+```
+
+This function will correctly fill the missing "Source" value for the Air India entry based on the provided "Route".

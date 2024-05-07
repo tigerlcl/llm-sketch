@@ -1,0 +1,42 @@
+### Step-by-Step Solution to Fix Missing Value
+
+#### [Issue Targeting]
+Upon inspecting the data, we identify that there is a missing value in the "Total" column for the entry where the "Product line" is "Fashion accessories", the "Unit price" is 65, and the "Quantity" is 1.
+
+#### [Columns Filtering]
+To address the missing value in the "Total" column, we need to consider the columns that directly contribute to its calculation:
+- "Unit price"
+- "Quantity"
+- "Tax 5%"
+
+These columns are essential as they are used to compute the "Total".
+
+#### [Entry Sampling]
+We will sample a few entries that have no issues in the "Total" column to understand the relationship:
+1. Sports and travel, 100, 9, 45.0, 945.0
+2. Fashion accessories, 49, 9, 22.05, 463.05
+3. Health and beauty, 97, 2, 9.7, 203.7
+4. Home and lifestyle, 89, 9, 40.05, 841.05
+
+#### [Rule Mining]
+From the sampled entries, we observe a consistent pattern:
+\[ \text{Total} = (\text{Unit price} \times \text{Quantity}) + \text{Tax 5%} \]
+This formula is evident as the "Tax 5%" is exactly 5% of the product of "Unit price" and "Quantity", and adding this tax to the product gives the "Total".
+
+#### [Rule Formulation]
+Using the observed rule, we can formulate a function to compute the missing "Total" value:
+
+```python
+def calculate_total(unit_price, quantity, tax):
+    return (unit_price * quantity) + tax
+
+# Example usage with the missing data entry
+unit_price = 65
+quantity = 1
+tax = 3.25
+
+total = calculate_total(unit_price, quantity, tax)
+print("Calculated Total:", total)
+```
+
+This function takes the "Unit price", "Quantity", and "Tax 5%" as inputs and returns the calculated "Total". Using this function, we can impute the missing value in the dataset.

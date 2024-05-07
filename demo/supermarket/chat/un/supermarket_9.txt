@@ -1,0 +1,15 @@
+To find the missing value in the dataset provided, we need to calculate the missing "Tax 5%" for the "Electronic accessories" product line. The formula to calculate "Tax 5%" is:
+
+\[ \text{Tax 5%} = \text{Unit price} \times \text{Quantity} \times 0.05 \]
+
+For the "Electronic accessories" product line:
+- Unit price = 99
+- Quantity = 1
+
+Using the formula:
+\[ \text{Tax 5%} = 99 \times 1 \times 0.05 = 4.95 \]
+
+Therefore, the missing value is 4.95. 
+
+Formatted as requested:
+the missing value is ##4.95##

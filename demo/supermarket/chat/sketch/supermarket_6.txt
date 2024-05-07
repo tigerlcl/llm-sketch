@@ -1,0 +1,44 @@
+### Issue Targeting
+Upon reviewing the provided data, it is apparent that there is a missing value in the "Total" column for the "Sports and travel" product line.
+
+### Columns Filtering
+To address this issue, we need to focus on the following columns:
+- Unit price
+- Quantity
+- Tax 5%
+- Total
+
+These columns are directly related and can help in calculating the missing value.
+
+### Entry Sampling
+Let's sample some entries with no issues to understand the relationship between these columns:
+1. Health and beauty: Unit price = 72, Quantity = 7, Tax 5% = 25.2, Total = 529.2
+2. Home and lifestyle: Unit price = 13, Quantity = 2, Tax 5% = 1.3, Total = 27.3
+3. Home and lifestyle: Unit price = 16, Quantity = 2, Tax 5% = 1.6, Total = 33.6
+4. Home and lifestyle: Unit price = 22, Quantity = 9, Tax 5% = 9.9, Total = 207.9
+
+### Rule Mining
+From the sampled entries, we observe that:
+- Total = (Unit price * Quantity) + Tax 5%
+- Tax 5% = (Unit price * Quantity) * 0.05
+
+This relationship holds for all sampled entries.
+
+### Rule Formulation
+Using the observed rule, we can formulate the function to calculate the missing "Total" value:
+
+```python
+def calculate_total(unit_price, quantity, tax):
+    return (unit_price * quantity) + tax
+
+# Given values for the entry with missing 'Total'
+unit_price = 16
+quantity = 10
+tax = 8.0
+
+# Calculate the missing 'Total' value
+missing_total = calculate_total(unit_price, quantity, tax)
+print(f"The calculated 'Total' for the missing entry is: {missing_total}")
+```
+
+This function takes the unit price, quantity, and tax as inputs and returns the calculated total, which should be used to fill in the missing value in the dataset.

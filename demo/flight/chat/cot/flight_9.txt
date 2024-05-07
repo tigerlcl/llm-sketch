@@ -1,0 +1,9 @@
+Let's think step by step about how to identify and fix the missing value in the dataset provided.
+
+1. **Identify the missing value**: By examining each field in the dataset, we can see that the second row has a missing value in the 'Source' column.
+
+2. **Analyze the data to infer the missing value**: The second row has 'Cochin' as the destination and the route is 'DEL → BOM → COK'. This implies that the journey starts from 'Delhi' (DEL) and goes through 'Mumbai' (BOM) before reaching 'Cochin' (COK).
+
+3. **Conclusion**: Since the route begins from 'Delhi', it is logical to conclude that the missing source for the second row is 'Delhi'.
+
+Thus, the missing value is ##Delhi##.

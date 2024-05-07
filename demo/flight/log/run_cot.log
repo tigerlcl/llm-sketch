@@ -1,0 +1,52 @@
+2024-05-07 12:36:38,758 - root - INFO - Config Initialized demo/flight, prompt type: cot
+2024-05-07 12:36:38,759 - root - INFO - Backend LLM: gpt-4-turbo
+2024-05-07 12:36:38,759 - root - INFO - test init: flight_8
+2024-05-07 12:37:09,104 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:37:09,127 - root - INFO - LLM chat result saved with cost: 0.01943
+2024-05-07 12:37:09,127 - root - INFO - flight_8 imputation validated as: True
+
+2024-05-07 12:37:09,128 - root - INFO - test init: flight_9
+2024-05-07 12:37:18,400 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:37:18,410 - root - INFO - LLM chat result saved with cost: 0.00903
+2024-05-07 12:37:18,411 - root - INFO - flight_9 imputation validated as: True
+
+2024-05-07 12:37:18,418 - root - INFO - test init: flight_4
+2024-05-07 12:37:28,604 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:37:28,612 - root - INFO - LLM chat result saved with cost: 0.01087
+2024-05-07 12:37:28,612 - root - INFO - flight_4 imputation validated as: True
+
+2024-05-07 12:37:28,615 - root - INFO - test init: flight_5
+2024-05-07 12:37:37,833 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:37:37,839 - root - INFO - LLM chat result saved with cost: 0.00997
+2024-05-07 12:37:37,839 - root - INFO - flight_5 imputation validated as: False
+
+2024-05-07 12:37:37,840 - root - INFO - test init: flight_7
+2024-05-07 12:37:49,325 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:37:49,330 - root - INFO - LLM chat result saved with cost: 0.01114
+2024-05-07 12:37:49,330 - root - INFO - flight_7 imputation validated as: True
+
+2024-05-07 12:37:49,331 - root - INFO - test init: flight_6
+2024-05-07 12:38:01,914 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:38:01,920 - root - INFO - LLM chat result saved with cost: 0.01083
+2024-05-07 12:38:01,920 - root - INFO - flight_6 imputation validated as: True
+
+2024-05-07 12:38:01,922 - root - INFO - test init: flight_2
+2024-05-07 12:38:13,031 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:38:13,036 - root - INFO - LLM chat result saved with cost: 0.01163
+2024-05-07 12:38:13,036 - root - INFO - flight_2 imputation validated as: False
+
+2024-05-07 12:38:13,037 - root - INFO - test init: flight_3
+2024-05-07 12:38:33,415 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:38:33,421 - root - INFO - LLM chat result saved with cost: 0.01239
+2024-05-07 12:38:33,421 - root - INFO - flight_3 imputation validated as: True
+
+2024-05-07 12:38:33,422 - root - INFO - test init: flight_1
+2024-05-07 12:38:44,180 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:38:44,186 - root - INFO - LLM chat result saved with cost: 0.00872
+2024-05-07 12:38:44,186 - root - INFO - flight_1 imputation validated as: True
+
+2024-05-07 12:38:44,188 - root - INFO - test init: flight_10
+2024-05-07 12:38:52,417 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-07 12:38:52,422 - root - INFO - LLM chat result saved with cost: 0.00941
+2024-05-07 12:38:52,422 - root - INFO - flight_10 imputation validated as: True
+

@@ -1,0 +1,8 @@
+Airline,Date_of_Journey,Source,Destination,Route,Dep_Time,Arrival_Time,Duration,Total_Stops
+Air India,12/03/2019,Mumbai,Hyderabad,BOM → BLR → CCU → BBI → HYD,16:50,12:25 13 Mar,19h 35m,3 stops
+Multiple carriers,15/06/2019,Delhi,Cochin,DEL → IXU → BOM → COK,17:50,01:30 16 Jun,7h 40m,2 stops
+Multiple carriers,6/03/2019,Delhi,Cochin,DEL → BOM → COK,10:00,18:50,8h 50m,1 stop
+GoAir,1/06/2019,Delhi,Cochin,DEL → BOM → COK,07:00,12:55,5h 55m,
+Jet Airways,27/05/2019,Mumbai,Hyderabad,BOM → HYD,02:55,04:20,1h 25m,non-stop
+Jet Airways,9/05/2019,Banglore,Delhi,BLR → DEL,18:55,22:00,3h 5m,non-stop
+Jet Airways,1/06/2019,Mumbai,Hyderabad,BOM → HYD,10:20,11:50,1h 30m,non-stop

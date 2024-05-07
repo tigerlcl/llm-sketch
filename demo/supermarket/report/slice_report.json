@@ -1,0 +1,52 @@
+{
+    "supermarket_1.csv": {
+        "row_index": 3,
+        "column_name": "Tax 5%",
+        "value": 17.5
+    },
+    "supermarket_2.csv": {
+        "row_index": 0,
+        "column_name": "Total",
+        "value": 80.85
+    },
+    "supermarket_3.csv": {
+        "row_index": 2,
+        "column_name": "Tax 5%",
+        "value": 43.65
+    },
+    "supermarket_4.csv": {
+        "row_index": 2,
+        "column_name": "Total",
+        "value": 68.25
+    },
+    "supermarket_5.csv": {
+        "row_index": 0,
+        "column_name": "Tax 5%",
+        "value": 28.35
+    },
+    "supermarket_6.csv": {
+        "row_index": 2,
+        "column_name": "Total",
+        "value": 168.0
+    },
+    "supermarket_7.csv": {
+        "row_index": 0,
+        "column_name": "Tax 5%",
+        "value": 33.25
+    },
+    "supermarket_8.csv": {
+        "row_index": 3,
+        "column_name": "Total",
+        "value": 189.0
+    },
+    "supermarket_9.csv": {
+        "row_index": 3,
+        "column_name": "Tax 5%",
+        "value": 4.95
+    },
+    "supermarket_10.csv": {
+        "row_index": 3,
+        "column_name": "Total",
+        "value": 745.5
+    }
+}

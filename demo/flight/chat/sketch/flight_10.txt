@@ -1,0 +1,39 @@
+### Issue Targeting
+Upon reviewing the data, it's evident that there is a missing value in the `Total_Stops` column for one of the entries (GoAir, 1/06/2019, Delhi to Cochin).
+
+### Columns Filtering
+To address this issue, we will focus on the following columns:
+- `Route`: To understand the number of stops based on the route taken.
+- `Total_Stops`: To determine the number of stops for other entries with similar routes.
+
+### Entry Sampling
+Let's sample entries with similar routes to understand the relationship between `Route` and `Total_Stops`:
+- Multiple carriers, 6/03/2019, Delhi to Cochin, DEL → BOM → COK, 1 stop
+- Multiple carriers, 15/06/2019, Delhi to Cochin, DEL → IXU → BOM → COK, 2 stops
+- GoAir, 1/06/2019, Delhi to Cochin, DEL → BOM → COK, (missing)
+
+### Rule Mining
+From the sampled entries, we observe:
+- Route "DEL → BOM → COK" corresponds to "1 stop".
+- Adding an intermediate stop (like IXU) increases the count by one.
+
+### Rule Formulation
+Based on the observed pattern, we can formulate a rule to impute the missing value for the GoAir flight on 1/06/2019:
+- If the route is "DEL → BOM → COK", then `Total_Stops` should be "1 stop".
+
+Here's the function to implement this rule:
+
+```python
+def impute_missing_stops(route):
+    if route == "DEL → BOM → COK":
+        return "1 stop"
+    else:
+        return None  # This function can be expanded for other routes if needed
+
+# Applying the function to the specific missing entry
+missing_route = "DEL → BOM → COK"
+imputed_stops = impute_missing_stops(missing_route)
+print(f"The imputed number of stops for the route '{missing_route}' is: {imputed_stops}")
+```
+
+This function checks the route and assigns the number of stops accordingly. In this case, it correctly assigns "1 stop" to the GoAir flight on 1/06/2019 from Delhi to Cochin with the route "DEL → BOM → COK".

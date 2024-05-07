@@ -1,0 +1,15 @@
+Let's think step by step about how to find the missing value in the data provided. We are given columns for Product line, Unit price, Quantity, Tax 5%, Total, and Payment. The missing value is in the "Tax 5%" column for the "Health and beauty" product line.
+
+To calculate the missing "Tax 5%", we can use the formula:
+\[ \text{Tax 5%} = \text{Total} \times \frac{5}{105} \]
+where Total includes the tax.
+
+For the "Health and beauty" product line:
+- Unit price = 81
+- Quantity = 7
+- Total = 595.35
+
+Using the formula:
+\[ \text{Tax 5%} = 595.35 \times \frac{5}{105} \approx 28.35 \]
+
+Thus, the missing value is ##28.35##.

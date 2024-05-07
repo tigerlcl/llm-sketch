@@ -1,0 +1,19 @@
+Let's think step by step about how to identify and fix the missing value in the dataset provided.
+
+1. **Identify the Missing Value**: We need to look at each column in the dataset and check if any column has a missing entry. Here's the data with each row and column:
+
+   - Jet Airways, 9/06/2019, Kolkata, Banglore, CCU → DEL → BLR, 09:35, 10:55 10 Jun, 25h 20m, 1 stop
+   - IndiGo, 1/05/2019, Mumbai, Hyderabad, BOM → HYD, 09:10, 10:40, 1h 30m, non-stop
+   - Multiple carriers, 27/06/2019, Delhi, Cochin, DEL → BOM → COK, 07:00, 19:00, 12h, 1 stop
+   - Air India, 1/04/2019, Banglore, Delhi, BLR → DEL, 06:10, 08:55, 2h 45m, non-stop
+   - Jet Airways, 01/03/2019, Banglore, New Delhi, BLR → BOM → DEL, 16:55, 09:00 02 Mar, 16h 5m, 1 stop
+   - Jet Airways, 21/05/2019, Delhi, Cochin, DEL → AMD → BOM → COK, 19:10, 19:00 22 May, 23h 50m,
+   - Air Asia, 6/05/2019, Kolkata, Banglore, CCU → BLR, 19:55, 22:25, 2h 30m, non-stop
+
+2. **Analysis**: Upon reviewing each row, it's evident that the sixth row (Jet Airways, 21/05/2019, Delhi, Cochin) is missing the value for the 'Total_Stops' column.
+
+3. **Determine the Correct Value**: Considering the route 'DEL → AMD → BOM → COK', it involves three legs (DEL to AMD, AMD to BOM, and BOM to COK), which means there are two stops.
+
+4. **Conclusion**: The missing value in the dataset for the 'Total_Stops' column in the sixth row should be '2 stops'.
+
+Therefore, the missing value is ##2 stops##.

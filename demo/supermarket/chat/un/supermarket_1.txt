@@ -1,0 +1,16 @@
+To find the missing value in the provided data, we need to calculate the missing Tax 5% for the product line "Health and beauty" where the Unit price is 70 and Quantity is 5.
+
+The formula to calculate Tax 5% is:
+\[ \text{Tax 5%} = (\text{Unit price} \times \text{Quantity}) \times 0.05 \]
+
+Given:
+- Unit price = 70
+- Quantity = 5
+
+Plugging in the values:
+\[ \text{Tax 5%} = (70 \times 5) \times 0.05 = 350 \times 0.05 = 17.5 \]
+
+Therefore, the missing value is 17.5. 
+
+Formatted result:
+the missing value is ##17.5##

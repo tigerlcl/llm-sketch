@@ -1,0 +1,82 @@
+[
+    {
+        "row_index": 3,
+        "column_name": "Total",
+        "value": 745.5,
+        "fixed_value": 745.5,
+        "is_fixed": true,
+        "slice": "supermarket_10.csv"
+    },
+    {
+        "row_index": 0,
+        "column_name": "Tax 5%",
+        "value": 28.35,
+        "fixed_value": 28.35,
+        "is_fixed": true,
+        "slice": "supermarket_5.csv"
+    },
+    {
+        "row_index": 2,
+        "column_name": "Total",
+        "value": 68.25,
+        "fixed_value": "",
+        "is_fixed": false,
+        "slice": "supermarket_4.csv"
+    },
+    {
+        "row_index": 2,
+        "column_name": "Total",
+        "value": 168.0,
+        "fixed_value": 168.0,
+        "is_fixed": true,
+        "slice": "supermarket_6.csv"
+    },
+    {
+        "row_index": 0,
+        "column_name": "Tax 5%",
+        "value": 33.25,
+        "fixed_value": 33.25,
+        "is_fixed": true,
+        "slice": "supermarket_7.csv"
+    },
+    {
+        "row_index": 2,
+        "column_name": "Tax 5%",
+        "value": 43.65,
+        "fixed_value": 43.650000000000006,
+        "is_fixed": false,
+        "slice": "supermarket_3.csv"
+    },
+    {
+        "row_index": 0,
+        "column_name": "Total",
+        "value": 80.85,
+        "fixed_value": 80.85,
+        "is_fixed": true,
+        "slice": "supermarket_2.csv"
+    },
+    {
+        "row_index": 3,
+        "column_name": "Tax 5%",
+        "value": 17.5,
+        "fixed_value": 17.5,
+        "is_fixed": true,
+        "slice": "supermarket_1.csv"
+    },
+    {
+        "row_index": 3,
+        "column_name": "Tax 5%",
+        "value": 4.95,
+        "fixed_value": 4.95,
+        "is_fixed": true,
+        "slice": "supermarket_9.csv"
+    },
+    {
+        "row_index": 3,
+        "column_name": "Total",
+        "value": 189.0,
+        "fixed_value": 189.0,
+        "is_fixed": true,
+        "slice": "supermarket_8.csv"
+    }
+]

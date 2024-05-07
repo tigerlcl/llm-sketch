@@ -1,0 +1,13 @@
+Let's think step by step about how to identify and fix the missing value in the given dataset.
+
+1. **Identify the Missing Value**: We need to find which data entry is missing a value. By examining the dataset, we can see that the first row:
+   ```
+   IndiGo,03/03/2019,,New Delhi,BLR → DEL,23:30,02:20 04 Mar,2h 50m,non-stop
+   ```
+   has a missing value in the 'Source' column.
+
+2. **Determine the Correct Value**: To fix the missing value, we need to determine the correct 'Source' for the route 'BLR → DEL'. 'BLR' stands for Bangalore and 'DEL' stands for Delhi. Since the route is from Bangalore to Delhi, the source should be 'Bangalore'.
+
+3. **Format the Result**: Now, we need to format the result as specified.
+
+Thus, the missing value is ##Bangalore##.

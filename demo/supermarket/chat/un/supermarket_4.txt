@@ -1,0 +1,16 @@
+To find the missing value in the data, we need to calculate the "Total" for the row where it is missing. The formula to calculate "Total" is:
+
+\[ \text{Total} = (\text{Unit price} \times \text{Quantity}) + \text{Tax 5\%} \]
+
+From the data provided:
+- Unit price = 65
+- Quantity = 1
+- Tax 5% = 3.25
+
+Using the formula:
+\[ \text{Total} = (65 \times 1) + 3.25 = 65 + 3.25 = 68.25 \]
+
+Thus, the missing value is 68.25.
+
+Formatted answer:
+the missing value is ##68.25##

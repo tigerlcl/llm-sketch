@@ -1,0 +1,20 @@
+Let's think step by step about the missing value in the provided data. We need to identify which field is missing and then determine the most logical value for it based on the information available.
+
+1. **Identify the Missing Field**: By examining the data, we see that the second row has a missing value in the "Source" column. The row details are:
+   - Airline: Air India
+   - Date_of_Journey: 27/06/2019
+   - Source: (missing)
+   - Destination: Cochin
+   - Route: DEL → GOI → BOM → COK
+   - Dep_Time: 10:55
+   - Arrival_Time: 19:15
+   - Duration: 8h 20m
+   - Total_Stops: 2 stops
+
+2. **Analyze the Route**: The route provided is "DEL → GOI → BOM → COK". This indicates that the flight starts from Delhi (DEL), goes to Goa (GOI), then to Mumbai (BOM), and finally reaches Cochin (COK).
+
+3. **Determine the Missing Source**: Given that the first airport in the route is Delhi (DEL), it is logical to conclude that the flight originates from Delhi.
+
+Thus, the missing value for the source in the data is Delhi.
+
+Therefore, the missing value is ##Delhi##.

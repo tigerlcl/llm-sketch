@@ -1,0 +1,19 @@
+To find the missing value in the dataset, we need to calculate the "Total" for the row where it's missing. The formula for "Total" is given by:
+
+\[ \text{Total} = (\text{Unit price} \times \text{Quantity}) + \text{Tax 5\%} \]
+
+From the data:
+
+- Unit price = 45
+- Quantity = 4
+- Tax 5% = 9.0
+
+Using the formula:
+
+\[ \text{Total} = (45 \times 4) + 9.0 = 180 + 9.0 = 189.0 \]
+
+Therefore, the missing value is 189.0. 
+
+Formatted as requested:
+
+the missing value is ##189.0##

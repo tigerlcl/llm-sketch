@@ -1,0 +1,13 @@
+Let's think step by step about how to solve the problem of the missing value in the dataset. We know that the formula to calculate the 'Total' is:
+
+\[ \text{Total} = (\text{Unit price} \times \text{Quantity}) + \text{Tax 5\%} \]
+
+From the data provided:
+- Unit price = 77
+- Quantity = 1
+- Tax 5% = 3.85
+
+Using the formula:
+\[ \text{Total} = (77 \times 1) + 3.85 = 77 + 3.85 = 80.85 \]
+
+Thus, the missing value is ##80.85##.

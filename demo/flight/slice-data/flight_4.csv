@@ -1,0 +1,8 @@
+Airline,Date_of_Journey,Source,Destination,Route,Dep_Time,Arrival_Time,Duration,Total_Stops
+SpiceJet,15/04/2019,Kolkata,Banglore,CCU → BLR,22:20,00:40 16 Apr,2h 20m,non-stop
+Vistara,24/03/2019,Kolkata,Banglore,CCU → DEL → BLR,07:10,22:10,15h,1 stop
+Multiple carriers,27/03/2019,Delhi,Cochin,DEL → BOM → COK,08:25,19:15,10h 50m,1 stop
+Multiple carriers,15/05/2019,Delhi,Cochin,DEL → BOM → COK,11:30,19:15,7h 45m,1 stop
+Jet Airways,18/05/2019,Kolkata,Banglore,CCU → DEL → BLR,09:35,19:10,9h 35m,1 stop
+IndiGo,24/06/2019,Delhi,Cochin,DEL → COK,14:20,17:35,3h 15m,non-stop
+IndiGo,27/04/2019,Banglore,Delhi,BLR → DEL,21:15,00:15 28 Apr,3h,non-stop

@@ -1,0 +1,12 @@
+Let's think step by step about how to identify and fix the missing value in the provided dataset.
+
+1. **Identify the Missing Value**: We need to check each column for any missing or incomplete data. By examining the data, we can see that the last column, "Total_Stops," is missing for the entry:
+   - Multiple carriers, 15/05/2019, Delhi, Cochin, DEL → BOM → COK, 11:30, 19:15, 7h 45m,
+
+2. **Analyze the Route**: The route for this entry is "DEL → BOM → COK," which indicates that the flight has one stopover (at BOM).
+
+3. **Determine the Correct Value**: Since the route involves one stop, the correct value for "Total_Stops" should be "1 stop."
+
+4. **Present the Answer**: Based on the analysis, the missing value in the dataset is for the "Total_Stops" column where the route is "DEL → BOM → COK." The correct value should be "1 stop."
+
+Thus, the missing value is ##1 stop##.

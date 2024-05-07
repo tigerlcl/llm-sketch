@@ -1,0 +1,45 @@
+### Issue Targeting:
+Upon scanning the data, the missing value issue is identified in the `Source` column for the second entry (IndiGo, 21/03/2019).
+
+### Columns Filtering:
+To fix the issue, the `Source` column is directly affected. Additionally, the `Route` column can help deduce the missing `Source` as it indicates the starting point of the journey.
+
+### Entry Sampling:
+Let's sample a few entries with no issues in the `Source` and `Route` columns:
+1. Jet Airways, 9/05/2019, Banglore, Delhi, BLR → DEL
+2. Jet Airways, 01/03/2019, Banglore, New Delhi, BLR → BOM → DEL
+3. Jet Airways, 21/03/2019, Delhi, Cochin, DEL → BOM → COK
+4. IndiGo, 6/05/2019, Kolkata, Banglore, CCU → HYD → BLR
+
+### Rule Mining:
+From the sampled entries, we observe that the first airport code in the `Route` column corresponds to the `Source` city:
+- BLR corresponds to Banglore
+- DEL corresponds to Delhi
+- CCU corresponds to Kolkata
+
+### Rule Formulation:
+Using the rule mined from the samples, we can formulate a function to extract the source city from the `Route` column when the `Source` is missing.
+
+```python
+def impute_missing_source(route):
+    # Extract the first airport code from the route
+    first_airport = route.split(" → ")[0]
+    
+    # Mapping of airport codes to city names
+    airport_to_city = {
+        "BLR": "Banglore",
+        "DEL": "Delhi",
+        "CCU": "Kolkata",
+        "BOM": "Mumbai"  # Added for completeness, though not used in this specific case
+    }
+    
+    # Return the corresponding city name
+    return airport_to_city.get(first_airport, "Unknown")  # Default to "Unknown" if not found
+
+# Example usage:
+missing_source_route = "DEL → BOM → COK"
+imputed_source = impute_missing_source(missing_source_route)
+print("Imputed Source:", imputed_source)
+```
+
+This function will correctly impute the missing `Source` value for the entry with the route "DEL → BOM → COK" by mapping "DEL" to "Delhi".

@@ -1,0 +1,13 @@
+To find the missing value in the "Total" column for the "Sports and travel" product line, we can use the formula:
+
+\[ \text{Total} = (\text{Unit price} \times \text{Quantity}) + \text{Tax 5\%} \]
+
+Given:
+- Unit price = 16
+- Quantity = 10
+- Tax 5% = 8.0
+
+Calculating the total:
+\[ \text{Total} = (16 \times 10) + 8.0 = 160 + 8.0 = 168.0 \]
+
+Thus, the missing value is ##168.0##.

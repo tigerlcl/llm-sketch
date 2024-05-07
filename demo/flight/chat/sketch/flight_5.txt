@@ -1,0 +1,39 @@
+### Step-by-Step Solution
+
+#### [Issue targeting]
+Upon examining the dataset, it's evident that there is a missing value in the "Source" column for the first row where the airline is "IndiGo" and the destination is "New Delhi".
+
+#### [Columns Filtering]
+To address this, we can focus on the columns:
+- "Destination"
+- "Route"
+- "Source"
+
+These columns are interconnected as the "Route" typically starts from the "Source" and ends at the "Destination".
+
+#### [Entry Sampling]
+Let's sample entries where the destination is "New Delhi" to understand the typical source for flights going to this destination:
+- IndiGo, 18/05/2019, Banglore, Delhi, BLR → DEL, 19:30, 22:15, 2h 45m, non-stop (Vistara)
+
+From the given data, it seems that flights to "New Delhi" typically originate from "Banglore".
+
+#### [Rule Mining]
+From the sampled data, a clear pattern emerges:
+- Flights to "New Delhi" ("Delhi" in the dataset) typically have "Banglore" as the source when the route is direct (non-stop).
+
+#### [Rule Formulation]
+We can now formulate a rule and implement it in a function to impute the missing "Source" value based on the "Destination" and "Route":
+
+```python
+def impute_missing_source(destination, route):
+    if destination == "New Delhi" and "DEL" in route:
+        return "Banglore"
+    else:
+        return None  # This function can be expanded for other rules as needed
+
+# Applying the function to the missing value case:
+missing_source_value = impute_missing_source("New Delhi", "BLR → DEL")
+print("Imputed Source Value:", missing_source_value)
+```
+
+This function checks if the destination is "New Delhi" and if the route includes "DEL" (indicative of Delhi airport), then it assigns "Banglore" as the source. This rule is based on the observed pattern in the dataset where flights to Delhi from Banglore are direct and non-stop.

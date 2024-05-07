@@ -1,0 +1,44 @@
+### Issue Targeting
+Upon reviewing the data, I noticed that there is a missing value in the "Total_Stops" column for the entry corresponding to "Multiple carriers" on "15/05/2019" from Delhi to Cochin.
+
+### Columns Filtering
+To address this issue, we will focus on the "Route" and "Total_Stops" columns. The "Route" column is particularly useful because it provides insight into the number of stops based on the number of intermediate airports.
+
+### Entry Sampling
+Let's examine a few entries with no issues in the "Route" and "Total_Stops" columns:
+
+1. Multiple carriers, 27/03/2019, Delhi, Cochin, DEL → BOM → COK, 08:25, 19:15, 10h 50m, 1 stop
+2. Jet Airways, 18/05/2019, Kolkata, Banglore, CCU → DEL → BLR, 09:35, 19:10, 9h 35m, 1 stop
+3. Vistara, 24/03/2019, Kolkata, Banglore, CCU → DEL → BLR, 07:10, 22:10, 15h, 1 stop
+
+### Rule Mining
+From the sampled entries, we can observe a pattern:
+- A route with two intermediate stops (e.g., DEL → BOM → COK) typically corresponds to "1 stop".
+
+### Rule Formulation
+Based on the above observation, we can formulate a rule: if the route includes two segments separated by an intermediate stop (e.g., DEL → BOM → COK), then the "Total_Stops" should be "1 stop".
+
+Let's implement this as a function to fix the missing value:
+
+```python
+def fix_missing_total_stops(route):
+    if '→' in route:
+        segments = route.split('→')
+        num_stops = len(segments) - 1
+        if num_stops == 1:
+            return 'non-stop'
+        elif num_stops == 2:
+            return '1 stop'
+        elif num_stops == 3:
+            return '2 stops'
+        else:
+            return f'{num_stops - 1} stops'
+    return 'Data Error'
+
+# Applying the function to the specific entry with missing 'Total_Stops'
+missing_entry_route = 'DEL → BOM → COK'
+fixed_total_stops = fix_missing_total_stops(missing_entry_route)
+print(f"Fixed 'Total_Stops' for route {missing_entry_route}: {fixed_total_stops}")
+```
+
+This function checks the number of segments in the route and calculates the number of stops accordingly. It then returns the appropriate string for the "Total_Stops" column.
