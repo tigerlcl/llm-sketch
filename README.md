@@ -1,16 +1,19 @@
 # Topic: LLM-powered Tabular Data Imputation
 
-## Keywords:
+## Keywords
 Data Preprocessing, Large Language Models, Tabular Data, Data Imputation
 
-## Objectives:
+## Objectives
 This project is to impute missing values in tabular data using LLM. We acknowledge that the data cleaning takes up a lot of time in a data science project 
 and LLM can be a good solution attributed to its ability to in-contextual learning and prompt engineering. Therefore, we will explore the LLM as a tool for tabular data cleanup.
 To begin with, we will focus on the missing value imputation task, which is a common issue among tables. Meanwhile, this project served as a project for my course 5002, Spring 24 @HKUST-GZ.
 
+## Framework
+![framework](./misc/framework.png)
 
-## Repo Structure:
+## Repo Structure
 - main.py
+- chunk_table.py
 - etc
   - config_template.yaml
   - config_private.yaml (for local only)
@@ -21,19 +24,16 @@ To begin with, we will focus on the missing value imputation task, which is a co
 - utils (helper functions)
   - file_io.py: txt, csv, json
   - logger.py
-- preprocessing
-  - chunk_table.py
 - dataset
   - flight.csv: [Kaggle Link](https://www.kaggle.com/datasets/jillanisofttech/flight-price-prediction-dataset)
-  - supermarket.csv,  [Kaggle Link](https://www.kaggle.com/datasets/lovishbansal123/sales-of-a-supermarket)
+  - supermarket.csv:  [Kaggle Link](https://www.kaggle.com/datasets/lovishbansal123/sales-of-a-supermarket)
 - demo: collections of experiment with each sub-directory as an experiment
   - slice-data: raw data
-  - input-data: the noise added data as the input
-  - agent: code agent chat history (only for `prompt_type=sketch`)
-  - sketch: the prompt-based fixing plan for solving the problem
-  - run.log: the log of the experiment
-  - slice_report.json: the report indicates where the missing values are located
-  - fix_report.json: the report indicates the imputation result
+  - dirty-data: the noise added data as the input
+  - code: code agent chat history (only for `prompt_type=sketch`)
+  - chat: the prompt-based fixing plan for solving the problem
+  - log: the log of the experiment by prompt
+  - report: the report indicates where the missing values are located and the imputation result
 - requirements.txt
 
 ## CLI Command
