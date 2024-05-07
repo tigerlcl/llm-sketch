@@ -37,44 +37,48 @@ To begin with, we will focus on the missing value imputation task, which is a co
 - requirements.txt
 
 ## CLI Command
-`exp-dir` is to store all tests with related file I/Os on sketch, agent result and imputation evaluation
-
-`dataset` is downloaded from Kaggle for demonstration purposes. 
-
-`columns` indicates the column fields where the missing values are took from the raw data.
-
-`prompt-type` decides the prompting strategy. currently, we support `sketch` and `cot`.
+Mimic noisy data, preprocess raw tabular data to mimic the missing value problem
+- `exp-dir` is to store all tests with related file I/Os on sketch, agent result and imputation evaluation
+- `dataset` is downloaded from Kaggle for demonstration purposes.
+- `columns` indicates the column fields where the missing values are took from the raw data.
 
 ```shell
-# preprocess raw tabular data to mimic the missing value problem
-## for flight data
+# for flight data
 python preprocessing/chunk_table.py \
 --dataset dataset/flight.csv \
---columns "Route,Dep_Time,Duration,Total_Stops" \
---exp-dir demo_0507/flight_sketch \
---num-slices 20 \
---num-rows 6
+--columns "Route,Duration" \
+--exp-dir demo/flight_sketch \
+--num-slices 10 \
+--num-rows 10
 
-## for supermarket data
+# for supermarket data
 python preprocessing/chunk_table.py \
 --dataset dataset/supermarket.csv \
 --columns "Total,Gross income" \
---exp-dir demo_0507/supermarket_sketch \
+--exp-dir demo/supermarket \
 --num-slices 10 \
 --num-rows 5
+```
 
-# run imputation pipeline on experiment directory
+Run imputation pipeline on experiment directory
+`prompt-type` decides the prompting strategy. currently support `un`(un-prompt), `cot`, and `sketch`. 
+```shell
+# for flight data
 python main.py \
 --config etc/config_private.yaml \
 --prompt-type sketch \
-# --prompt-type un, cot \
---exp-dir demo_0507/flight_sketch
-# --exp-dir demo_0507/supermarket_sketch
+--exp-dir demo/flight
+
+# for supermarket data
+--config etc/config_private.yaml \
+--prompt-type sketch \
+--exp-dir demo/supermarket
 ```
 
-> Note: the `etc/config_private.yaml` is for local use only. You should configure some fields like `openai_config`. After the experiment is done, 
-> you can find report and log files in the experiment directory. Make a copy before running the next experiment if using the same data slices.
-> Default setting will override the previous experiment output.
+## Note
+The `etc/config_private.yaml` is for local use only. You should configure some fields like `openai_config`. After the experiment is done, 
+You can find report and log files in the `demo/{dataset}` directory. Make a copy before running the next experiment if using the same data slices.
+Default setting will override the previous experiment output.
 
 ## Related Resources
 - [OpenAI](https://platform.openai.com/) for backend serving LLM.

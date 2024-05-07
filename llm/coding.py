@@ -73,8 +73,13 @@ class CodeAgent:
         # post-process chat_result
         chat_cost = chat_result.cost['usage_including_cached_inference']
         total_cost = round(chat_cost['total_cost'], 5)
+
         code_block = chat_result.chat_history[-2]['content']  # index -2 for the last message from code writer
         chat_code = re.sub(self.py_block, "", code_block, flags=re.MULTILINE)
+
+        # append output after code
+        code_output = chat_result.chat_history[-1]['content']  # index -1 for the last message from code executor
+        chat_code = chat_code + "\n" + code_output
 
         chat_summary = self._parse_chat_summary(chat_result.summary)
         fixed_value = chat_summary["result"] if isinstance(chat_summary, dict) else ""
