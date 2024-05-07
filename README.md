@@ -1,12 +1,16 @@
 # Topic: LLM-powered Tabular Data Imputation
 
+> Remark: Repo served as a project demonstration for Course DSAA5002, Spring Term 24 @HKUST-GZ. More comprehensive studies will be updated in future work.
+
 ## Keywords
 Data Preprocessing, Large Language Models, Tabular Data, Data Imputation
 
-## Objectives
-This project is to impute missing values in tabular data using LLM. We acknowledge that the data cleaning takes up a lot of time in a data science project 
+## Introduction
+This project is to impute missing values in tabular data using LLM. We acknowledge that data cleaning takes up a lot of time in a data science project 
 and LLM can be a good solution attributed to its ability to in-contextual learning and prompt engineering. Therefore, we will explore the LLM as a tool for tabular data cleanup.
-To begin with, we will focus on the missing value imputation task, which is a common issue among tables. Meanwhile, this project served as a project for my course 5002, Spring 24 @HKUST-GZ.
+To begin with, we will focus on the missing value imputation task, which is a common issue among tables. We examined three different techniques, which are prompt-free, Chain-of-Thoughts Prompting, and a combination of LLM planning and coding(ours), on solving imputation tasks.
+
+The experiments ran on two domain datasets: flight + supermarkets. For each dataset, there are some missing values on certain column fields. LLM tends to extract the potential relationship that connects the missing field with other known field values to derive the final answer. In conclusion, the prompt-free and CoT prompting achieved good performance on the imputation task but less extendibility due to a tailor-made solution on each missing value cell. Instead, our approach combined with fix planning and coding so that we can have an executable code eventually, which is portable to maintain or scale up.
 
 ## Framework
 ![framework](./misc/framework.png)
@@ -61,7 +65,7 @@ python chunk_table.py \
 ```
 
 Run imputation pipeline on experiment directory
-`prompt-type` decides the prompting strategy. currently support `un`(un-prompt), `cot`, and `sketch`. 
+`prompt-type` decides the prompting strategy. currently support `un`(prompt-free), `cot`, and `sketch`. 
 ```shell
 # for flight data
 python main.py \
