@@ -5,7 +5,7 @@ import pandas as pd
 from numpy import NaN
 import random
 
-from utils import file_io
+from utils.file_io import check_directory
 
 
 def chunk_dirty_slice(args):
@@ -74,15 +74,15 @@ if __name__ == '__main__':
 
     # Ensure directories exist
     exp_dir = args.exp_dir
-    file_io.check_directory(exp_dir)
+    check_directory(exp_dir)
 
     slice_dir = os.path.join(exp_dir, 'slice-data')
-    file_io.check_directory(slice_dir)
+    check_directory(slice_dir)
 
     input_dir = os.path.join(exp_dir, 'dirty-data')
-    file_io.check_directory(input_dir)
+    check_directory(input_dir)
 
     report_dir = os.path.join(exp_dir, 'report')
-    file_io.check_directory(report_dir)
+    check_directory(report_dir)
 
     chunk_dirty_slice(args)

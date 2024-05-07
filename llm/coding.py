@@ -79,7 +79,7 @@ class CodeAgent:
 
         # append output after code
         code_output = chat_result.chat_history[-1]['content']  # index -1 for the last message from code executor
-        chat_code = chat_code + "\n" + code_output
+        chat_code = chat_code + f'\n\n"""{code_output}"""'
 
         chat_summary = self._parse_chat_summary(chat_result.summary)
         fixed_value = chat_summary["result"] if isinstance(chat_summary, dict) else ""

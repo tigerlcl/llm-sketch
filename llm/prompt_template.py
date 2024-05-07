@@ -35,8 +35,8 @@ def sketch_prompt() -> ChatPromptTemplate:
             [Columns Filtering]: Locate column where the issue occurred and other columns that can help fix the issue.
             [Entry Sampling]: Randomly select several no-issue entries based on the filtered columns.
             [Rule Mining]: Learn from the above samples. The rule can be constrained calculation, conditional logic, or in freeform.
-            [Rule Applying]: Use the analyzed rule to infer and impute the missing value.
-            [Output Normalization]: Make sure that the imputation result must align with the same pattern of field value where the issue occurred. 
+            Make sure the result must align with the same pattern of field value where the issue occurred.
+            [Rule Formulation]: Formulate the rule as a function code block and use it to impute missing value.
             """)
     )
     return prompt
