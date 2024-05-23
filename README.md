@@ -1,4 +1,4 @@
-# LLMSketch: Sketch-guided Missing Value Imputation on Tabular Data via Large Language Models
+# TabFill: Sketch-Guided Missing Value Imputation on Tabular Data via Large Language Models
 
 > Remark: Repo served as a project demonstration for Course DSAA5002, Spring Term 24 @HKUST-GZ. More comprehensive studies will be updated in future work.
 
@@ -8,7 +8,7 @@ Data Preprocessing, Large Language Models, Tabular Data, Data Imputation
 ## Introduction
 This project is to impute missing values in tabular data using LLM. We acknowledge that data cleaning takes up a lot of time in a data science project 
 and LLM can be a good solution attributed to its ability to in-contextual learning and prompt engineering. Therefore, we will explore the LLM as a tool for tabular data cleanup.
-To begin with, we will focus on the missing value imputation task, which is a common issue among tables. We examined three different approach, which are prompt-free, Chain-of-Thought Prompting, and `SketchIn` that integrates planning and coding via LLMs, on solving imputation tasks.
+To begin with, we will focus on the missing value imputation task, which is a common issue among tables. We examined three different approach, which are prompt-free, Chain-of-Thought Prompting, and `Sketch` that integrates planning and coding via LLMs, on solving imputation tasks.
 
 The experiments ran on two domain datasets: flight + supermarkets. For each dataset, there are some missing values on certain column fields. LLM tends to extract the potential relationship that connects the missing field with other known field values to derive the final answer. In conclusion, the prompt-free and CoT prompting achieved good performance on the imputation task but less extendibility due to a tailor-made solution on each missing value cell. Instead, our approach harness the LLM capability of planning and coding so that we can have an executable code eventually, that is portable to maintain or scale up.
 
