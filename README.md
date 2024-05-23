@@ -1,4 +1,4 @@
-# SketchIn: Sketch-guided Missing Value Imputation on Tabular Data via Large Language Models
+# LLMSketch: Sketch-guided Missing Value Imputation on Tabular Data via Large Language Models
 
 > Remark: Repo served as a project demonstration for Course DSAA5002, Spring Term 24 @HKUST-GZ. More comprehensive studies will be updated in future work.
 
