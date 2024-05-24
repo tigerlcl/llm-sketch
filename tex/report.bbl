@@ -1,0 +1,348 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{23}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[Andridge and Little(2010)]%
+        {andridge2010review}
+\bibfield{author}{\bibinfo{person}{Rebecca~R Andridge} {and}
+  \bibinfo{person}{Roderick~JA Little}.} \bibinfo{year}{2010}\natexlab{}.
+\newblock \showarticletitle{A review of hot deck imputation for survey
+  non-response}.
+\newblock \bibinfo{journal}{\emph{International statistical review}}
+  \bibinfo{volume}{78}, \bibinfo{number}{1} (\bibinfo{year}{2010}),
+  \bibinfo{pages}{40--64}.
+\newblock
+
+
+\bibitem[Emmanuel et~al\mbox{.}(2021)]%
+        {emmanuel2021survey}
+\bibfield{author}{\bibinfo{person}{Tlamelo Emmanuel}, \bibinfo{person}{Thabiso
+  Maupong}, \bibinfo{person}{Dimane Mpoeleng}, \bibinfo{person}{Thabo Semong},
+  \bibinfo{person}{Banyatsang Mphago}, {and} \bibinfo{person}{Oteng Tabona}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{A survey on missing data in machine learning}.
+\newblock \bibinfo{journal}{\emph{Journal of Big data}}  \bibinfo{volume}{8}
+  (\bibinfo{year}{2021}), \bibinfo{pages}{1--37}.
+\newblock
+
+
+\bibitem[Gondara and Wang(2018)]%
+        {gondara2018mida}
+\bibfield{author}{\bibinfo{person}{Lovedeep Gondara} {and} \bibinfo{person}{Ke
+  Wang}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Mida: Multiple imputation using denoising
+  autoencoders}. In \bibinfo{booktitle}{\emph{Advances in Knowledge Discovery
+  and Data Mining: 22nd Pacific-Asia Conference, PAKDD 2018, Melbourne, VIC,
+  Australia, June 3-6, 2018, Proceedings, Part III 22}}. Springer,
+  \bibinfo{pages}{260--272}.
+\newblock
+
+
+\bibitem[Li et~al\mbox{.}(2023)]%
+        {li2023table}
+\bibfield{author}{\bibinfo{person}{Peng Li}, \bibinfo{person}{Yeye He},
+  \bibinfo{person}{Dror Yashar}, \bibinfo{person}{Weiwei Cui},
+  \bibinfo{person}{Song Ge}, \bibinfo{person}{Haidong Zhang},
+  \bibinfo{person}{Danielle~Rifinski Fainman}, \bibinfo{person}{Dongmei Zhang},
+  {and} \bibinfo{person}{Surajit Chaudhuri}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Table-gpt: Table-tuned gpt for diverse table
+  tasks}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2310.09263}}
+  (\bibinfo{year}{2023}).
+\newblock
+
+
+\bibitem[Little and Rubin(2019)]%
+        {little2019statistical}
+\bibfield{author}{\bibinfo{person}{R.J.A. Little} {and} \bibinfo{person}{D.B.
+  Rubin}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Statistical Analysis with Missing Data}}.
+\newblock \bibinfo{publisher}{Wiley}.
+\newblock
+\showISBNx{9780470526798}
+\showLCCN{2018058860}
+\urldef\tempurl%
+\url{https://books.google.com/books?id=BemMDwAAQBAJ}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Narayan et~al\mbox{.}(2022)]%
+        {narayan2022can}
+\bibfield{author}{\bibinfo{person}{Avanika Narayan}, \bibinfo{person}{Ines
+  Chami}, \bibinfo{person}{Laurel Orr}, {and} \bibinfo{person}{Christopher
+  R{\'e}}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Can Foundation Models Wrangle Your Data?}
+\newblock \bibinfo{journal}{\emph{Proceedings of the VLDB Endowment}}
+  \bibinfo{volume}{16}, \bibinfo{number}{4} (\bibinfo{year}{2022}),
+  \bibinfo{pages}{738--746}.
+\newblock
+
+
+\bibitem[Pedregosa et~al\mbox{.}(2011)]%
+        {scikit-learn}
+\bibfield{author}{\bibinfo{person}{F. Pedregosa}, \bibinfo{person}{G.
+  Varoquaux}, \bibinfo{person}{A. Gramfort}, \bibinfo{person}{V. Michel},
+  \bibinfo{person}{B. Thirion}, \bibinfo{person}{O. Grisel},
+  \bibinfo{person}{M. Blondel}, \bibinfo{person}{P. Prettenhofer},
+  \bibinfo{person}{R. Weiss}, \bibinfo{person}{V. Dubourg}, \bibinfo{person}{J.
+  Vanderplas}, \bibinfo{person}{A. Passos}, \bibinfo{person}{D. Cournapeau},
+  \bibinfo{person}{M. Brucher}, \bibinfo{person}{M. Perrot}, {and}
+  \bibinfo{person}{E. Duchesnay}.} \bibinfo{year}{2011}\natexlab{}.
+\newblock \showarticletitle{Scikit-learn: Machine Learning in {P}ython}.
+\newblock \bibinfo{journal}{\emph{Journal of Machine Learning Research}}
+  \bibinfo{volume}{12} (\bibinfo{year}{2011}), \bibinfo{pages}{2825--2830}.
+\newblock
+
+
+\bibitem[Poldrack et~al\mbox{.}(2023)]%
+        {poldrack2023ai}
+\bibfield{author}{\bibinfo{person}{Russell~A Poldrack}, \bibinfo{person}{Thomas
+  Lu}, {and} \bibinfo{person}{Ga{\v{s}}per Begu{\v{s}}}.}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{AI-assisted coding: Experiments with GPT-4}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2304.13187}}
+  (\bibinfo{year}{2023}).
+\newblock
+
+
+\bibitem[Razavi-Far et~al\mbox{.}(2020)]%
+        {razavi2020similarity}
+\bibfield{author}{\bibinfo{person}{Roozbeh Razavi-Far}, \bibinfo{person}{Boyuan
+  Cheng}, \bibinfo{person}{Mehrdad Saif}, {and} \bibinfo{person}{Majid
+  Ahmadi}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Similarity-learning information-fusion schemes for
+  missing data imputation}.
+\newblock \bibinfo{journal}{\emph{Knowledge-Based Systems}}
+  \bibinfo{volume}{187} (\bibinfo{year}{2020}), \bibinfo{pages}{104805}.
+\newblock
+
+
+\bibitem[Razniewski et~al\mbox{.}(2021)]%
+        {razniewski2021language}
+\bibfield{author}{\bibinfo{person}{Simon Razniewski}, \bibinfo{person}{Andrew
+  Yates}, \bibinfo{person}{Nora Kassner}, {and} \bibinfo{person}{Gerhard
+  Weikum}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Language models as or for knowledge bases}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2110.04888}}
+  (\bibinfo{year}{2021}).
+\newblock
+
+
+\bibitem[Sridevi et~al\mbox{.}(2011)]%
+        {5972466}
+\bibfield{author}{\bibinfo{person}{S. Sridevi}, \bibinfo{person}{S. Rajaram},
+  \bibinfo{person}{C. Parthiban}, \bibinfo{person}{S. SibiArasan}, {and}
+  \bibinfo{person}{C. Swadhikar}.} \bibinfo{year}{2011}\natexlab{}.
+\newblock \showarticletitle{Imputation for the analysis of missing values and
+  prediction of time series data}. In \bibinfo{booktitle}{\emph{2011
+  International Conference on Recent Trends in Information Technology
+  (ICRTIT)}}. \bibinfo{pages}{1158--1163}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/ICRTIT.2011.5972466}
+\showDOI{\tempurl}
+
+
+\bibitem[Stekhoven and B{\"u}hlmann(2012)]%
+        {stekhoven2012missforest}
+\bibfield{author}{\bibinfo{person}{Daniel~J Stekhoven} {and}
+  \bibinfo{person}{Peter B{\"u}hlmann}.} \bibinfo{year}{2012}\natexlab{}.
+\newblock \showarticletitle{MissForest—non-parametric missing value
+  imputation for mixed-type data}.
+\newblock \bibinfo{journal}{\emph{Bioinformatics}} \bibinfo{volume}{28},
+  \bibinfo{number}{1} (\bibinfo{year}{2012}), \bibinfo{pages}{112--118}.
+\newblock
+
+
+\bibitem[Sui et~al\mbox{.}(2024)]%
+        {sui2024table}
+\bibfield{author}{\bibinfo{person}{Yuan Sui}, \bibinfo{person}{Mengyu Zhou},
+  \bibinfo{person}{Mingjie Zhou}, \bibinfo{person}{Shi Han}, {and}
+  \bibinfo{person}{Dongmei Zhang}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Table meets llm: Can large language models
+  understand structured table data? a benchmark and empirical study}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 17th ACM International
+  Conference on Web Search and Data Mining}}. \bibinfo{pages}{645--654}.
+\newblock
+
+
+\bibitem[Tao et~al\mbox{.}(2004)]%
+        {tao2004reverse}
+\bibfield{author}{\bibinfo{person}{Yufei Tao}, \bibinfo{person}{Dimitris
+  Papadias}, {and} \bibinfo{person}{Xiang Lian}.}
+  \bibinfo{year}{2004}\natexlab{}.
+\newblock \showarticletitle{Reverse knn search in arbitrary dimensionality}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the Very Large Data Bases Conference
+  (VLDB), Toronto}}.
+\newblock
+
+
+\bibitem[Tashiro et~al\mbox{.}(2021)]%
+        {tashiro2021csdi}
+\bibfield{author}{\bibinfo{person}{Yusuke Tashiro}, \bibinfo{person}{Jiaming
+  Song}, \bibinfo{person}{Yang Song}, {and} \bibinfo{person}{Stefano Ermon}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Csdi: Conditional score-based diffusion models for
+  probabilistic time series imputation}.
+\newblock \bibinfo{journal}{\emph{Advances in Neural Information Processing
+  Systems}}  \bibinfo{volume}{34} (\bibinfo{year}{2021}),
+  \bibinfo{pages}{24804--24816}.
+\newblock
+
+
+\bibitem[Tsai et~al\mbox{.}(2018)]%
+        {tsai2018class}
+\bibfield{author}{\bibinfo{person}{Chih-Fong Tsai}, \bibinfo{person}{Miao-Ling
+  Li}, {and} \bibinfo{person}{Wei-Chao Lin}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{A class center based approach for missing value
+  imputation}.
+\newblock \bibinfo{journal}{\emph{Knowledge-Based Systems}}
+  \bibinfo{volume}{151} (\bibinfo{year}{2018}), \bibinfo{pages}{124--135}.
+\newblock
+
+
+\bibitem[Van~Buuren and Groothuis-Oudshoorn(2011)]%
+        {van2011mice}
+\bibfield{author}{\bibinfo{person}{Stef Van~Buuren} {and}
+  \bibinfo{person}{Karin Groothuis-Oudshoorn}.}
+  \bibinfo{year}{2011}\natexlab{}.
+\newblock \showarticletitle{mice: Multivariate imputation by chained equations
+  in R}.
+\newblock \bibinfo{journal}{\emph{Journal of statistical software}}
+  \bibinfo{volume}{45} (\bibinfo{year}{2011}), \bibinfo{pages}{1--67}.
+\newblock
+
+
+\bibitem[Wei et~al\mbox{.}(2023)]%
+        {wei2023chainofthought}
+\bibfield{author}{\bibinfo{person}{Jason Wei}, \bibinfo{person}{Xuezhi Wang},
+  \bibinfo{person}{Dale Schuurmans}, \bibinfo{person}{Maarten Bosma},
+  \bibinfo{person}{Brian Ichter}, \bibinfo{person}{Fei Xia},
+  \bibinfo{person}{Ed Chi}, \bibinfo{person}{Quoc Le}, {and}
+  \bibinfo{person}{Denny Zhou}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{title}{Chain-of-Thought Prompting Elicits Reasoning in Large
+  Language Models}.
+\newblock
+\newblock
+\showeprint[arxiv]{2201.11903}~[cs.CL]
+
+
+\bibitem[Wu et~al\mbox{.}(2023)]%
+        {wu2023autogen}
+\bibfield{author}{\bibinfo{person}{Qingyun Wu}, \bibinfo{person}{Gagan Bansal},
+  \bibinfo{person}{Jieyu Zhang}, \bibinfo{person}{Yiran Wu},
+  \bibinfo{person}{Beibin Li}, \bibinfo{person}{Erkang Zhu},
+  \bibinfo{person}{Li Jiang}, \bibinfo{person}{Xiaoyun Zhang},
+  \bibinfo{person}{Shaokun Zhang}, \bibinfo{person}{Jiale Liu},
+  \bibinfo{person}{Ahmed~Hassan Awadallah}, \bibinfo{person}{Ryen~W White},
+  \bibinfo{person}{Doug Burger}, {and} \bibinfo{person}{Chi Wang}.}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{AutoGen: Enabling Next-Gen LLM Applications via
+  Multi-Agent Conversation Framework}.
+\newblock
+\showeprint[arxiv]{2308.08155}~[cs.AI]
+
+
+\bibitem[Zha et~al\mbox{.}(2023)]%
+        {zha2023tablegpt}
+\bibfield{author}{\bibinfo{person}{Liangyu Zha}, \bibinfo{person}{Junlin Zhou},
+  \bibinfo{person}{Liyao Li}, \bibinfo{person}{Rui Wang},
+  \bibinfo{person}{Qingyi Huang}, \bibinfo{person}{Saisai Yang},
+  \bibinfo{person}{Jing Yuan}, \bibinfo{person}{Changbao Su},
+  \bibinfo{person}{Xiang Li}, \bibinfo{person}{Aofeng Su}, \bibinfo{person}{Tao
+  Zhang}, \bibinfo{person}{Chen Zhou}, \bibinfo{person}{Kaizhe Shou},
+  \bibinfo{person}{Miao Wang}, \bibinfo{person}{Wufang Zhu},
+  \bibinfo{person}{Guoshan Lu}, \bibinfo{person}{Chao Ye},
+  \bibinfo{person}{Yali Ye}, \bibinfo{person}{Wentao Ye},
+  \bibinfo{person}{Yiming Zhang}, \bibinfo{person}{Xinglong Deng},
+  \bibinfo{person}{Jie Xu}, \bibinfo{person}{Haobo Wang}, \bibinfo{person}{Gang
+  Chen}, {and} \bibinfo{person}{Junbo Zhao}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{title}{TableGPT: Towards Unifying Tables, Nature Language
+  and Commands into One GPT}.
+\newblock
+\newblock
+\showeprint[arxiv]{2307.08674}~[cs.AI]
+
+
+\bibitem[Zhao et~al\mbox{.}(2023)]%
+        {zhao2023survey}
+\bibfield{author}{\bibinfo{person}{Wayne~Xin Zhao}, \bibinfo{person}{Kun Zhou},
+  \bibinfo{person}{Junyi Li}, \bibinfo{person}{Tianyi Tang},
+  \bibinfo{person}{Xiaolei Wang}, \bibinfo{person}{Yupeng Hou},
+  \bibinfo{person}{Yingqian Min}, \bibinfo{person}{Beichen Zhang},
+  \bibinfo{person}{Junjie Zhang}, \bibinfo{person}{Zican Dong},
+  \bibinfo{person}{Yifan Du}, \bibinfo{person}{Chen Yang},
+  \bibinfo{person}{Yushuo Chen}, \bibinfo{person}{Zhipeng Chen},
+  \bibinfo{person}{Jinhao Jiang}, \bibinfo{person}{Ruiyang Ren},
+  \bibinfo{person}{Yifan Li}, \bibinfo{person}{Xinyu Tang},
+  \bibinfo{person}{Zikang Liu}, \bibinfo{person}{Peiyu Liu},
+  \bibinfo{person}{Jian-Yun Nie}, {and} \bibinfo{person}{Ji-Rong Wen}.}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{title}{A Survey of Large Language Models}.
+\newblock
+\newblock
+\showeprint[arxiv]{2303.18223}~[cs.CL]
+
+
+\bibitem[Zheng and Charoenphakdee(2022)]%
+        {zheng2022diffusion}
+\bibfield{author}{\bibinfo{person}{Shuhan Zheng} {and}
+  \bibinfo{person}{Nontawat Charoenphakdee}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Diffusion models for missing value imputation in
+  tabular data}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2210.17128}}
+  (\bibinfo{year}{2022}).
+\newblock
+
+
+\bibitem[Zhou et~al\mbox{.}(2023)]%
+        {zhou2023instruction}
+\bibfield{author}{\bibinfo{person}{Jeffrey Zhou}, \bibinfo{person}{Tianjian
+  Lu}, \bibinfo{person}{Swaroop Mishra}, \bibinfo{person}{Siddhartha Brahma},
+  \bibinfo{person}{Sujoy Basu}, \bibinfo{person}{Yi Luan},
+  \bibinfo{person}{Denny Zhou}, {and} \bibinfo{person}{Le Hou}.}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Instruction-following evaluation for large language
+  models}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2311.07911}}
+  (\bibinfo{year}{2023}).
+\newblock
+
+
+\end{thebibliography}
